@@ -4,7 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Présentation - Vincent MARCILLAT</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour la grille portfolio (peuvent être déplacés vers style.css si souhaité) */
+        .portfolio-section {
+            padding: 30px 20px;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .portfolio-item {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .portfolio-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        .portfolio-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 123, 255, 0.8);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            text-align: center;
+            padding: 20px;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+        .portfolio-item .overlay h3 {
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+        .portfolio-item .overlay p {
+            font-size: 0.9em;
+        }
+        .tech-logos {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .tech-logos img {
+            height: 40px;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
 <body>
     <div class="container">
         <header class="hero">
@@ -27,7 +90,58 @@
                 <h2>Présentation</h2>
                 <p>Professionnel polyvalent avec plus de 10 ans d'expérience dans le secteur aéronautique, combinant une expertise pointue en Supply Chain et Gestion de Projet (AMOA) avec un parcours opérationnel solide. Spécialisé dans l'optimisation des flux, le pilotage de projets SAP et l'amélioration des processus métiers. Je mets à votre disposition mes compétences en automatisation de l'extraction et de la mise en forme des données, en développement d'outils d'analyse sur mesure, et en customisation de votre environnement SAP.</p>
                 <p>Fort de mon expérience, je suis passionné par l'optimisation des processus et l'apport de solutions innovantes pour améliorer l'efficacité des organisations.</p>
-                </section>
+            </section>
+
+            <section class="section">
+                <h2>Mes Services</h2>
+                <ul class="services-list">
+                    <li>Automatisation de l'extraction et de la mise en forme des données SAP</li>
+                    <li>Développement d'outils d'analyse de données avec Power BI et Excel VBA</li>
+                    <li>Création de scripts et d'applications en Python pour l'analyse de données</li>
+                    <li>Customisation de l'interface SAP via SAP GUIXT</li>
+                    <li>Automatisation des tâches répétitives dans SAP (SAP GUI Scripting)</li>
+                    <li>Conseil et accompagnement pour l'optimisation de vos processus Supply Chain</li>
+                </ul>
+            </section>
+
+            <section class="section portfolio-section">
+                <h2>Exemples de Réalisations</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://Vinc0212.github.io/DocSite/Projet Mag.png" alt="Tableau de bord Magasin">
+                        <div class="overlay">
+                            <h3>Tableau de bord Magasin</h3>
+                            <p>Exemple de tableau de bord pour le suivi des indicateurs clés en magasin.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://Vinc0212.github.io/DocSite/scripting guixt.png" alt="Automatisation GUIXT">
+                        <div class="overlay">
+                            <h3>Automatisation GUIXT</h3>
+                            <p>Script GUIXT pour automatiser des tâches répétitives dans SAP.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://Vinc0212.github.io/DocSite/pointage.png" alt="Mise en place Pointage par Barcode">
+                        <div class="overlay">
+                            <h3>Mise en place Pointage par Barcode</h3>
+                            <p>Solution de pointage automatisée via lecture de codes-barres.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Technologies Maîtrisées</h2>
+                <div class="tech-logos">
+                    <img src="https://Vinc0212.github.io/DocSite/APICS-Logo1.png" alt="Logo Apics">
+                    <img src="https://Vinc0212.github.io/DocSite/SAP.png" alt="Logo SAP">
+                    <img src="https://Vinc0212.github.io/DocSite/BI.png" alt="Logo Power BI">
+                    <img src="https://Vinc0212.github.io/DocSite/python_vertical_logo_icon_168039.ico" alt="Logo Python">
+                    <img src="https://Vinc0212.github.io/DocSite/Logo-Excel-1.jpg" alt="Logo Excel">
+                    <img src="https://Vinc0212.github.io/DocSite/synactive_gmbh_logo.png" alt="Logo Synactive">
+                </div>
+            </section>
         </main>
 
         <footer>

@@ -109,7 +109,7 @@ footer {
     background-size: contain; /* Ajuste la taille de l'image pour qu'elle tienne dans le conteneur sans se répéter */
     background-repeat: no-repeat;
     background-position: center right; /* Positionne l'image à droite et centrée verticalement */
-    opacity: 0.3; /* Ajuste la transparence de l'image */
+    opacity: 0.1; /* Ajuste la transparence de l'image */
     position: absolute;
     top: 0;
     left: 0;
@@ -128,4 +128,5 @@ footer {
 
 .accueil-texte h2 {
     text-align: left; /* Aligne le titre à gauche dans la zone de texte */
+    background-color: transparent; /* Rendre le fond transparent */
 }

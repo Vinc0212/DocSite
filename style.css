@@ -122,8 +122,8 @@ footer {
     width: 50%; /* Ajuste la largeur du texte */
     margin-left: auto; /* Pousse le texte vers la droite */
     padding: 20px; /* Ajoute un peu de marge autour du texte pour la lisibilité */
-    background-color: rgba(255, 255, 255, 0.8); /* Ajoute un fond légèrement transparent au texte pour la lisibilité sur l'image */
-    border-radius: 5px; /* Adoucit les angles du fond du texte */
+    background-color: transparent; /* Rendre le fond transparent */
+    border-radius: 5px; /* Adoucit les angles du fond du texte (sera invisible car le fond est transparent) */
 }
 
 .accueil-texte h2 {

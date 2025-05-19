@@ -113,9 +113,9 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    width: 60%; /* Ajuste la largeur de l'image en arrière-plan */
-    height: 100%;
-    z-index: -1; /* Place l'image derrière le contenu */
+    width: 50%; /* Ajuste la largeur de l'image en arrière-plan */
+    height: 90%;
+    z-index: 1; /* Place l'image derrière le contenu */
 }
 
 .accueil-texte {

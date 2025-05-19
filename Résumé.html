@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="XgQ7ZA4XaWcbzCFCmYAQS5fA28yMDs1W2HEixy9x91w" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site personnel de Vincent MARCILLAT.">
+    <meta name="description" content="Résumé de mon site personnel sur GitHub Pages.">
     <meta name="robots" content="index, follow">
     <title>Vincent MARCILLAT - Expert Supply Chain & AMOA</title>
+    <meta name="description" content="Expert en Supply Chain & AMOA Aéronautique, spécialisé en automatisation SAP, Excel, Synactive et plus. Contactez-moi pour optimiser vos processus et votre analyse de données.">
+    <meta name="keywords" content="Supply Chain, AMOA, Aéronautique, SAP, Excel, Synactive, Automatisation, Analyse de données, Conseil, Freelance, Tableau de bord, GUIXT">
     <style>
-        /* Styles CSS de base pour la structure et le menu */
+        /* Styles CSS (avec modifications pour l'en-tête et le menu) */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -33,8 +35,8 @@
             text-align: center;
             padding: 80px 20px;
             border-radius: 8px 8px 0 0;
-            margin-bottom: 20px;
-            position: relative;
+            margin-bottom: 20px; /* Réduction de la marge pour le menu */
+            position: relative; /* Pour positionner la photo */
         }
         .hero img {
             position: absolute;
@@ -48,13 +50,22 @@
         }
         .hero h1 {
             font-size: 3em;
-            margin-bottom: 5px;
+            margin-bottom: 5px; /* Réduction de la marge */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-            margin-top: 0;
+            margin-top: 0; /* Ajustement de la marge supérieure */
         }
         .hero p {
             font-size: 1.2em;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+            margin-bottom: 15px; /* Ajout de marge pour séparer du lien LinkedIn */
+        }
+        .hero a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero a:hover {
+            text-decoration: underline;
         }
         nav {
             background-color: #333;
@@ -82,6 +93,109 @@
         nav ul li a:hover {
             background-color: #555;
         }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+        }
+        .section h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .services-list {
+            list-style: none;
+            padding: 0;
+        }
+        .services-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        .services-list li:last-child {
+            border-bottom: none;
+        }
+        /* Styles pour la section Portfolio */
+        .portfolio-section {
+            padding: 30px 20px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grille responsive avec au moins 250px par colonne */
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .portfolio-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 123, 255, 0.8); /* Couleur de l'overlay */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item .overlay h3 {
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .portfolio-item .overlay p {
+            font-size: 0.9em;
+        }
+        .tech-logos {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .tech-logos img {
+            height: 40px;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+        .contact-info {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .contact-info a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
         footer {
             text-align: center;
             padding: 20px 0;
@@ -91,6 +205,21 @@
             border-radius: 0 0 8px 8px;
             margin-top: 30px;
         }
+        /* Styles pour la section Contact et le formulaire */
+        #contact-section {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        #contact-section h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -99,27 +228,91 @@
             <img src="https://Vinc0212.github.io/DocSite/Image Vincent.png" alt="Ma Photo">
             <h1>Vincent MARCILLAT</h1>
             <p>Expert Supply Chain & AMOA Aéronautique</p>
+            <p><a href="https://linkedin.com/in/vincent-marcillat-a312a094" target="_blank">Mon profil LinkedIn</a></p>
         </div>
 
         <nav>
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="presentation.html">Présentation</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="renseignement.html">Demande de renseignement</a></li>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#contact">Demande de renseignement</a></li>
             </ul>
         </nav>
 
-        <main>
-            <section class="section">
-                <h2>Bienvenue</h2>
-                <p>Ceci est la page d'accueil de mon site web. Vous trouverez plus d'informations sur mes compétences et services dans les autres sections.</p>
-            </section>
-        </main>
+        <section class="section">
+            <h2>À propos de moi</h2>
+            <p>Professionnel polyvalent avec plus de 10 ans d'expérience dans le secteur aéronautique, combinant une expertise pointue en Supply Chain et Gestion de Projet (AMOA) avec un parcours opérationnel solide. Spécialisé dans l'optimisation des flux, le pilotage de projets SAP et l'amélioration des processus métiers. Je mets à votre disposition mes compétences en automatisation de l'extraction et de la mise en forme des données, en développement d'outils d'analyse sur mesure, et en customisation de votre environnement SAP.</p>
+        </section>
 
-        <footer>
-            <p>© 2025 Vincent MARCILLAT</p>
-        </footer>
+        <section class="section">
+            <h2>Mes Services</h2>
+            <ul class="services-list">
+                <li>Automatisation de l'extraction et de la mise en forme des données SAP</li>
+                <li>Développement d'outils d'analyse de données avec Power BI et Excel VBA</li>
+                <li>Création de scripts et d'applications en Python pour l'analyse de données</li>
+                <li>Customisation de l'interface SAP via SAP GUIXT</li>
+                <li>Automatisation des tâches répétitives dans SAP (SAP GUI Scripting)</li>
+                <li>Conseil et accompagnement pour l'optimisation de vos processus Supply Chain</li>
+            </ul>
+        </section>
+
+        <section class="section portfolio-section">
+            <h2>Exemples de Réalisations</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://Vinc0212.github.io/DocSite/Projet Mag.png" alt="Tableau de bord Magasin">
+                    <div class="overlay">
+                        <h3>Tableau de bord Magasin</h3>
+                        <p>Exemple de tableau de bord pour le suivi des indicateurs clés en magasin.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://Vinc0212.github.io/DocSite/scripting guixt.png" alt="Automatisation GUIXT">
+                    <div class="overlay">
+                        <h3>Automatisation GUIXT</h3>
+                        <p>Script GUIXT pour automatiser des tâches répétitives dans SAP.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://Vinc0212.github.io/DocSite/pointage.png" alt="Mise en place Pointage par Barcode">
+                    <div class="overlay">
+                        <h3>Mise en place Pointage par Barcode</h3>
+                        <p>Solution de pointage automatisée via lecture de codes-barres.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Technologies Maîtrisées</h2>
+            <div class="tech-logos">
+                <img src="https://Vinc0212.github.io/DocSite/APICS-Logo1.png" alt="Logo Apics">
+                <img src="https://Vinc0212.github.io/DocSite/SAP.png" alt="Logo SAP">
+                <img src="https://Vinc0212.github.io/DocSite/BI.png" alt="Logo Power BI">
+                <img src="https://Vinc0212.github.io/DocSite/python_vertical_logo_icon_168039.ico" alt="Logo Python">
+                <img src="https://Vinc0212.github.io/DocSite/Logo-Excel-1.jpg" alt="Logo Excel">
+                <img src="https://Vinc0212.github.io/DocSite/synactive_gmbh_logo.png" alt="Logo Synactive">
+            </div>
+        </section>
+
+        <section class="section" id="contact-section">
+            <h2>Demande de renseignement</h2>
+            <p>Veuillez remplir le formulaire ci-dessous pour toute demande d'information.</p>
+            <iframe src="https://docs.google.com/forms/d/VOTRE_ID_DE_FORMULAIRE/viewform?embedded=true" width="640" height="480" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+        </section>
+
+        <section class="section">
+            <h2>Contactez-moi</h2>
+            <p>N'hésitez pas à me contacter pour discuter de vos besoins et découvrir comment je peux vous aider à améliorer votre efficacité et votre prise de décision grâce à l'analyse de données et à l'automatisation.</p>
+            <p class="contact-info">
+                Email : <a href="mailto:marcillatvincent@gmail.com">marcillatvincent@gmail.com</a><br>
+                Téléphone : 06.63.77.78.81 (Séméac)
+            </p>
+        </section>
     </div>
+
+    <footer>
+        <p>© 2025 Vincent MARCILLAT</p>
+    </footer>
+
 </body>
 </html>

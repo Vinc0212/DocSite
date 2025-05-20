@@ -6,6 +6,10 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    display: flex; /* Ajout pour gérer la hauteur du footer */
+    flex-direction: column; /* Ajout pour gérer la hauteur du footer */
+    min-height: 100vh; /* Ajout pour gérer la hauteur du footer */
+    position: relative; /* Ajout pour positionner l'image de fond relativement au body */
 }
 .container {
     max-width: 960px;
@@ -92,7 +96,7 @@ footer {
     color: #fff;
     font-size: 0.9em;
     border-radius: 0 0 8px 8px;
-    margin-top: 30px;
+    margin-top: auto; /* Pousse le footer vers le bas de la page */
 }
 .accueil-style {
     position: relative; /* Important pour positionner l'image en arrière-plan */
@@ -114,7 +118,7 @@ footer {
     top: 0;
     left: 0;
     width: 50%; /* Ajuste la largeur de l'image en arrière-plan */
-    height: 90%;
+    height: 100%; /* Correction de la hauteur pour couvrir toute la section */
     z-index: -1; /* Place l'image derrière le contenu */
 }
 
@@ -123,10 +127,23 @@ footer {
     margin-left: auto; /* Pousse le texte vers la droite */
     padding: 20px; /* Ajoute un peu de marge autour du texte pour la lisibilité */
     background-color: transparent; /* Rendre le fond transparent */
-    border-radius: 5px; /* Adoucit les angles du fond du texte (sera invisible car le fond est transparent) */
+    border-radius: 5px; /* Adoucit les angles du fond du texte */
 }
 
 .accueil-texte h2 {
     text-align: left; /* Aligne le titre à gauche dans la zone de texte */
     background-color: transparent; /* Rendre le fond transparent */
+    color: #333; /* Assure que le texte est visible */
 }
+
+.accueil-texte p {
+    color: #333; /* Assure que le texte est visible */
+}
+main {
+    flex: 1; /* Permet à main de prendre l'espace restant */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre le contenu verticalement */
+    align-items: center; /* Centre le contenu horizontalement, si nécessaire */
+}
+

@@ -136,13 +136,13 @@ footer {
     background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center left;
     opacity: 0.3;
     position: absolute;
     top: 0;
     left: 25;
-    width: 50%;
-    height: 100%;
+    width: 60%;
+    height: 110%;
 }
 
 .accueil-texte {

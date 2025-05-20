@@ -110,10 +110,10 @@ footer {
 
 .accueil-style::before {
     content: "";
-    background-image: url('https://Vinc0212.github.io/DocSite/download.jpg');
+    background-image: url('https://Vinc0212.github.io/DocSite/Projet Mag.png');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center left; /* Image à gauche */
+    background-position: center right; /* Image à gauche */
     opacity: 0.1;
     position: absolute;
     top: 0;

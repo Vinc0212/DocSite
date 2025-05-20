@@ -6,11 +6,12 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
-    display: flex; /* Ajout pour gérer la hauteur du footer */
-    flex-direction: column; /* Ajout pour gérer la hauteur du footer */
-    min-height: 100vh; /* Ajout pour gérer la hauteur du footer */
-    position: relative; /* Ajout pour positionner l'image de fond relativement au body */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
 }
+
 .container {
     max-width: 960px;
     margin: 40px auto;
@@ -19,6 +20,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
 .hero {
     background-image: url('https://Vinc0212.github.io/DocSite/Fond Linkedin.png');
     background-size: cover;
@@ -30,6 +32,7 @@ body {
     margin-bottom: 20px;
     position: relative;
 }
+
 .hero img {
     position: absolute;
     top: 10px;
@@ -40,32 +43,39 @@ body {
     object-fit: cover;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
+
 .hero h1 {
     font-size: 3em;
     margin-bottom: 5px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     margin-top: 0;
 }
+
 .hero p {
     font-size: 1.2em;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
+
 nav {
     background-color: #333;
     color: #fff;
     border-radius: 5px;
     margin-bottom: 20px;
 }
+
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
+
 nav ul li {
     margin: 0;
 }
+
 nav ul li a {
     display: block;
     color: #fff;
@@ -73,9 +83,19 @@ nav ul li a {
     padding: 15px 20px;
     transition: background-color 0.3s ease;
 }
+
 nav ul li a:hover {
     background-color: #555;
 }
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .section {
     margin-bottom: 30px;
     padding: 20px;
@@ -83,12 +103,14 @@ nav ul li a:hover {
     background-color: #f9f9f9;
     border: 1px solid #eee;
 }
+
 .section h2 {
     color: #007bff;
     margin-bottom: 15px;
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
 }
+
 footer {
     text-align: center;
     padding: 20px 0;
@@ -98,22 +120,23 @@ footer {
     border-radius: 0 0 8px 8px;
     margin-top: auto;
 }
+
 .accueil-style {
     position: relative;
     padding: 40px;
     overflow: hidden;
     display: flex;
-    flex-direction: row-reverse; /* Inversion de l'ordre pour image à gauche, texte à droite */
+    flex-direction: row-reverse;
     align-items: center;
-    justify-content: flex-end; /* Aligne le texte à droite */
+    justify-content: flex-end;
 }
 
 .accueil-style::before {
     content: "";
-    background-image: url('https://Vinc0212.github.io/DocSite/Projet Mag.png');
+    background-image: url('https://Vinc0212.github.io/DocSite/download.jpg');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center right; /* Image à gauche */
+    background-position: center left;
     opacity: 0.1;
     position: absolute;
     top: 0;
@@ -125,7 +148,7 @@ footer {
 
 .accueil-texte {
     width: 50%;
-    margin-right: auto; /* Pousse le texte vers la droite */
+    margin-right: auto;
     padding: 20px;
     background-color: transparent;
     border-radius: 5px;
@@ -140,10 +163,61 @@ footer {
 .accueil-texte p {
     color: #333;
 }
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .accueil-style {
+        flex-direction: column;
+    }
+
+    .accueil-style::before {
+        width: 100%;
+        height: 50%;
+        background-position: top center;
+    }
+
+    .accueil-texte {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .hero {
+        padding: 60px 10px;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero {
+        padding: 40px 10px;
+        
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .accueil-texte h2 {
+        font-size: 1.8em;
+    }
 }

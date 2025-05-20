@@ -96,54 +96,54 @@ footer {
     color: #fff;
     font-size: 0.9em;
     border-radius: 0 0 8px 8px;
-    margin-top: auto; /* Pousse le footer vers le bas de la page */
+    margin-top: auto;
 }
 .accueil-style {
-    position: relative; /* Important pour positionner l'image en arrière-plan */
-    padding: 40px; /* Augmenter le padding pour plus d'espace */
-    overflow: hidden; /* Empêche l'image de dépasser si nécessaire */
-    display: flex; /* Pour aligner le texte à droite */
-    align-items: center; /* Pour centrer verticalement le texte */
-    justify-content: flex-start; /* Aligne le texte à gauche initialement */
+    position: relative;
+    padding: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row-reverse; /* Inversion de l'ordre pour image à gauche, texte à droite */
+    align-items: center;
+    justify-content: flex-end; /* Aligne le texte à droite */
 }
 
 .accueil-style::before {
     content: "";
-    background-image: url('https://Vinc0212.github.io/DocSite/download.jpg'); /* Remplacez par le chemin de votre image */
-    background-size: contain; /* Ajuste la taille de l'image pour qu'elle tienne dans le conteneur sans se répéter */
+    background-image: url('https://Vinc0212.github.io/DocSite/download.jpg');
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center right; /* Positionne l'image à droite et centrée verticalement */
-    opacity: 0.1; /* Ajuste la transparence de l'image */
+    background-position: center left; /* Image à gauche */
+    opacity: 0.1;
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%; /* Ajuste la largeur de l'image en arrière-plan */
-    height: 100%; /* Correction de la hauteur pour couvrir toute la section */
-    z-index: -1; /* Place l'image derrière le contenu */
+    width: 50%;
+    height: 100%;
+    z-index: -1;
 }
 
 .accueil-texte {
-    width: 50%; /* Ajuste la largeur du texte */
-    margin-left: auto; /* Pousse le texte vers la droite */
-    padding: 20px; /* Ajoute un peu de marge autour du texte pour la lisibilité */
-    background-color: transparent; /* Rendre le fond transparent */
-    border-radius: 5px; /* Adoucit les angles du fond du texte */
+    width: 50%;
+    margin-right: auto; /* Pousse le texte vers la droite */
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 5px;
 }
 
 .accueil-texte h2 {
-    text-align: left; /* Aligne le titre à gauche dans la zone de texte */
-    background-color: transparent; /* Rendre le fond transparent */
-    color: #333; /* Assure que le texte est visible */
+    text-align: left;
+    background-color: transparent;
+    color: #333;
 }
 
 .accueil-texte p {
-    color: #333; /* Assure que le texte est visible */
+    color: #333;
 }
 main {
-    flex: 1; /* Permet à main de prendre l'espace restant */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centre le contenu verticalement */
-    align-items: center; /* Centre le contenu horizontalement, si nécessaire */
+    justify-content: center;
+    align-items: center;
 }
-

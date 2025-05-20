@@ -136,14 +136,13 @@ footer {
     background-image: url('https://Vinc0212.github.io/DocSite/download.jpg');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center left;
-    opacity: 0.1;
+    background-position: center right;
+    opacity: 0.3;
     position: absolute;
     top: 0;
     left: 0;
     width: 50%;
     height: 100%;
-    z-index: -1;
 }
 
 .accueil-texte {

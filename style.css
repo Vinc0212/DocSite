@@ -221,7 +221,30 @@ img {
     max-width: 100%;
     height: auto;
 }
+/* Styles pour le globe animé */
+.menu-container {
+    position: relative;
+    text-align: right; /* Aligne le bouton et le globe à droite */
+    margin-bottom: 20px;
+    z-index: 10;
+    display: flex; /* Utilise Flexbox pour aligner le globe et le bouton */
+    align-items: center; /* Centre verticalement le globe et le bouton */
+    justify-content: flex-end; /* Aligne les éléments à droite */
+    gap: 10px; /* Ajoute un espace entre le globe et le bouton */
+}
 
+.globe-image {
+    width: 30px; /* Ajustez la taille du globe selon vos préférences */
+    height: auto;
+    margin-right: 10px; /* Espacement entre le globe et le bouton */
+}
+
+/* Ajustement pour les petits écrans (responsive) */
+@media screen and (max-width: 768px) {
+    .globe-image {
+        width: 25px; /* Réduit la taille du globe sur les petits écrans */
+    }
+}
 /* Media Queries (ajustements pour les petits écrans) */
 @media screen and (max-width: 768px) {
     .container {

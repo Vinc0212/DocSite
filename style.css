@@ -9,7 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    position: relative;
+    position: relative; /* Gardé pour le positionnement relatif si nécessaire pour d'autres éléments */
 }
 
 .container {
@@ -19,6 +19,9 @@ body {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Le container ne devrait pas être un flex-item de body pour son centrage automatique */
+    display: flex; /* Ajouté pour centrer le contenu interne si nécessaire, ou le retirer si les sections sont alignées via main */
+    flex-direction: column; /* Organise le contenu du container en colonne */
 }
 
 .hero {
@@ -31,6 +34,7 @@ body {
     border-radius: 8px 8px 0 0;
     margin-bottom: 20px;
     position: relative;
+    overflow: hidden; /* Assurez-vous que l'image ne dépasse pas */
 }
 
 .hero img {
@@ -88,69 +92,66 @@ nav ul li a:hover {
     background-color: #555;
 }
 
+/* La balise <main> doit être un conteneur qui organise ses sections */
 main {
-    flex: 1;
+    flex: 1; /* Permet à main de prendre l'espace disponible */
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Organise les sections en colonne */
+    align-items: center; /* Centre les sections horizontalement dans le main */
+    width: 100%; /* Assure que main occupe toute la largeur disponible du container */
 }
 
-.section {
+/* Appliquez un style générique à toutes les sections dans le main pour l'uniformité */
+main section { /* Cible toutes les sections directement sous main */
     margin-bottom: 30px;
     padding: 20px;
     border-radius: 5px;
     background-color: #f9f9f9;
     border: 1px solid #eee;
+    width: 100%; /* Les sections prennent toute la largeur de main */
+    box-sizing: border-box; /* Pour inclure le padding et la bordure dans la largeur */
 }
 
-.section h2 {
+main section h2 {
     color: #007bff;
     margin-bottom: 15px;
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
 }
 
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #333;
-    color: #fff;
-    font-size: 0.9em;
-    border-radius: 0 0 8px 8px;
-    margin-top: auto;
-}
-
+/* Styles spécifiques pour la section d'accueil avec image de fond */
 .accueil-style {
     position: relative;
     padding: 40px;
     overflow: hidden;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row-reverse; /* Gardé tel quel si c'est le design voulu */
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Gardé tel quel */
 }
 
 .accueil-style::before {
     content: "";
     background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg');
-    background-size: contain;
+    background-size: cover; /* Change de 'contain' à 'cover' pour remplir l'espace */
     background-repeat: no-repeat;
-    background-position: center left;
+    background-position: center; /* Centré horizontalement et verticalement */
     opacity: 0.3;
     position: absolute;
-    top: 10;
-    left: 25;
-    width: 60%;
-    height: 110%;
+    top: 0; /* Alignement en haut */
+    left: 0; /* Alignement à gauche */
+    width: 100%; /* Prend toute la largeur de la section */
+    height: 100%; /* Prend toute la hauteur de la section */
+    z-index: -1; /* Place l'image derrière le contenu */
 }
 
 .accueil-texte {
-    width: 50%;
-    margin-right: auto;
+    width: 50%; /* Gardé tel quel si c'est le design voulu */
+    margin-right: auto; /* Gardé tel quel */
     padding: 20px;
-    background-color: transparent;
+    background-color: transparent; /* Permet de voir l'image de fond */
     border-radius: 5px;
+    z-index: 1; /* Assure que le texte est au-dessus de l'image de fond */
 }
 
 .accueil-texte h2 {
@@ -163,11 +164,28 @@ footer {
     color: #333;
 }
 
+/* Styles pour la nouvelle section "Mes Services Clés" */
+.services-cles { /* J'ai ajouté cette classe dans le HTML précédemment pour cette section */
+    /* Ces styles seront appliqués par le sélecteur `main section` plus haut */
+    /* Si vous voulez des styles spécifiques qui override, vous les mettez ici */
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.9em;
+    border-radius: 0 0 8px 8px;
+    margin-top: auto;
+}
+
 img {
     max-width: 100%;
     height: auto;
 }
 
+/* Media Queries (ajustements pour les petits écrans) */
 @media screen and (max-width: 768px) {
     .container {
         padding: 15px;
@@ -183,18 +201,21 @@ img {
     }
 
     .accueil-style {
-        flex-direction: column;
+        flex-direction: column; /* Les éléments s'empilent */
+        justify-content: center; /* Centre les éléments */
+        align-items: center; /* Centre les éléments */
     }
 
     .accueil-style::before {
+        background-size: cover; /* Toujours cover */
+        background-position: center; /* Centré */
         width: 100%;
-        height: 50%;
-        background-position: top center;
+        height: 100%; /* Prend toute la hauteur de la section */
     }
 
     .accueil-texte {
-        width: 100%;
-        margin-left: 0;
+        width: 100%; /* Le texte prend toute la largeur */
+        margin-right: 0;
     }
 
     .hero {
@@ -209,7 +230,6 @@ img {
 @media screen and (max-width: 480px) {
     .hero {
         padding: 40px 10px;
-        
     }
 
     .hero h1 {

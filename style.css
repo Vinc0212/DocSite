@@ -234,7 +234,7 @@ img {
 }
 
 .globe-image {
-    width: 30px; /* Ajustez la taille du globe selon vos préférences */
+    width: 40px; /* Ajustez la taille du globe selon vos préférences */
     height: auto;
     margin-right: 10px; /* Espacement entre le globe et le bouton */
 }

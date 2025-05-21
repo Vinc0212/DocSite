@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demande de Renseignement - Vincent MARCILLAT</title>
-    <link rel="stylesheet" href="style.css"> <style>
+    <meta name="description" content="Formulaire de demande de renseignement pour Vincent MARCILLAT, Expert Supply Chain & AMOA Aéronautique.">
+    <meta name="robots" content="index, follow">
+    <title>Demande de Renseignement - Vincent MARCILLAT | Expert Supply Chain & AMOA Aéronautique</title>
+    <link rel="canonical" href="https://Vinc0212.github.io/DocSite/renseignement.html"> <meta name="google-site-verification" content="XgQ7ZA4XaWcbzCFCmYAQS5fA28yMDs1W2HEixy9x91w" />
+    <meta name="msvalidate.01" content="4CCC9B53B95500DABBC3018D0EBFFA8B" />
+    <link rel="icon" href="https://Vinc0212.github.io/DocSite/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://Vinc0212.github.io/DocSite/logo.ico" type="image/x-icon">
+    <meta property="og:title" content="Demande de Renseignement - Vincent MARCILLAT | Expert Supply Chain & AMOA Aéronautique">
+    <meta property="og:description" content="Remplissez ce formulaire pour envoyer une demande d'information à Vincent MARCILLAT, spécialiste Supply Chain et AMOA.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://Vinc0212.github.io/DocSite/renseignement.html">
+    <meta property="og:image" content="https://Vinc0212.github.io/DocSite/Illustration_Supply-Chain-Management.jpg">
+    <meta property="og:locale" content="fr_FR">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
         /* Styles spécifiques pour la page de renseignement (ajuste la hauteur de l'iframe si nécessaire) */
         .form-container {
             text-align: center;
@@ -12,8 +26,24 @@
             background-color: #f9f9f9;
             border-radius: 5px;
             border: 1px solid #eee;
+            /* Important: max-width sur l'iframe pour qu'elle ne déborde pas sur mobile */
+            overflow-x: auto; /* Permet le scroll horizontal si l'iframe est trop large */
+        }
+        .form-container iframe {
+            max-width: 100%; /* L'iframe ne dépassera jamais la largeur de son conteneur */
+            height: 1500px; /* Conservez la hauteur souhaitée */
+            /* Ajoutez un display: block pour éviter les problèmes de marge par défaut */
+            display: block;
+            margin: 0 auto; /* Centrer l'iframe si elle n'est pas à 100% de largeur */
         }
     </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5189M2T3N8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5189M2T3N8');
+    </script>
 </head>
 <body>
     <div class="container">
@@ -23,21 +53,23 @@
             <p>Expert Supply Chain & AMOA Aéronautique</p>
         </header>
 
-        <nav>
-            <ul>
-                <li><a href="Résumé.html">Accueil</a></li>
-                <li><a href="presentation.html">Présentation</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="renseignement.html">Demande de renseignement</a></li>
-            </ul>
-        </nav>
-
+        <div class="menu-container">
+            <button class="menu-button">Menu &#9776;</button>
+            <nav class="dropdown-menu">
+                <ul>
+                    <li><a href="Résumé.html">Accueil</a></li>
+                    <li><a href="presentation.html">Présentation</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="renseignement.html">Demande de renseignement</a></li>
+                </ul>
+            </nav>
+        </div>
         <main>
             <section class="section">
                 <h2>Demande de renseignement</h2>
                 <p>Veuillez remplir le formulaire ci-dessous pour toute demande d'information.</p>
                 <div class="form-container">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfqSzjjvzyfFku9qoFtu2Y1jJBmYpb4DRhhKBnplLh7x58vAg/viewform?embedded=true" width="640" height="1500" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfqSzjjvzyfFku9qoFtu2Y1jJBmYpb4DRhhKBnplLh7x58vAg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
                 </div>
             </section>
         </main>
@@ -46,5 +78,21 @@
             <p>© 2025 Vincent MARCILLAT</p>
         </footer>
     </div>
+
+    <script>
+        document.querySelector('.menu-button').addEventListener('click', function() {
+            document.querySelector('.dropdown-menu').classList.toggle('show');
+        });
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.menu-button')) {
+                var dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(function(dropdown) {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

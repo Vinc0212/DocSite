@@ -157,7 +157,7 @@ img {
 main {
     flex: 1; /* Permet à main de prendre l'espace restant */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Empile les sections verticalement par défaut */
     width: 100%;
 }
 
@@ -183,77 +183,71 @@ main section h2 {
 /* --- Styles spécifiques pour la page d'Accueil (Résumé.html) --- */
 .main-with-sidebar {
     flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
+    display: flex; /* Ceci crée les colonnes côte à côte */
+    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne sur les écrans plus petits */
+    justify-content: space-between; /* Distribue l'espace entre les colonnes */
+    gap: 30px; /* Espace entre les colonnes */
     width: 100%;
     margin-bottom: 30px;
-    align-items: flex-start;
+    align-items: flex-start; /* Aligne les colonnes en haut */
 }
 
 .main-content-left {
-    flex: 2;
+    flex: 2; /* Prend 2 parts de l'espace disponible */
     display: flex;
-    flex-direction: column;
-    gap: 30px;
-    min-width: 60%;
+    flex-direction: column; /* Les sections à l'intérieur s'empilent verticalement */
+    gap: 30px; /* Espace entre ces sections empilées */
+    min-width: 60%; /* S'assure que la colonne gauche est assez large avant de s'enrouler */
     box-sizing: border-box;
 }
 
 .sidebar-right {
-    flex: 1;
-    min-width: 300px;
-    max-width: 35%;
+    flex: 1; /* Prend 1 part de l'espace disponible */
+    min-width: 300px; /* Largeur minimale de la sidebar */
+    max-width: 35%; /* Largeur maximale de la sidebar */
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 20px;
     box-sizing: border-box;
-    margin-left: auto;
+    margin-left: auto; /* Pousse la sidebar à droite */
 }
 
-.accueil-style,
-.services-cles {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 20px;
-    box-sizing: border-box;
-    width: 100%;
-}
-
+/* Modification ici pour que le texte dans accueil-style prenne toute la largeur de sa section */
 .accueil-style {
     position: relative;
-    padding: 40px;
+    padding: 20px; /* Réduit le padding pour éviter un double padding avec .accueil-texte */
     overflow: hidden;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: flex-end;
+    display: flex; /* Utilise flex pour aligner le texte si une image était présente */
+    flex-direction: column; /* Empile les éléments verticalement dans cette section */
+    align-items: flex-start; /* Aligne le contenu à gauche */
+    justify-content: flex-start;
 }
 
+/* Le conteneur de texte à l'intérieur de accueil-style */
 .accueil-texte {
-    width: 50%;
-    margin-right: auto;
-    padding: 20px;
+    width: 100%; /* Le texte prendra toute la largeur de .accueil-style */
+    margin-right: 0; /* Supprime toute marge qui décalerait le texte */
+    padding: 0; /* Assurez-vous qu'il n'y a pas de padding supplémentaire ici */
     background-color: transparent;
     border-radius: 5px;
+    text-align: left; /* Assure que le texte est aligné à gauche */
 }
 
 .accueil-texte h2 {
-    text-align: left;
+    text-align: left; /* Force l'alignement du titre à gauche */
     background-color: transparent;
     color: #333;
 }
 
 .accueil-texte p {
     color: #333;
+    text-align: left; /* Force l'alignement des paragraphes à gauche */
 }
 
 /* --- Styles spécifiques pour la page de Renseignement (renseignement.html) --- */
 .main-full-width {
-    display: block; /* S'assure que le contenu prend toute la largeur disponible sans alignement flexible spécifique */
+    display: block; /* Annule le display: flex et flex-direction: column du main global pour cette page */
     width: 100%;
     padding: 0;
     box-sizing: border-box;
@@ -303,12 +297,12 @@ footer {
 @media screen and (max-width: 768px) {
     .container {
         padding: 15px;
-        margin: 20px auto; /* Ajuste la marge sur mobile */
+        margin: 20px auto;
     }
 
     .hero {
         padding: 60px 10px;
-        padding-top: 100px; /* Laisse de la place pour l'image centrée */
+        padding-top: 100px;
     }
 
     .hero img {
@@ -325,7 +319,7 @@ footer {
     }
 
     .globe-image {
-        width: 25px; /* Réduit la taille du globe sur les petits écrans */
+        width: 25px;
     }
 
     .menu-container {
@@ -333,7 +327,7 @@ footer {
     }
 
     .dropdown-menu {
-        right: 50%; /* Centre le menu déroulant */
+        right: 50%;
         transform: translateX(50%);
     }
 
@@ -353,14 +347,14 @@ footer {
 
     /* Ajustement pour les sections générales sur mobile */
     main section {
-        padding: 15px; /* Réduit le padding des sections sur mobile */
-        margin-bottom: 20px; /* Réduit la marge basse */
+        padding: 15px;
+        margin-bottom: 20px;
     }
 
     .accueil-style {
-        flex-direction: column;
+        flex-direction: column; /* Empile les éléments verticalement sur mobile */
         justify-content: center;
-        align-items: center;
+        align-items: center; /* Centre le contenu horizontalement sur mobile */
     }
 
     .accueil-texte {
@@ -381,7 +375,7 @@ footer {
         padding: 0;
     }
     .main-full-width .section {
-        padding: 15px; /* Ajuste le padding de la section du formulaire */
+        padding: 15px;
     }
 }
 

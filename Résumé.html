@@ -2,11 +2,6 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-
-    <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Vincent MARCILLAT | Expert Supply Chain, AMOA, Optimisation Industrielle, KPI, Données</title>
@@ -47,14 +42,17 @@
             <p>Expert Supply Chain & AMOA Aéronautique</p>
         </div>
 
-        <nav>
-            <ul>
-                <li><a href="Résumé.html">Accueil</a></li>
-                <li><a href="presentation.html">Présentation</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="renseignement.html">Demande de renseignement</a></li>
-            </ul>
-        </nav>
+        <div class="menu-container">
+            <button class="menu-button">Menu &#9776;</button>
+            <nav class="dropdown-menu">
+                <ul>
+                    <li><a href="Résumé.html">Accueil</a></li>
+                    <li><a href="presentation.html">Présentation</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="renseignement.html">Demande de renseignement</a></li>
+                </ul>
+            </nav>
+        </div>
 
         <main>
             <section class="accueil-style">
@@ -74,20 +72,38 @@
                     <li>Automatisation des processus et <strong>exportation de données</strong> pour le reporting</li>
                 </ul>
             </section>
+            
             <section class="liens-utiles">
                 <h3>Ressources Utiles et Partenaires</h3>
                 <ul>
                     <li><a href="https://www.aslog.org/" target="_blank" rel="noopener">ASLOG - Association Française pour la Logistique et la Supply Chain</a></li>
-                    <li><a href="https://www.air-cosmos.com/" target="_blank" rel="noopener">Air & Cosmos - ¨Magazine spécialisée dans l'aéronautique et le spatial.</a></li>
-                    <li><a href="https://www.klick.com/fr-FR" target="_blank" rel="noopener">Qlik (pour l'analyse de données et les KPI)</a></li>
+                    <li><a href="https://www.air-cosmos.com/" target="_blank" rel="noopener">Air & Cosmos - Magazine spécialisée dans l'aéronautique et le spatial.</a></li>
+                    <li><a href="https://www.qlik.com/fr-fr" target="_blank" rel="noopener">Qlik (pour l'analyse de données et les KPI)</a></li>
                     <li><a href="https://www.easa.europa.eu/" target="_blank" rel="noopener">EASA - European Union Aviation Safety Agency</a></li>
                     <li><a href="https://www.sap.com/france/index.html" target="_blank" rel="noopener">SAP France - Solutions d'entreprise</a></li>
-                    </ul>
+                </ul>
             </section>
         </main>
         <footer>
             <p>© 2025 Vincent MARCILLAT</p>
         </footer>
     </div>
+
+    <script>
+        document.querySelector('.menu-button').addEventListener('click', function() {
+            document.querySelector('.dropdown-menu').classList.toggle('show');
+        });
+        // Fermer le menu si l'utilisateur clique en dehors
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.menu-button')) {
+                var dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(function(dropdown) {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

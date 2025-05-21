@@ -238,7 +238,50 @@ img {
     height: auto;
     margin-right: 10px; /* Espacement entre le globe et le bouton */
 }
+/* style.css */
 
+/* ... (votre CSS existant pour .container, .hero, .menu-container, etc.) ... */
+
+
+/* Style spécifique pour la page de renseignement pour que le contenu du main prenne toute la largeur */
+.main-full-width {
+    /* Nous réinitialisons les propriétés flex par défaut qui peuvent causer le rétrécissement */
+    display: block; /* Ou display: flex; align-items: flex-start; pour conserver le flex mais aligner à gauche */
+    width: 100%; /* S'assurer qu'il prend toute la largeur disponible */
+    padding: 0; /* Assurez-vous qu'il n'y a pas de padding excessif sur le main lui-même */
+    box-sizing: border-box; /* Important pour les paddings éventuels des sections */
+}
+
+.main-full-width .section {
+    /* Assurez-vous que la section à l'intérieur de ce main prend également toute la largeur */
+    width: 100%;
+    margin-left: 0; /* Annule tout alignement à droite potentiel */
+    margin-right: 0;
+    padding: 20px; /* Ajoutez un padding à la section pour l'esthétique */
+    background-color: #f9f9f9; /* Ou la couleur de fond de vos sections */
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Vous pouvez retirer le style .section global du style.css si vous voulez des paddings différents par page */
+/* Ou assurez-vous que ce style est plus spécifique */
+
+
+/* ... (votre CSS existant pour les media queries) ... */
+
+@media screen and (max-width: 768px) {
+    /* ... (vos media queries existantes) ... */
+
+    .main-full-width {
+        /* Sur mobile, assurez-vous qu'il conserve sa pleine largeur */
+        width: 100%;
+        padding: 0;
+    }
+    .main-full-width .section {
+        padding: 15px; /* Ajustez le padding sur mobile si besoin */
+    }
+}
 /* Ajustement pour les petits écrans (responsive) */
 @media screen and (max-width: 768px) {
     .globe-image {

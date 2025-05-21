@@ -1,4 +1,6 @@
 /* style.css */
+
+/* --- Styles Généraux --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -10,7 +12,6 @@ body {
     flex-direction: column;
     min-height: 100vh;
     position: relative;
-
     background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -42,6 +43,12 @@ body::before {
     position: relative;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- Section Hero (Haut de Page) --- */
 .hero {
     background-image: url('https://Vinc0212.github.io/DocSite/Fond Linkedin.png');
     background-size: cover;
@@ -58,7 +65,7 @@ body::before {
 .hero img {
     position: absolute;
     top: 10px;
-    left: 10px; /* Conservez cela pour le grand écran */
+    left: 10px;
     border-radius: 50%;
     width: 80px;
     height: 80px;
@@ -78,16 +85,24 @@ body::before {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
-/* --- Styles pour le menu déroulant --- */
+/* --- Styles pour le Menu Déroulant et le Globe --- */
 .menu-container {
-    position: relative; /* Conteneur pour le bouton et le menu */
-    text-align: right; /* Aligne le bouton à droite */
-    margin-bottom: 20px; /* Espace sous le menu */
-    z-index: 10; /* Assure que le menu est au-dessus des autres contenus */
+    position: relative;
+    margin-bottom: 20px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Aligne le globe et le bouton à droite */
+    gap: 10px; /* Espacement entre le globe et le bouton */
+}
+
+.globe-image {
+    width: 40px; /* Taille du globe */
+    height: auto;
 }
 
 .menu-button {
-    background-color: #007bff; /* Couleur du bouton */
+    background-color: #007bff;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -102,7 +117,7 @@ body::before {
 }
 
 .dropdown-menu {
-    display: none; /* Masqué par défaut */
+    display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
@@ -110,7 +125,8 @@ body::before {
     z-index: 1;
     right: 0; /* Aligne le menu déroulant à droite sous le bouton */
     border-radius: 5px;
-    margin-top: 5px; /* Espace entre le bouton et le menu */
+    margin-top: 5px;
+    top: calc(100% + 5px); /* Positionne sous le menu-container */
 }
 
 .dropdown-menu ul {
@@ -133,16 +149,15 @@ body::before {
 }
 
 .show {
-    display: block; /* La classe 'show' (ajoutée par JS) rend le menu visible */
+    display: block;
 }
 
-/* --- Fin des styles pour le menu déroulant --- */
-
+/* --- Styles par défaut pour le contenu principal (main) --- */
+/* Ceci est le style général pour toutes les pages, sauf si surchargé par une classe spécifique */
 main {
-    flex: 1;
+    flex: 1; /* Permet à main de prendre l'espace restant */
     display: flex;
-    flex-direction: column; /* Garde les sections empilées verticalement */
-    align-items: flex-end; /* Centre les sections horizontalement */
+    flex-direction: column;
     width: 100%;
 }
 
@@ -165,7 +180,49 @@ main section h2 {
     padding-bottom: 5px;
 }
 
-/* Styles spécifiques pour la section d'accueil avec image de fond */
+/* --- Styles spécifiques pour la page d'Accueil (Résumé.html) --- */
+.main-with-sidebar {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.main-content-left {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-width: 60%;
+    box-sizing: border-box;
+}
+
+.sidebar-right {
+    flex: 1;
+    min-width: 300px;
+    max-width: 35%;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-left: auto;
+}
+
+.accueil-style,
+.services-cles {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 .accueil-style {
     position: relative;
     padding: 40px;
@@ -175,11 +232,6 @@ main section h2 {
     align-items: center;
     justify-content: flex-end;
 }
-
-/* Supprimez le ::before pour .accueil-style car l'image est sur le body */
-/*
-.accueil-style::before { ... }
-*/
 
 .accueil-texte {
     width: 50%;
@@ -199,12 +251,42 @@ main section h2 {
     color: #333;
 }
 
-.services-cles, .liens-utiles {
-    /* Ces styles seront appliqués par le sélecteur main section */
-    /* Si vous voulez des styles spécifiques qui override, vous les mettez ici */
+/* --- Styles spécifiques pour la page de Renseignement (renseignement.html) --- */
+.main-full-width {
+    display: block; /* S'assure que le contenu prend toute la largeur disponible sans alignement flexible spécifique */
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+.main-full-width .section {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
 
+.form-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    overflow-x: auto;
+}
+
+.form-container iframe {
+    max-width: 100%;
+    height: 1500px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* --- Footer --- */
 footer {
     text-align: center;
     padding: 20px 0;
@@ -217,104 +299,19 @@ footer {
     position: relative;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-/* Styles pour le globe animé */
-.menu-container {
-    position: relative;
-    text-align: right; /* Aligne le bouton et le globe à droite */
-    margin-bottom: 20px;
-    z-index: 10;
-    display: flex; /* Utilise Flexbox pour aligner le globe et le bouton */
-    align-items: center; /* Centre verticalement le globe et le bouton */
-    justify-content: flex-end; /* Aligne les éléments à droite */
-    gap: 10px; /* Ajoute un espace entre le globe et le bouton */
-}
-
-.globe-image {
-    width: 40px; /* Ajustez la taille du globe selon vos préférences */
-    height: auto;
-    margin-right: 10px; /* Espacement entre le globe et le bouton */
-}
-/* style.css */
-
-/* ... (votre CSS existant pour .container, .hero, .menu-container, etc.) ... */
-
-
-/* Style spécifique pour la page de renseignement pour que le contenu du main prenne toute la largeur */
-.main-full-width {
-    /* Nous réinitialisons les propriétés flex par défaut qui peuvent causer le rétrécissement */
-    display: block; /* Ou display: flex; align-items: flex-start; pour conserver le flex mais aligner à gauche */
-    width: 100%; /* S'assurer qu'il prend toute la largeur disponible */
-    padding: 0; /* Assurez-vous qu'il n'y a pas de padding excessif sur le main lui-même */
-    box-sizing: border-box; /* Important pour les paddings éventuels des sections */
-}
-
-.main-full-width .section {
-    /* Assurez-vous que la section à l'intérieur de ce main prend également toute la largeur */
-    width: 100%;
-    margin-left: 0; /* Annule tout alignement à droite potentiel */
-    margin-right: 0;
-    padding: 20px; /* Ajoutez un padding à la section pour l'esthétique */
-    background-color: #f9f9f9; /* Ou la couleur de fond de vos sections */
-    border: 1px solid #eee;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-/* Vous pouvez retirer le style .section global du style.css si vous voulez des paddings différents par page */
-/* Ou assurez-vous que ce style est plus spécifique */
-
-
-/* ... (votre CSS existant pour les media queries) ... */
-
-@media screen and (max-width: 768px) {
-    /* ... (vos media queries existantes) ... */
-
-    .main-full-width {
-        /* Sur mobile, assurez-vous qu'il conserve sa pleine largeur */
-        width: 100%;
-        padding: 0;
-    }
-    .main-full-width .section {
-        padding: 15px; /* Ajustez le padding sur mobile si besoin */
-    }
-}
-/* Ajustement pour les petits écrans (responsive) */
-@media screen and (max-width: 768px) {
-    .globe-image {
-        width: 25px; /* Réduit la taille du globe sur les petits écrans */
-    }
-}
-/* Media Queries (ajustements pour les petits écrans) */
+/* --- Media Queries (Responsive Design) --- */
 @media screen and (max-width: 768px) {
     .container {
         padding: 15px;
-    }
-
-    /* Le menu sera toujours un bouton déroulant, donc pas besoin de flex-direction: column pour nav ul */
-    /* Supprimez les anciennes règles de nav si elles existent */
-
-    .accueil-style {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .accueil-texte {
-        width: 100%;
-        margin-right: 0;
+        margin: 20px auto; /* Ajuste la marge sur mobile */
     }
 
     .hero {
-        padding-top: 100px;
-        padding: 60px 10px; /* Ajustez le padding pour faire de la place pour l'image et le texte */
+        padding: 60px 10px;
+        padding-top: 100px; /* Laisse de la place pour l'image centrée */
     }
 
     .hero img {
-        position: absolute;
         top: 15px;
         left: 50%;
         transform: translateX(-50%);
@@ -326,71 +323,68 @@ img {
         font-size: 2.5em;
         margin-top: 20px;
     }
-}
-/* style.css */
 
-/* --- NOUVEAU: Styles pour le layout principal avec sidebar --- */
-.main-with-sidebar {
-    flex: 1;
-    display: flex; /* Utilise Flexbox pour la zone de contenu principale */
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur les écrans plus petits */
-    justify-content: space-between; /* Distribue l'espace entre les éléments */
-    gap: 30px; /* Espace entre le contenu de gauche et la sidebar */
-    width: 100%; /* S'assure que main prend toute la largeur */
-    margin-bottom: 30px; /* Espace sous le contenu principal */
-    align-items: flex-start; /* Aligne les éléments en haut de la ligne de flex */
-}
+    .globe-image {
+        width: 25px; /* Réduit la taille du globe sur les petits écrans */
+    }
 
-.main-content-left {
-    flex: 2; /* Prend 2 parts de l'espace disponible */
-    display: flex;
-    flex-direction: column; /* Empile les sections verticalement dans cette colonne */
-    gap: 30px; /* Espace entre les sections à l'intérieur de cette colonne */
-    min-width: 60%; /* S'assure qu'elle ne devient pas trop petite avant de s'enrouler */
-    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
-    /* Assurez-vous que les sections à l'intérieur ont leurs propres styles de fond/bordure */
-}
+    .menu-container {
+        justify-content: center; /* Centre le globe et le bouton sur les petits écrans */
+    }
 
-.sidebar-right {
-    flex: 1; /* Prend 1 part de l'espace disponible */
-    min-width: 300px; /* Définit une largeur minimale pour la sidebar */
-    max-width: 35%; /* Pour s'assurer qu'elle ne prenne pas trop de place */
-    background-color: #f9f9f9; /* Ajoute un fond pour la rendre visible */
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 20px;
-    box-sizing: border-box; /* Inclut le padding dans le calcul de la largeur */
-    margin-left: auto; /* Pour pousser la sidebar à droite si l'espace est disponible */
-}
+    .dropdown-menu {
+        right: 50%; /* Centre le menu déroulant */
+        transform: translateX(50%);
+    }
 
-/* S'assurer que les sections individuelles à l'intérieur de main-content-left ont des marges propres et des styles de fond */
-.accueil-style,
-.services-cles {
-    background-color: #f9f9f9; /* Assure un fond visible */
-    border: 1px solid #eee; /* Ajoute une bordure légère */
-    border-radius: 5px;
-    padding: 20px;
-    box-sizing: border-box;
-    width: 100%; /* S'assure qu'elles remplissent leur colonne */
-}
-
-/* ... (votre CSS existant pour le reste du site) ... */
-
-/* Media Queries (ajustements pour les petits écrans) */
-@media screen and (max-width: 768px) {
+    /* Ajustements pour le layout avec sidebar sur mobile */
     .main-with-sidebar {
-        flex-direction: column; /* Empile les éléments verticalement */
-        gap: 20px; /* Ajuste l'espace pour l'empilement vertical */
+        flex-direction: column; /* Empile les colonnes verticalement */
+        gap: 20px;
     }
 
     .main-content-left,
     .sidebar-right {
-        flex: none; /* Supprime le dimensionnement flex */
+        flex: none; /* Désactive la flexibilité */
         width: 100%; /* Prend toute la largeur */
-        min-width: unset; /* Réinitialise la largeur minimale */
-        max-width: unset; /* Réinitialise la largeur maximale */
+        min-width: unset;
+        max-width: unset;
+    }
+
+    /* Ajustement pour les sections générales sur mobile */
+    main section {
+        padding: 15px; /* Réduit le padding des sections sur mobile */
+        margin-bottom: 20px; /* Réduit la marge basse */
+    }
+
+    .accueil-style {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .accueil-texte {
+        width: 100%;
+        margin-right: 0;
+        text-align: center; /* Centre le texte d'accueil sur mobile */
+    }
+    .accueil-texte h2 {
+        text-align: center; /* Centre le titre d'accueil sur mobile */
+    }
+    .accueil-texte p {
+        text-align: center; /* Centre le paragraphe d'accueil sur mobile */
+    }
+
+    /* Pour la page renseignement sur mobile */
+    .main-full-width {
+        width: 100%;
+        padding: 0;
+    }
+    .main-full-width .section {
+        padding: 15px; /* Ajuste le padding de la section du formulaire */
     }
 }
+
 @media screen and (max-width: 480px) {
     .hero {
         padding: 40px 10px;

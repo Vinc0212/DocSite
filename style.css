@@ -11,15 +11,13 @@ body {
     min-height: 100vh;
     position: relative;
 
-    /* NOUVEAU : Image de fond pour tout le corps de la page */
-    background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg'); /* Votre image de fond */
-    background-size: cover; /* Couvre toute la surface, peut recadrer l'image */
-    background-repeat: no-repeat; /* Ne répète pas l'image */
-    background-attachment: fixed; /* L'image reste fixe lors du défilement */
-    background-position: center center; /* Centre l'image horizontalement et verticalement */
+    background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
 }
 
-/* NOUVEAU : Superposition pour contrôler l'opacité de l'image de fond */
 body::before {
     content: "";
     position: absolute;
@@ -27,25 +25,21 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.7); /* Voile blanc semi-transparent */
-    /* Ajustez la valeur '0.7' pour rendre l'image plus ou moins visible.
-       Plus la valeur est proche de 1, plus le voile est opaque (image moins visible).
-       Plus la valeur est proche de 0, plus le voile est transparent (image plus visible). */
-    z-index: -1; /* Place le voile et donc l'image derrière le contenu */
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: -1;
 }
-
 
 .container {
     max-width: 960px;
     margin: 40px auto;
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.9); /* Rendre le fond du container semi-transparent */
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    z-index: 1; /* Assure que le container est au-dessus du voile et de l'image de fond du body */
-    position: relative; /* Nécessaire pour que z-index fonctionne */
+    z-index: 1;
+    position: relative;
 }
 
 .hero {
@@ -64,7 +58,7 @@ body::before {
 .hero img {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 10px; /* Conservez cela pour le grand écran */
     border-radius: 50%;
     width: 80px;
     height: 80px;
@@ -84,57 +78,84 @@ body::before {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
-nav {
-    background-color: #333;
-    color: #fff;
+/* --- Styles pour le menu déroulant --- */
+.menu-container {
+    position: relative; /* Conteneur pour le bouton et le menu */
+    text-align: right; /* Aligne le bouton à droite */
+    margin-bottom: 20px; /* Espace sous le menu */
+    z-index: 10; /* Assure que le menu est au-dessus des autres contenus */
+}
+
+.menu-button {
+    background-color: #007bff; /* Couleur du bouton */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
     border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-nav ul li {
-    margin: 0;
-}
-
-nav ul li a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    padding: 15px 20px;
+    font-size: 1em;
     transition: background-color 0.3s ease;
 }
 
-nav ul li a:hover {
-    background-color: #555;
+.menu-button:hover {
+    background-color: #0056b3;
 }
+
+.dropdown-menu {
+    display: none; /* Masqué par défaut */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0; /* Aligne le menu déroulant à droite sous le bouton */
+    border-radius: 5px;
+    margin-top: 5px; /* Espace entre le bouton et le menu */
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu ul li a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block; /* La classe 'show' (ajoutée par JS) rend le menu visible */
+}
+
+/* --- Fin des styles pour le menu déroulant --- */
 
 main {
     flex: 1;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Garde les sections empilées verticalement */
+    align-items: center; /* Centre les sections horizontalement */
     width: 100%;
 }
 
-/* Appliquez un style générique à toutes les sections dans le main pour l'uniformité */
 main section {
     margin-bottom: 30px;
     padding: 20px;
     border-radius: 5px;
-    background-color: rgba(249, 249, 249, 0.85); /* Rendre le fond des sections semi-transparent */
+    background-color: rgba(249, 249, 249, 0.85);
     border: 1px solid #eee;
     width: 100%;
     box-sizing: border-box;
-    position: relative; /* Nécessaire pour que le z-index fonctionne */
-    z-index: 1; /* Assure que le contenu des sections est au-dessus de l'image de fond du body */
+    position: relative;
+    z-index: 1;
 }
 
 main section h2 {
@@ -144,10 +165,9 @@ main section h2 {
     padding-bottom: 5px;
 }
 
-/* Supprimez les styles pour .accueil-style::before car l'image est maintenant sur le body */
+/* Styles spécifiques pour la section d'accueil avec image de fond */
 .accueil-style {
-    /* Gardez vos styles existants pour la section d'accueil (padding, flex, etc.) */
-    position: relative; /* Gardé car potentiellement utilisé par flexbox ou autres positionnements */
+    position: relative;
     padding: 40px;
     overflow: hidden;
     display: flex;
@@ -156,31 +176,17 @@ main section h2 {
     justify-content: flex-end;
 }
 
-/* Ce bloc CSS est supprimé car l'image est déplacée vers le body */
+/* Supprimez le ::before pour .accueil-style car l'image est sur le body */
 /*
-.accueil-style::before {
-    content: "";
-    background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.3;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
+.accueil-style::before { ... }
 */
 
 .accueil-texte {
     width: 50%;
     margin-right: auto;
     padding: 20px;
-    background-color: transparent; /* Conserve le fond transparent */
+    background-color: transparent;
     border-radius: 5px;
-    /* z-index: 1; n'est plus nécessaire ici si le parent (section) a un z-index */
 }
 
 .accueil-texte h2 {
@@ -193,9 +199,11 @@ main section h2 {
     color: #333;
 }
 
-.services-cles {
-    /* Vos styles spécifiques pour cette section, si vous en avez, iraient ici */
+.services-cles, .liens-utiles {
+    /* Ces styles seront appliqués par le sélecteur main section */
+    /* Si vous voulez des styles spécifiques qui override, vous les mettez ici */
 }
+
 
 footer {
     text-align: center;
@@ -205,8 +213,8 @@ footer {
     font-size: 0.9em;
     border-radius: 0 0 8px 8px;
     margin-top: auto;
-    z-index: 1; /* Assure que le footer est au-dessus de l'image de fond du body */
-    position: relative; /* Nécessaire pour que z-index fonctionne */
+    z-index: 1;
+    position: relative;
 }
 
 img {
@@ -220,71 +228,8 @@ img {
         padding: 15px;
     }
 
-    nav ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    .accueil-style {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Supprimez cette partie aussi car l'image est sur le body */
-    /*
-    .accueil-style::before {
-        background-size: cover;
-        background-position: center;
-        width: 100%;
-        height: 100%;
-    }
-    */
-
-    .accueil-texte {
-        width: 100%;
-        margin-right: 0;
-    }
-
-    .hero {
-        padding: 60px 10px;
-    }
-
-    .hero h1 {
-        font-size: 2.5em;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .hero {
-        padding: 40px 10px;
-    }
-
-    .hero h1 {
-        font-size: 2em;
-    }
-
-    .accueil-texte h2 {
-        font-size: 1.8em;
-    }
-}
-@media screen and (max-width: 768px) {
-    .container {
-        padding: 15px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
+    /* Le menu sera toujours un bouton déroulant, donc pas besoin de flex-direction: column pour nav ul */
+    /* Supprimez les anciennes règles de nav si elles existent */
 
     .accueil-style {
         flex-direction: column;
@@ -298,33 +243,29 @@ img {
     }
 
     .hero {
-        padding: 60px 10px; /* Conservez le padding existant */
-        /* Ajustez le padding pour faire de la place pour l'image et le texte */
-        padding-top: 100px; /* Augmentez le padding en haut pour faire de la place pour l'image */
-        position: relative; /* Assurez-vous que .hero est positionné pour que .hero img se positionne par rapport à lui */
+        padding-top: 100px;
+        padding: 60px 10px; /* Ajustez le padding pour faire de la place pour l'image et le texte */
     }
 
     .hero img {
-        /* Positionnez l'image au-dessus ou au centre */
-        position: absolute; /* Garde la position absolue */
-        top: 15px; /* Ajustez la distance par rapport au haut de .hero */
-        left: 50%; /* Centre l'image horizontalement */
-        transform: translateX(-50%); /* Déplace l'image de 50% de sa propre largeur vers la gauche pour un centrage parfait */
-        width: 80px; /* Vous pouvez ajuster la taille si nécessaire */
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
         height: 80px;
-        /* Supprimez le left: 10px; pour éviter les conflits avec le centrage */
     }
 
     .hero h1 {
         font-size: 2.5em;
-        margin-top: 20px; /* Ajoute une marge au-dessus du titre pour le séparer de l'image */
+        margin-top: 20px;
     }
 }
 
 @media screen and (max-width: 480px) {
     .hero {
         padding: 40px 10px;
-        padding-top: 90px; /* Ajustement pour les très petits écrans */
+        padding-top: 90px;
     }
 
     .hero h1 {

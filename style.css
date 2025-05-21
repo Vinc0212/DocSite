@@ -284,7 +284,70 @@ img {
         margin-top: 20px;
     }
 }
+/* style.css */
 
+/* --- NOUVEAU: Styles pour le layout principal avec sidebar --- */
+.main-with-sidebar {
+    flex: 1;
+    display: flex; /* Utilise Flexbox pour la zone de contenu principale */
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur les écrans plus petits */
+    justify-content: space-between; /* Distribue l'espace entre les éléments */
+    gap: 30px; /* Espace entre le contenu de gauche et la sidebar */
+    width: 100%; /* S'assure que main prend toute la largeur */
+    margin-bottom: 30px; /* Espace sous le contenu principal */
+    align-items: flex-start; /* Aligne les éléments en haut de la ligne de flex */
+}
+
+.main-content-left {
+    flex: 2; /* Prend 2 parts de l'espace disponible */
+    display: flex;
+    flex-direction: column; /* Empile les sections verticalement dans cette colonne */
+    gap: 30px; /* Espace entre les sections à l'intérieur de cette colonne */
+    min-width: 60%; /* S'assure qu'elle ne devient pas trop petite avant de s'enrouler */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+    /* Assurez-vous que les sections à l'intérieur ont leurs propres styles de fond/bordure */
+}
+
+.sidebar-right {
+    flex: 1; /* Prend 1 part de l'espace disponible */
+    min-width: 300px; /* Définit une largeur minimale pour la sidebar */
+    max-width: 35%; /* Pour s'assurer qu'elle ne prenne pas trop de place */
+    background-color: #f9f9f9; /* Ajoute un fond pour la rendre visible */
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box; /* Inclut le padding dans le calcul de la largeur */
+    margin-left: auto; /* Pour pousser la sidebar à droite si l'espace est disponible */
+}
+
+/* S'assurer que les sections individuelles à l'intérieur de main-content-left ont des marges propres et des styles de fond */
+.accueil-style,
+.services-cles {
+    background-color: #f9f9f9; /* Assure un fond visible */
+    border: 1px solid #eee; /* Ajoute une bordure légère */
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%; /* S'assure qu'elles remplissent leur colonne */
+}
+
+/* ... (votre CSS existant pour le reste du site) ... */
+
+/* Media Queries (ajustements pour les petits écrans) */
+@media screen and (max-width: 768px) {
+    .main-with-sidebar {
+        flex-direction: column; /* Empile les éléments verticalement */
+        gap: 20px; /* Ajuste l'espace pour l'empilement vertical */
+    }
+
+    .main-content-left,
+    .sidebar-right {
+        flex: none; /* Supprime le dimensionnement flex */
+        width: 100%; /* Prend toute la largeur */
+        min-width: unset; /* Réinitialise la largeur minimale */
+        max-width: unset; /* Réinitialise la largeur maximale */
+    }
+}
 @media screen and (max-width: 480px) {
     .hero {
         padding: 40px 10px;

@@ -272,3 +272,67 @@ img {
         font-size: 1.8em;
     }
 }
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .accueil-style {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .accueil-texte {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .hero {
+        padding: 60px 10px; /* Conservez le padding existant */
+        /* Ajustez le padding pour faire de la place pour l'image et le texte */
+        padding-top: 100px; /* Augmentez le padding en haut pour faire de la place pour l'image */
+        position: relative; /* Assurez-vous que .hero est positionné pour que .hero img se positionne par rapport à lui */
+    }
+
+    .hero img {
+        /* Positionnez l'image au-dessus ou au centre */
+        position: absolute; /* Garde la position absolue */
+        top: 15px; /* Ajustez la distance par rapport au haut de .hero */
+        left: 50%; /* Centre l'image horizontalement */
+        transform: translateX(-50%); /* Déplace l'image de 50% de sa propre largeur vers la gauche pour un centrage parfait */
+        width: 80px; /* Vous pouvez ajuster la taille si nécessaire */
+        height: 80px;
+        /* Supprimez le left: 10px; pour éviter les conflits avec le centrage */
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+        margin-top: 20px; /* Ajoute une marge au-dessus du titre pour le séparer de l'image */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero {
+        padding: 40px 10px;
+        padding-top: 90px; /* Ajustement pour les très petits écrans */
+    }
+
+    .hero h1 {
+        font-size: 2em;
+        margin-top: 15px;
+    }
+
+    .accueil-texte h2 {
+        font-size: 1.8em;
+    }
+}

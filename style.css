@@ -167,7 +167,7 @@ main section {
     border-radius: 5px;
     background-color: rgba(249, 249, 249, 0.85);
     border: 1px solid #eee;
-    width: 100%;
+    width: 100%; /* Important pour que chaque section prenne toute la largeur disponible */
     box-sizing: border-box;
     position: relative;
     z-index: 1;
@@ -183,26 +183,26 @@ main section h2 {
 /* --- Styles spécifiques pour la page d'Accueil (Résumé.html) --- */
 .main-with-sidebar {
     flex: 1;
-    display: flex; /* Ceci crée les colonnes côte à côte */
-    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne sur les écrans plus petits */
-    justify-content: space-between; /* Distribue l'espace entre les colonnes */
-    gap: 30px; /* Espace entre les colonnes */
+    display: flex; /* Active Flexbox pour les colonnes */
+    flex-wrap: wrap; /* Permet le retour à la ligne sur les petits écrans */
+    justify-content: space-between; /* Espace entre les deux colonnes */
+    gap: 30px; /* Espacement entre les colonnes */
     width: 100%;
     margin-bottom: 30px;
     align-items: flex-start; /* Aligne les colonnes en haut */
 }
 
 .main-content-left {
-    flex: 2; /* Prend 2 parts de l'espace disponible */
+    flex: 2; /* Prend 2/3 de l'espace */
     display: flex;
-    flex-direction: column; /* Les sections à l'intérieur s'empilent verticalement */
-    gap: 30px; /* Espace entre ces sections empilées */
-    min-width: 60%; /* S'assure que la colonne gauche est assez large avant de s'enrouler */
+    flex-direction: column; /* Empile les sections à l'intérieur verticalement */
+    gap: 30px; /* Espace entre les sections empilées */
+    min-width: 60%; /* Assure que la colonne gauche est assez large */
     box-sizing: border-box;
 }
 
 .sidebar-right {
-    flex: 1; /* Prend 1 part de l'espace disponible */
+    flex: 1; /* Prend 1/3 de l'espace */
     min-width: 300px; /* Largeur minimale de la sidebar */
     max-width: 35%; /* Largeur maximale de la sidebar */
     background-color: #f9f9f9;
@@ -213,41 +213,45 @@ main section h2 {
     margin-left: auto; /* Pousse la sidebar à droite */
 }
 
-/* Modification ici pour que le texte dans accueil-style prenne toute la largeur de sa section */
-.accueil-style {
-    position: relative;
-    padding: 20px; /* Réduit le padding pour éviter un double padding avec .accueil-texte */
-    overflow: hidden;
-    display: flex; /* Utilise flex pour aligner le texte si une image était présente */
-    flex-direction: column; /* Empile les éléments verticalement dans cette section */
-    align-items: flex-start; /* Aligne le contenu à gauche */
-    justify-content: flex-start;
+/* Styles pour les sections internes dans main-content-left */
+.accueil-style,
+.services-cles {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 20px; /* Padding interne pour le contenu */
+    box-sizing: border-box;
+    /* Supprimez ou commentez les règles width: 100% ou display: flex/row-reverse ici */
+    /* Elles sont déjà gérées par le parent main-content-left */
+    width: auto; /* Laisse le flex parent gérer la largeur */
+    display: block; /* Réinitialise tout flex potentiel qui pourrait être hérité ou défini */
 }
 
-/* Le conteneur de texte à l'intérieur de accueil-style */
 .accueil-texte {
-    width: 100%; /* Le texte prendra toute la largeur de .accueil-style */
-    margin-right: 0; /* Supprime toute marge qui décalerait le texte */
-    padding: 0; /* Assurez-vous qu'il n'y a pas de padding supplémentaire ici */
-    background-color: transparent;
-    border-radius: 5px;
-    text-align: left; /* Assure que le texte est aligné à gauche */
+    /* Ces règles sont pour s'assurer que le texte remplit bien la section */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Alignement du texte à gauche */
 }
 
 .accueil-texte h2 {
-    text-align: left; /* Force l'alignement du titre à gauche */
-    background-color: transparent;
-    color: #333;
+    text-align: left;
+    color: #007bff; /* Assure que le titre a la bonne couleur */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
 }
 
 .accueil-texte p {
+    text-align: left;
     color: #333;
-    text-align: left; /* Force l'alignement des paragraphes à gauche */
 }
+
 
 /* --- Styles spécifiques pour la page de Renseignement (renseignement.html) --- */
 .main-full-width {
-    display: block; /* Annule le display: flex et flex-direction: column du main global pour cette page */
+    display: block; /* S'assure que le contenu prend toute la largeur disponible sans alignement flexible spécifique */
     width: 100%;
     padding: 0;
     box-sizing: border-box;
@@ -352,9 +356,9 @@ footer {
     }
 
     .accueil-style {
-        flex-direction: column; /* Empile les éléments verticalement sur mobile */
+        flex-direction: column;
         justify-content: center;
-        align-items: center; /* Centre le contenu horizontalement sur mobile */
+        align-items: center;
     }
 
     .accueil-texte {

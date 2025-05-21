@@ -79,15 +79,17 @@
             <p>Expert Supply Chain & AMOA Aéronautique</p>
         </header>
 
-        <nav>
-            <ul>
-                <li><a href="Résumé.html">Accueil</a></li>
-                <li><a href="presentation.html">Présentation</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="renseignement.html">Demande de renseignement</a></li>
-            </ul>
-        </nav>
-
+        <div class="menu-container">
+            <button class="menu-button">Menu &#9776;</button>
+            <nav class="dropdown-menu">
+                <ul>
+                    <li><a href="Résumé.html">Accueil</a></li>
+                    <li><a href="presentation.html">Présentation</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="renseignement.html">Demande de renseignement</a></li>
+                </ul>
+            </nav>
+        </div>
         <main>
             <section class="section">
                 <h2>Présentation</h2>
@@ -151,5 +153,22 @@
             <p>© 2025 Vincent MARCILLAT</p>
         </footer>
     </div>
+
+    <script>
+        document.querySelector('.menu-button').addEventListener('click', function() {
+            document.querySelector('.dropdown-menu').classList.toggle('show');
+        });
+        // Fermer le menu si l'utilisateur clique en dehors
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.menu-button')) {
+                var dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(function(dropdown) {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

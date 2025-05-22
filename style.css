@@ -35,7 +35,7 @@ body::before {
 }
 
 .container {
-    max-width: 960px;
+    max-width: 960px; /* C'est la largeur maximale de votre contenu principal */
     margin: 40px auto;
     padding: 30px;
     background-color: rgba(255, 255, 255, 0.9);
@@ -156,16 +156,14 @@ img {
     display: block;
 }
 
-/* --- Styles par défaut pour main (sera surchargé par les classes spécifiques) --- */
+/* --- Styles par défaut pour main --- */
 /* Ce sélecteur sert de base, mais les classes spécifiques prendront le dessus */
 main {
-    flex: 1; /* Permet à main de prendre l'espace restant dans .container */
+    flex: 1;
     width: 100%;
-    margin-bottom: 30px; /* Espace avant le footer */
-    /* Assurez-vous qu'il se comporte comme un bloc par défaut si aucune classe n'est spécifiée */
-    display: block; /* Important pour les pages sans main-with-sidebar ou main-full-width */
+    margin-bottom: 30px;
+    display: block; /* S'assure qu'il se comporte comme un bloc par défaut si aucune classe n'est spécifiée */
 }
-
 
 /* --- Styles spécifiques pour la page d'Accueil (Résumé.html) --- */
 main.main-with-sidebar {
@@ -201,7 +199,7 @@ main.main-with-sidebar {
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 20px;
-    width: 100%; /* Elles prennent 100% de la largeur de leur parent flex (.main-content-left) */
+    width: 100%;
     margin: 0;
     position: static;
     display: block;
@@ -229,29 +227,32 @@ main.main-with-sidebar {
 
 
 /* --- Styles spécifiques pour les pages pleine largeur (Contact, Renseignement, Présentation) --- */
-/* Cible main avec la classe main-full-width AVEC PLUS DE SPECIFICITE */
-/* IMPORTANT: Utilisation de `!important` comme dernier recours pour s'assurer que display: block est appliqué */
+/* Cible main avec la classe main-full-width */
 main.main-full-width {
-    display: block !important; /* Force le comportement de bloc normal et pleine largeur */
-    width: 100% !important; /* S'assure qu'il n'y a pas de limitation de largeur */
-    flex: none !important; /* Annule tout flex qui pourrait être hérité du sélecteur 'main' général */
+    display: block !important;
+    width: 100% !important;
+    flex: none !important;
     padding: 0;
     box-sizing: border-box;
     margin-bottom: 30px;
+    /* Ajustement de la marge pour s'assurer qu'il prend toute la largeur du container */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
-/* Cible les sections directes dans un main.main-full-width */
-main.main-full-width > section {
-    width: 100%; /* Les sections prennent toute la largeur du main.main-full-width */
-    margin-left: 0;
-    margin-right: 0;
+/* Cible la classe .section utilisée dans ces pages */
+/* C'est la cible principale pour la largeur et l'alignement */
+main.main-full-width section.section { /* Sélecteur plus spécifique */
+    width: 100%; /* La section doit prendre 100% de la largeur de son parent (main.main-full-width) */
+    margin: 0; /* Annule toute marge automatique qui pourrait la centrer ou la rétrécir */
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
     box-sizing: border-box;
-    margin-bottom: 20px; /* Espace entre les sections */
-    display: block; /* S'assure qu'elles sont des blocs */
+    margin-bottom: 20px; /* Espace entre les sections si plusieurs */
+    text-align: left; /* Assure que le contenu de la section est aligné à gauche */
+    display: block; /* S'assure qu'elle se comporte comme un bloc standard */
 }
 
 /* Style général pour les titres de sections (pour toutes les sections) */
@@ -260,25 +261,25 @@ main section h2 {
     margin-bottom: 15px;
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
+    text-align: left; /* Pour s'assurer que les titres sont alignés à gauche */
 }
-
 
 /* Styles spécifiques pour le formulaire de renseignement */
 .form-container {
-    text-align: center;
+    text-align: center; /* Pour centrer l'iframe elle-même si elle n'est pas à 100% */
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 5px;
     border: 1px solid #eee;
-    overflow-x: auto; /* Permet le scroll horizontal si l'iframe est trop large */
+    overflow-x: auto;
 }
 
 .form-container iframe {
     width: 100%; /* L'iframe DOIT prendre 100% de la largeur de son conteneur */
-    min-width: 300px; /* Largeur minimale de l'iframe pour qu'elle soit utilisable */
-    height: 1500px; /* Conservez la hauteur souhaitée */
+    min-width: 300px;
+    height: 1500px;
     display: block;
-    margin: 0 auto; /* Centrer l'iframe si elle n'est pas à 100% (mais elle le sera ici) */
+    margin: 0 auto; /* Pour centrer l'iframe au cas où le contenu interne ne remplirait pas 100% */
 }
 
 /* --- Footer --- */
@@ -369,10 +370,13 @@ footer {
     main.main-full-width {
         width: 100%;
         padding: 0;
+        margin-left: 0 !important; /* Force la marge sur mobile aussi */
+        margin-right: 0 !important;
     }
-    main.main-full-width > section {
+    main.main-full-width section.section { /* Spécificité accrue */
         padding: 15px;
         margin-bottom: 15px;
+        text-align: left; /* S'assure que le texte reste à gauche sur mobile */
     }
 }
 

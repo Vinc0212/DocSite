@@ -225,18 +225,19 @@ main.main-with-sidebar {
     text-align: left;
 }
 
+
 /* --- Styles spécifiques pour les pages pleine largeur (Contact, Renseignement, Présentation) --- */
 /* Cible main avec la classe main-full-width */
 main.main-full-width {
     display: block !important;
-    width: 100% !important;
+    width: 100% !important; /* Doit prendre 100% du .container */
     flex: none !important;
     padding: 0;
     box-sizing: border-box;
     margin-bottom: 30px;
+    /* Important: Assure que main ne se recentre pas, il doit coller aux bords du container */
     margin-left: 0 !important;
     margin-right: 0 !important;
-    /* Ajoutons une couleur de fond temporaire pour bien visualiser sa largeur */
     /* background-color: rgba(255, 165, 0, 0.2); /* Orange transparent */
     /* border: 2px solid orange; */
 }
@@ -244,10 +245,10 @@ main.main-full-width {
 /* Cible la classe .section utilisée dans ces pages, en annulant tout ce qui pourrait la rétrécir */
 /* C'est la cible principale pour la largeur et l'alignement */
 main.main-full-width section.section { /* Sélecteur plus spécifique */
-    width: 100% !important; /* La section doit prendre 100% de la largeur de son parent */
+    width: 100% !important; /* La section doit prendre 100% de la largeur de son parent (main.main-full-width) */
     max-width: 100% !important; /* S'assure qu'elle ne dépasse pas, mais aussi qu'elle ne se limite pas */
     margin: 0 !important; /* Annule toute marge automatique qui pourrait la centrer ou la rétrécir */
-    padding: 20px;
+    padding: 20px; /* Conserve le padding interne */
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
@@ -270,7 +271,7 @@ main section h2 {
 
 /* Styles spécifiques pour le formulaire de renseignement */
 .form-container {
-    text-align: center; /* Pour centrer l'iframe elle-même si elle n'est pas à 100% */
+    text-align: left; /* CHANGEMENT ICI: Aligner le contenu à gauche */
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 5px;
@@ -283,7 +284,7 @@ main section h2 {
     min-width: 300px;
     height: 1500px;
     display: block;
-    margin: 0 auto; /* Pour centrer l'iframe au cas où le contenu interne ne remplirait pas 100% */
+    /* margin: 0 auto; /* Supprimé car text-align: left sur le parent suffit si l'iframe est à 100% */
 }
 
 /* --- Footer --- */
@@ -374,13 +375,13 @@ footer {
     main.main-full-width {
         width: 100%;
         padding: 0;
-        margin-left: 0 !important; /* Force la marge sur mobile aussi */
+        margin-left: 0 !important;
         margin-right: 0 !important;
     }
-    main.main-full-width section.section { /* Spécificité accrue */
+    main.main-full-width section.section {
         padding: 15px;
         margin-bottom: 15px;
-        text-align: left; /* S'assure que le texte reste à gauche sur mobile */
+        text-align: left !important; /* Force l'alignement à gauche sur mobile aussi */
     }
 }
 

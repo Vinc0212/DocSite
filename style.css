@@ -225,7 +225,6 @@ main.main-with-sidebar {
     text-align: left;
 }
 
-
 /* --- Styles spécifiques pour les pages pleine largeur (Contact, Renseignement, Présentation) --- */
 /* Cible main avec la classe main-full-width */
 main.main-full-width {
@@ -235,24 +234,29 @@ main.main-full-width {
     padding: 0;
     box-sizing: border-box;
     margin-bottom: 30px;
-    /* Ajustement de la marge pour s'assurer qu'il prend toute la largeur du container */
     margin-left: 0 !important;
     margin-right: 0 !important;
+    /* Ajoutons une couleur de fond temporaire pour bien visualiser sa largeur */
+    /* background-color: rgba(255, 165, 0, 0.2); /* Orange transparent */
+    /* border: 2px solid orange; */
 }
 
-/* Cible la classe .section utilisée dans ces pages */
+/* Cible la classe .section utilisée dans ces pages, en annulant tout ce qui pourrait la rétrécir */
 /* C'est la cible principale pour la largeur et l'alignement */
 main.main-full-width section.section { /* Sélecteur plus spécifique */
-    width: 100%; /* La section doit prendre 100% de la largeur de son parent (main.main-full-width) */
-    margin: 0; /* Annule toute marge automatique qui pourrait la centrer ou la rétrécir */
+    width: 100% !important; /* La section doit prendre 100% de la largeur de son parent */
+    max-width: 100% !important; /* S'assure qu'elle ne dépasse pas, mais aussi qu'elle ne se limite pas */
+    margin: 0 !important; /* Annule toute marge automatique qui pourrait la centrer ou la rétrécir */
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
     box-sizing: border-box;
     margin-bottom: 20px; /* Espace entre les sections si plusieurs */
-    text-align: left; /* Assure que le contenu de la section est aligné à gauche */
-    display: block; /* S'assure qu'elle se comporte comme un bloc standard */
+    text-align: left !important; /* Assure que le contenu de la section est aligné à gauche */
+    display: block !important; /* S'assure qu'elle se comporte comme un bloc standard */
+    float: none !important; /* Au cas où un float serait appliqué ailleurs */
+    position: static !important; /* Au cas où un positionnement absolu/relative serait appliqué */
 }
 
 /* Style général pour les titres de sections (pour toutes les sections) */

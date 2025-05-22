@@ -160,10 +160,14 @@ img {
 /* --- Styles par défaut pour main --- */
 /* Ce sélecteur sert de base, mais les classes spécifiques prendront le dessus */
 main {
-    flex: 1;
-    width: 100%;
+    /* flex: 1; Ancien: peut être problématique avec les pages full-width */
+    width: 100%; /* S'assure que par défaut, main prend 100% */
     margin-bottom: 30px;
     display: block; /* S'assure qu'il se comporte comme un bloc par défaut si aucune classe n'est spécifiée */
+    /* NOUVEAU: Ajoutez ces marges auto par défaut pour les main qui n'ont pas de structure spécifique */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; /* S'assure qu'il ne dépasse pas son conteneur */
 }
 
 /* --- Styles spécifiques pour la page d'Accueil (Résumé.html) --- */

@@ -157,18 +157,22 @@ img {
 }
 
 /* --- Styles pour le conteneur principal du contenu (main) --- */
-/* C'est CE sélecteur qui va définir les deux colonnes principales */
+/* Styles par défaut pour le main. Il sera surchargé par les classes spécifiques */
+main {
+    flex: 1; /* Permet à main de prendre l'espace restant */
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+
+/* Styles spécifiques pour la page d'Accueil (Résumé.html) */
 main.main-with-sidebar {
     display: flex; /* Active Flexbox pour aligner les enfants en ligne */
     flex-wrap: wrap; /* Permet aux colonnes de s'enrouler sur les petits écrans */
     justify-content: space-between; /* Distribue l'espace entre les colonnes */
     gap: 30px; /* Espace entre les colonnes */
-    width: 100%; /* Prend toute la largeur disponible dans le container */
-    margin-bottom: 30px;
     align-items: flex-start; /* Aligne les colonnes en haut (si elles ont des hauteurs différentes) */
-    /* TEMPORAIRE: Pour le débogage, mettez une bordure sur le main */
-    /* border: 2px dashed red; */
-    /* background-color: rgba(255, 0, 0, 0.1); */
+    /* background-color: rgba(255, 0, 0, 0.1); /* TEMPORAIRE: Pour le débogage */
 }
 
 /* Conteneur pour le contenu de gauche (les deux sections empilées) */
@@ -178,9 +182,7 @@ main.main-with-sidebar {
     display: flex; /* Active Flexbox pour les sections internes */
     flex-direction: column; /* Empile les sections internes verticalement */
     gap: 30px; /* Espace entre les sections internes */
-    /* TEMPORAIRE: Pour le débogage */
-    /* border: 2px dashed blue; */
-    /* background-color: rgba(0, 0, 255, 0.1); */
+    /* background-color: rgba(0, 0, 255, 0.1); /* TEMPORAIRE: Pour le débogage */
 }
 
 /* Sidebar de droite (1/3 de la largeur) */
@@ -192,9 +194,8 @@ main.main-with-sidebar {
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 20px;
-    /* TEMPORAIRE: Pour le débogage */
-    /* border: 2px dashed green; */
-    /* background-color: rgba(0, 255, 0, 0.1); */
+    margin-left: auto; /* Pousse la sidebar à droite */
+    /* background-color: rgba(0, 255, 0, 0.1); /* TEMPORAIRE: Pour le débogage */
 }
 
 /* Styles pour les sections individuelles à l'intérieur de main-content-left */
@@ -205,17 +206,16 @@ main.main-with-sidebar {
     border-radius: 5px;
     padding: 20px;
     width: 100%; /* Important: elles doivent prendre 100% de la largeur de leur parent flex (.main-content-left) */
-    /* Supprimez toute marge ou positionnement qui pourrait les décaler */
     margin: 0;
-    position: static; /* Assurez-vous qu'elles ne sont pas en position absolue ou relative qui les sortirait du flux */
-    display: block; /* S'assure qu'elles se comportent comme des blocs normaux */
+    position: static;
+    display: block;
 }
 
 .accueil-texte {
-    width: 100%; /* Le texte prend toute la largeur de sa section */
+    width: 100%;
     padding: 0;
     margin: 0;
-    text-align: left; /* Assure que le texte est aligné à gauche */
+    text-align: left;
 }
 
 .accueil-texte h2 {
@@ -223,50 +223,65 @@ main.main-with-sidebar {
     margin-bottom: 15px;
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
-    text-align: left; /* Force le titre à gauche */
+    text-align: left;
 }
 
 .accueil-texte p {
     color: #333;
-    text-align: left; /* Force le paragraphe à gauche */
+    text-align: left;
 }
 
-/* --- Styles pour la page de Renseignement (renseignement.html) --- */
-/* Ce main n'est pas en flex, il est un simple bloc pour une page pleine largeur */
+/* --- Styles spécifiques pour les pages pleine largeur (Contact, Renseignement, Présentation) --- */
+/* Cible main avec la classe main-full-width */
 main.main-full-width {
-    display: block; /* Annule le display: flex si le même <main> est utilisé */
+    display: block; /* Annule le display: flex pour que le main se comporte comme un bloc standard */
     width: 100%;
-    padding: 0;
+    max-width: 100%; /* S'assure qu'il n'y a pas de limitation de largeur */
+    padding: 0; /* Pas de padding sur le main lui-même, les sections internes gèrent le padding */
     box-sizing: border-box;
-    margin-bottom: 30px; /* Pour l'espace avant le footer */
+    margin-bottom: 30px; /* Espace avant le footer */
 }
 
-main.main-full-width section { /* Cible toutes les sections directes dans main-full-width */
-    width: 100%;
+/* Cible toutes les sections à l'intérieur d'un main.main-full-width */
+main.main-full-width section {
+    width: 100%; /* Les sections prennent toute la largeur du main */
     margin-left: 0;
     margin-right: 0;
-    padding: 20px;
+    padding: 20px; /* Padding interne des sections */
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
     box-sizing: border-box;
-    margin-bottom: 20px; /* Espace entre les sections sur la page Renseignement */
+    margin-bottom: 20px; /* Espace entre les sections sur ces pages */
+    /* TEMPORAIRE: Pour le débogage */
+    /* border: 2px dashed purple; */
+    /* background-color: rgba(128, 0, 128, 0.1); */
 }
 
+main section h2 { /* Style général pour les titres de sections */
+    color: #007bff;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+
+/* Styles spécifiques pour le formulaire de renseignement */
 .form-container {
     text-align: center;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 5px;
     border: 1px solid #eee;
-    overflow-x: auto;
+    overflow-x: auto; /* Permet le scroll horizontal si l'iframe est trop large */
 }
 
 .form-container iframe {
-    max-width: 100%;
-    height: 1500px;
+    max-width: 100%; /* L'iframe ne dépassera jamais la largeur de son conteneur */
+    min-width: 300px; /* Largeur minimale de l'iframe pour qu'elle soit utilisable */
+    height: 1500px; /* Conservez la hauteur souhaitée */
     display: block;
-    margin: 0 auto;
+    margin: 0 auto; /* Centrer l'iframe */
 }
 
 /* --- Footer --- */
@@ -320,7 +335,7 @@ footer {
         transform: translateX(50%);
     }
 
-    /* Sur mobile, le main doit s'empiler en colonne */
+    /* Sur mobile, le main doit s'empiler en colonne (pour la page Résumé.html) */
     main.main-with-sidebar {
         flex-direction: column;
         gap: 20px; /* Espace entre les blocs empilés */
@@ -351,6 +366,16 @@ footer {
     .accueil-texte h2,
     .accueil-texte p {
         text-align: center; /* Centre spécifiquement le titre et les paragraphes */
+    }
+
+    /* Pour les pages pleine largeur (Contact, Renseignement, Présentation) sur mobile */
+    main.main-full-width {
+        width: 100%;
+        padding: 0;
+    }
+    main.main-full-width section {
+        padding: 15px;
+        margin-bottom: 15px; /* Espace réduit entre les sections sur mobile */
     }
 }
 

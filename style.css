@@ -34,11 +34,12 @@ body::before {
     z-index: -1;
 }
 
+/* --- Styles du conteneur principal --- */
 .container {
-    max-width: 960px; /* C'est la largeur maximale de votre contenu principal */
-    min-height: calc(100vh - 80px);
-    margin: 40px auto; /* Conserve la marge pour le centrer */
-    padding: 0; /* CHANGEMENT MAJEUR ICI : Supprimez le padding du container */
+    max-width: 960px; /* Largeur maximale de votre site */
+    min-height: calc(100vh - 80px); /* Hauteur minimale pour que la page "remplisse" l'écran */
+    margin: 40px auto; /* Centre le conteneur et ajoute des marges extérieures */
+    padding: 0; /* AUCUN PADDING sur le container lui-même pour laisser les enfants gérer leur espace */
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -157,8 +158,7 @@ img {
     display: block;
 }
 
-/* --- Styles par défaut pour main --- */
-/* Ce sélecteur sert de base, mais les classes spécifiques prendront le dessus */
+/* --- Styles par défaut pour main (appliqué à toutes les balises <main> si aucune classe spécifique) --- */
 main {
     width: 100%;
     margin-bottom: 30px;
@@ -166,8 +166,8 @@ main {
     margin-left: auto;
     margin-right: auto;
     max-width: 100%;
-    padding: 0 30px; /* NOUVEAU: Ajout d'un padding pour les pages qui n'ont pas de classe spécifique */
-    box-sizing: border-box; /* Assurez-vous que le padding est inclus dans la largeur */
+    padding: 0 30px; /* Ajoute un padding pour les pages sans sidebar (ex: page d'accueil si pas de main-with-sidebar) */
+    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
 }
 
 /* --- Styles spécifiques pour la page d'Accueil (Résumé.html) --- */
@@ -175,9 +175,9 @@ main.main-with-sidebar {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 30px;
-    align-items: flex-start;
-    padding: 0 30px; /* NOUVEAU: Ajout d'un padding pour aligner avec les bords du container sans padding */
+    gap: 30px; /* Espace entre le contenu principal et la sidebar */
+    align-items: flex-start; /* Aligne les éléments en haut */
+    padding: 0 30px; /* Padding pour aligner avec les bords du container sans padding */
 }
 
 .main-content-left {
@@ -231,32 +231,25 @@ main.main-with-sidebar {
     text-align: left;
 }
 
-
 /* --- Styles spécifiques pour les pages pleine largeur (Contact, Renseignement, Présentation) --- */
-/* Cible main avec la classe main-full-width */
 main.main-full-width {
     display: block !important;
     width: 100% !important; /* Prend toute la largeur de son parent (le container qui n'a plus de padding) */
     max-width: 100% !important;
     flex: none !important;
     margin-bottom: 30px;
-    margin-left: 0 !important; /* Pas de marge sur les côtés pour ces pages */
-    margin-right: 0 !important; /* Pas de marge sur les côtés pour ces pages */
-    padding: 0; /* Le padding sera géré par la section ou le content-wrapper */
+    margin-left: 0 !important; /* Pas de marge sur les côtés pour ces pages pour coller au bord du container */
+    margin-right: 0 !important; /* Pas de marge sur les côtés pour ces pages pour coller au bord du container */
+    padding: 0; /* Le padding sera géré par la section à l'intérieur */
     box-sizing: border-box;
-    /* Laissez les commentaires de background/border si vous voulez visualiser */
-    /* background-color: rgba(255, 165, 0, 0.2); */
-    /* border: 2px solid orange; */
 }
 
-/* Cible la classe .section utilisée dans ces pages, en annulant tout ce qui pourrait la rétrécir */
-/* C'est la cible principale pour la largeur et l'alignement */
+/* Cible la classe .section utilisée à l'intérieur des pages pleine largeur */
 main.main-full-width section.section {
-    /* Retrouve la largeur logique à l'intérieur du container */
-    width: calc(100% - 60px) !important; /* 100% de la main-full-width - 2*30px de padding que l'on ajoute ici */
-    max-width: 900px !important; /* 960 - 2*30px du container */
-    margin: 0 auto !important; /* Centre la section */
-    padding: 20px 30px !important; /* NOUVEAU: Padding interne pour le contenu de la section */
+    width: calc(100% - 60px) !important; /* 100% du main-full-width moins 2x30px de padding que l'on ajoute ici */
+    max-width: 900px !important; /* Limite la largeur à 900px (960px - 2x30px du container) */
+    margin: 0 auto !important; /* Centre la section sur la largeur disponible */
+    padding: 20px 30px !important; /* Padding interne pour le contenu de la section (20px haut/bas, 30px gauche/droite) */
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
@@ -267,6 +260,7 @@ main.main-full-width section.section {
     float: none !important;
     position: static !important;
 }
+
 /* Style général pour les titres de sections (pour toutes les sections) */
 main section h2 {
     color: #007bff;
@@ -288,13 +282,6 @@ main section h2 {
     max-width: 100% !important;
     margin: 0 !important;
     box-sizing: border-box; /* Assurez-vous que le padding est inclus dans la largeur */
-}
-.content-wrapper {
-    width: 100%;
-    /* max-width: 900px; Ancien: la section parente gère maintenant cette largeur */
-    margin: 0 auto;
-    box-sizing: border-box;
-    padding: 0; /* Le padding est sur la section */
 }
 
 .form-container iframe {
@@ -396,19 +383,15 @@ footer {
         margin-right: 0 !important;
     }
     main.main-full-width section.section {
-        width: auto !important;
-        max-width: 100% !important;
-        padding: 15px !important; /* Padding ajusté pour mobile */
+        width: auto !important; /* Permet à la section de s'adapter automatiquement sur mobile */
+        max-width: 100% !important; /* S'adapte aux écrans plus petits que 900px */
+        padding: 15px !important; /* Padding ajusté pour mobile (15px de tous les côtés) */
         margin: 0 auto !important;
         margin-bottom: 15px;
         text-align: left !important;
     }
-        .form-container {
+    .form-container {
         padding: 15px; /* Ajuste le padding sur mobile */
-    }
-        .content-wrapper { /* Ajustement pour mobile si utilisé */
-        max-width: 100%;
-        padding: 0; /* Le padding est géré par la section */
     }
 }
 

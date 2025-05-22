@@ -234,26 +234,29 @@ main.main-with-sidebar {
 /* --- Styles spécifiques pour les pages pleine largeur (Contact, Renseignement, Présentation) --- */
 /* Cible main avec la classe main-full-width */
 main.main-full-width {
+main.main-full-width {
     display: block !important;
-    width: 100% !important; /* Doit prendre 100% du .container */
-    flex: none !important;
+    width: 100% !important; /* Gardons 100% par principe, mais la section forcera la largeur effective */
+    max-width: 100% !important;
+    flex: none !important; /* Pour être sûr d'annuler tout flex */
     padding: 0;
     box-sizing: border-box;
     margin-bottom: 30px;
-    /* Important: Assure que main ne se recentre pas, il doit coller aux bords du container */
     margin-left: 0 !important;
     margin-right: 0 !important;
-    /* background-color: rgba(255, 165, 0, 0.2); /* Orange transparent */
+    /* Laissez les commentaires de background/border si vous voulez visualiser */
+    /* background-color: rgba(255, 165, 0, 0.2); */
     /* border: 2px solid orange; */
 }
 
 /* Cible la classe .section utilisée dans ces pages, en annulant tout ce qui pourrait la rétrécir */
 /* C'est la cible principale pour la largeur et l'alignement */
-main.main-full-width section.section { /* Sélecteur plus spécifique */
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 20px !important; /* Vous pouvez ajuster ce padding si le contenu semble toujours trop "condensé" */
+main.main-full-width section.section {
+    /* NOUVEAU: Force la largeur à 900px et la centre */
+    width: 900px !important; /* Largeur calculée : 960px (max-width du container) - 2*30px (padding du container) */
+    max-width: calc(100% - 40px) !important; /* S'adapte aux petits écrans (100% du main - 2*20px de padding de section) */
+    margin: 0 auto !important; /* Centre la section sur les 900px */
+    padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
@@ -284,11 +287,10 @@ main section h2 {
 }
 
 .form-container iframe {
-    width: 100%; /* L'iframe DOIT prendre 100% de la largeur de son conteneur */
+    width: 100% !important; /* L'iframe DOIT prendre 100% de la largeur de son conteneur */
     min-width: 300px;
     height: 1500px;
     display: block;
-    /* margin: 0 auto; /* Supprimé car text-align: left sur le parent suffit si l'iframe est à 100% */
 }
 
 /* --- Footer --- */
@@ -383,9 +385,16 @@ footer {
         margin-right: 0 !important;
     }
     main.main-full-width section.section {
-        padding: 15px;
+        /* NOUVEAU: Ajustement pour mobile */
+        width: auto !important; /* Permet à la section de s'adapter automatiquement */
+        max-width: 100% !important; /* S'adapte aux écrans plus petits que 900px */
+        padding: 15px; /* Ou la valeur que vous voulez sur mobile */
+        margin: 0 auto !important; /* Toujours centré sur mobile */
         margin-bottom: 15px;
-        text-align: left !important; /* Force l'alignement à gauche sur mobile aussi */
+        text-align: left !important;
+    }
+        .form-container {
+        padding: 15px; /* Ajuste le padding sur mobile */
     }
 }
 

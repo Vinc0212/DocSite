@@ -1,6 +1,10 @@
 /* style.css */
 
-/* --- Styles Généraux --- */
+/* --- Réinitialisation et Styles Généraux --- */
+* {
+    box-sizing: border-box; /* S'assure que padding et border sont inclus dans la largeur/hauteur */
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -92,12 +96,12 @@ img {
     z-index: 10;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Aligne le globe et le bouton à droite */
-    gap: 10px; /* Espacement entre le globe et le bouton */
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 .globe-image {
-    width: 40px; /* Taille du globe */
+    width: 40px;
     height: auto;
 }
 
@@ -123,10 +127,10 @@ img {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 0; /* Aligne le menu déroulant à droite sous le bouton */
+    right: 0;
     border-radius: 5px;
     margin-top: 5px;
-    top: calc(100% + 5px); /* Positionne sous le menu-container */
+    top: calc(100% + 5px);
 }
 
 .dropdown-menu ul {
@@ -152,117 +156,101 @@ img {
     display: block;
 }
 
-/* --- Styles par défaut pour le contenu principal (main) --- */
-/* Ceci est le style général pour toutes les pages, sauf si surchargé par une classe spécifique */
-main {
-    flex: 1; /* Permet à main de prendre l'espace restant */
-    display: flex;
-    flex-direction: column; /* Empile les sections verticalement par défaut */
-    width: 100%;
-}
-
-main section {
+/* --- Styles pour le conteneur principal du contenu (main) --- */
+/* C'est CE sélecteur qui va définir les deux colonnes principales */
+main.main-with-sidebar {
+    display: flex; /* Active Flexbox pour aligner les enfants en ligne */
+    flex-wrap: wrap; /* Permet aux colonnes de s'enrouler sur les petits écrans */
+    justify-content: space-between; /* Distribue l'espace entre les colonnes */
+    gap: 30px; /* Espace entre les colonnes */
+    width: 100%; /* Prend toute la largeur disponible dans le container */
     margin-bottom: 30px;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: rgba(249, 249, 249, 0.85);
-    border: 1px solid #eee;
-    width: 100%; /* Important pour que chaque section prenne toute la largeur disponible */
-    box-sizing: border-box;
-    position: relative;
-    z-index: 1;
+    align-items: flex-start; /* Aligne les colonnes en haut (si elles ont des hauteurs différentes) */
+    /* TEMPORAIRE: Pour le débogage, mettez une bordure sur le main */
+    /* border: 2px dashed red; */
+    /* background-color: rgba(255, 0, 0, 0.1); */
 }
 
-main section h2 {
-    color: #007bff;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 5px;
-}
-
-/* --- Styles spécifiques pour la page d'Accueil (Résumé.html) --- */
-.main-with-sidebar {
-    flex: 1 !important; /* Ajouté !important pour forcer */
-    display: flex !important; /* Ajouté !important pour forcer */
-    flex-wrap: wrap !important; /* Ajouté !important pour forcer */
-    justify-content: space-between !important;
-    gap: 30px !important;
-    width: 100% !important;
-    margin-bottom: 30px !important;
-    align-items: flex-start !important;
-}
-
+/* Conteneur pour le contenu de gauche (les deux sections empilées) */
 .main-content-left {
-    flex: 2 !important; /* Ajouté !important pour forcer */
-    display: flex !important; /* Ajouté !important pour forcer */
-    flex-direction: column !important; /* Ajouté !important pour forcer */
-    gap: 30px !important;
-    min-width: 60% !important;
-    box-sizing: border-box !important;
+    flex: 2; /* Prend 2 parts de l'espace disponible (ex: 66%) */
+    min-width: 60%; /* Largeur minimale avant que les colonnes ne s'empilent */
+    display: flex; /* Active Flexbox pour les sections internes */
+    flex-direction: column; /* Empile les sections internes verticalement */
+    gap: 30px; /* Espace entre les sections internes */
+    /* TEMPORAIRE: Pour le débogage */
+    /* border: 2px dashed blue; */
+    /* background-color: rgba(0, 0, 255, 0.1); */
 }
 
+/* Sidebar de droite (1/3 de la largeur) */
 .sidebar-right {
-    flex: 1 !important; /* Ajouté !important pour forcer */
-    min-width: 300px !important;
-    max-width: 35% !important;
-    background-color: #f9f9f9 !important;
-    border: 1px solid #eee !important;
-    border-radius: 5px !important;
-    padding: 20px !important;
-    box-sizing: border-box !important;
-    margin-left: auto !important;
+    flex: 1; /* Prend 1 part de l'espace disponible (ex: 33%) */
+    min-width: 300px; /* Largeur minimale de la sidebar */
+    max-width: 35%; /* Largeur maximale de la sidebar pour éviter qu'elle ne soit trop large */
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 20px;
+    /* TEMPORAIRE: Pour le débogage */
+    /* border: 2px dashed green; */
+    /* background-color: rgba(0, 255, 0, 0.1); */
 }
 
-/* Styles pour les sections internes dans main-content-left */
+/* Styles pour les sections individuelles à l'intérieur de main-content-left */
 .accueil-style,
 .services-cles {
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 20px;
-    width: auto; /* Laisser le parent Flexbox gérer la largeur */
-    display: block; /* S'assurer qu'ils se comportent comme des blocs */
-    box-sizing: border-box;
+    width: 100%; /* Important: elles doivent prendre 100% de la largeur de leur parent flex (.main-content-left) */
+    /* Supprimez toute marge ou positionnement qui pourrait les décaler */
+    margin: 0;
+    position: static; /* Assurez-vous qu'elles ne sont pas en position absolue ou relative qui les sortirait du flux */
+    display: block; /* S'assure qu'elles se comportent comme des blocs normaux */
 }
 
 .accueil-texte {
-    width: 100%;
+    width: 100%; /* Le texte prend toute la largeur de sa section */
     padding: 0;
     margin: 0;
-    text-align: left;
+    text-align: left; /* Assure que le texte est aligné à gauche */
 }
 
 .accueil-texte h2 {
-    text-align: left;
     color: #007bff;
     margin-bottom: 15px;
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
+    text-align: left; /* Force le titre à gauche */
 }
 
 .accueil-texte p {
-    text-align: left;
     color: #333;
+    text-align: left; /* Force le paragraphe à gauche */
 }
 
-
-/* --- Styles spécifiques pour la page de Renseignement (renseignement.html) --- */
-.main-full-width {
-    display: block !important;
-    width: 100% !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
+/* --- Styles pour la page de Renseignement (renseignement.html) --- */
+/* Ce main n'est pas en flex, il est un simple bloc pour une page pleine largeur */
+main.main-full-width {
+    display: block; /* Annule le display: flex si le même <main> est utilisé */
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    margin-bottom: 30px; /* Pour l'espace avant le footer */
 }
 
-.main-full-width .section {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding: 20px !important;
-    background-color: #f9f9f9 !important;
-    border: 1px solid #eee !important;
-    border-radius: 5px !important;
-    box-sizing: border-box !important;
+main.main-full-width section { /* Cible toutes les sections directes dans main-full-width */
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Espace entre les sections sur la page Renseignement */
 }
 
 .form-container {
@@ -324,7 +312,7 @@ footer {
     }
 
     .menu-container {
-        justify-content: center; /* Centre le globe et le bouton sur les petits écrans */
+        justify-content: center;
     }
 
     .dropdown-menu {
@@ -332,51 +320,37 @@ footer {
         transform: translateX(50%);
     }
 
-    /* Ajustements pour le layout avec sidebar sur mobile */
-    .main-with-sidebar {
-        flex-direction: column !important; /* Empile les colonnes verticalement */
-        gap: 20px !important;
+    /* Sur mobile, le main doit s'empiler en colonne */
+    main.main-with-sidebar {
+        flex-direction: column;
+        gap: 20px; /* Espace entre les blocs empilés */
     }
 
     .main-content-left,
     .sidebar-right {
-        flex: none !important; /* Désactive la flexibilité */
-        width: 100% !important; /* Prend toute la largeur */
-        min-width: unset !important;
-        max-width: unset !important;
+        flex: none; /* Désactive la flexibilité pour prendre toute la largeur */
+        width: 100%; /* Prend toute la largeur disponible */
+        min-width: unset;
+        max-width: unset;
     }
 
-    /* Ajustement pour les sections générales sur mobile */
-    main section {
+    /* Ajustement des sections internes sur mobile */
+    .accueil-style,
+    .services-cles,
+    .sidebar-right {
         padding: 15px;
-        margin-bottom: 20px;
+        margin-bottom: 0; /* Géré par le gap du main-with-sidebar */
     }
 
     .accueil-style {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        text-align: center; /* Centre le contenu de la section d'accueil sur mobile */
     }
-
     .accueil-texte {
-        width: 100%;
-        margin-right: 0;
         text-align: center; /* Centre le texte d'accueil sur mobile */
     }
-    .accueil-texte h2 {
-        text-align: center; /* Centre le titre d'accueil sur mobile */
-    }
+    .accueil-texte h2,
     .accueil-texte p {
-        text-align: center; /* Centre le paragraphe d'accueil sur mobile */
-    }
-
-    /* Pour la page renseignement sur mobile */
-    .main-full-width {
-        width: 100%;
-        padding: 0;
-    }
-    .main-full-width .section {
-        padding: 15px;
+        text-align: center; /* Centre spécifiquement le titre et les paragraphes */
     }
 }
 

@@ -160,23 +160,24 @@ img {
 /* --- Styles par défaut pour main --- */
 /* Ce sélecteur sert de base, mais les classes spécifiques prendront le dessus */
 main {
-    /* flex: 1; Ancien: peut être problématique avec les pages full-width */
-    width: 100%; /* S'assure que par défaut, main prend 100% */
+    width: 100%;
     margin-bottom: 30px;
-    display: block; /* S'assure qu'il se comporte comme un bloc par défaut si aucune classe n'est spécifiée */
-    /* NOUVEAU: Ajoutez ces marges auto par défaut pour les main qui n'ont pas de structure spécifique */
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 100%; /* S'assure qu'il ne dépasse pas son conteneur */
+    max-width: 100%;
+    padding: 0 30px; /* NOUVEAU: Ajout d'un padding pour les pages qui n'ont pas de classe spécifique */
+    box-sizing: border-box; /* Assurez-vous que le padding est inclus dans la largeur */
 }
 
 /* --- Styles spécifiques pour la page d'Accueil (Résumé.html) --- */
 main.main-with-sidebar {
-    display: flex; /* Active Flexbox pour aligner les enfants en ligne */
-    flex-wrap: wrap; /* Permet aux colonnes de s'enrouler sur les petits écrans */
-    justify-content: space-between; /* Distribue l'espace entre les colonnes */
-    gap: 30px; /* Espace entre les colonnes */
-    align-items: flex-start; /* Aligne les colonnes en haut */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: flex-start;
+    padding: 0 30px; /* NOUVEAU: Ajout d'un padding pour aligner avec les bords du container sans padding */
 }
 
 .main-content-left {
@@ -234,16 +235,15 @@ main.main-with-sidebar {
 /* --- Styles spécifiques pour les pages pleine largeur (Contact, Renseignement, Présentation) --- */
 /* Cible main avec la classe main-full-width */
 main.main-full-width {
-main.main-full-width {
     display: block !important;
-    width: 100% !important; /* Gardons 100% par principe, mais la section forcera la largeur effective */
+    width: 100% !important; /* Prend toute la largeur de son parent (le container qui n'a plus de padding) */
     max-width: 100% !important;
-    flex: none !important; /* Pour être sûr d'annuler tout flex */
-    padding: 0;
-    box-sizing: border-box;
+    flex: none !important;
     margin-bottom: 30px;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-left: 0 !important; /* Pas de marge sur les côtés pour ces pages */
+    margin-right: 0 !important; /* Pas de marge sur les côtés pour ces pages */
+    padding: 0; /* Le padding sera géré par la section ou le content-wrapper */
+    box-sizing: border-box;
     /* Laissez les commentaires de background/border si vous voulez visualiser */
     /* background-color: rgba(255, 165, 0, 0.2); */
     /* border: 2px solid orange; */
@@ -252,11 +252,11 @@ main.main-full-width {
 /* Cible la classe .section utilisée dans ces pages, en annulant tout ce qui pourrait la rétrécir */
 /* C'est la cible principale pour la largeur et l'alignement */
 main.main-full-width section.section {
-    /* NOUVEAU: Force la largeur à 900px et la centre */
-    width: 900px !important; /* Largeur calculée : 960px (max-width du container) - 2*30px (padding du container) */
-    max-width: calc(100% - 40px) !important; /* S'adapte aux petits écrans (100% du main - 2*20px de padding de section) */
-    margin: 0 auto !important; /* Centre la section sur les 900px */
-    padding: 20px;
+    /* Retrouve la largeur logique à l'intérieur du container */
+    width: calc(100% - 60px) !important; /* 100% de la main-full-width - 2*30px de padding que l'on ajoute ici */
+    max-width: 900px !important; /* 960 - 2*30px du container */
+    margin: 0 auto !important; /* Centre la section */
+    padding: 20px 30px !important; /* NOUVEAU: Padding interne pour le contenu de la section */
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
@@ -278,12 +278,23 @@ main section h2 {
 
 /* Styles spécifiques pour le formulaire de renseignement */
 .form-container {
-    text-align: left; /* CHANGEMENT ICI: Aligner le contenu à gauche */
-    padding: 20px;
+    text-align: left;
+    padding: 20px; /* Conserve le padding interne */
     background-color: #f9f9f9;
     border-radius: 5px;
     border: 1px solid #eee;
     overflow-x: auto;
+    width: 100% !important; /* Prend la largeur de la section parente */
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box; /* Assurez-vous que le padding est inclus dans la largeur */
+}
+.content-wrapper {
+    width: 100%;
+    /* max-width: 900px; Ancien: la section parente gère maintenant cette largeur */
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0; /* Le padding est sur la section */
 }
 
 .form-container iframe {
@@ -309,8 +320,8 @@ footer {
 /* --- Media Queries (Responsive Design) --- */
 @media screen and (max-width: 768px) {
     .container {
-        padding: 15px;
-        margin: 20px auto;
+        padding: 0; /* Conserve le padding zéro */
+        margin: 20px auto; /* Ajuste les marges */
     }
 
     .hero {
@@ -385,16 +396,19 @@ footer {
         margin-right: 0 !important;
     }
     main.main-full-width section.section {
-        /* NOUVEAU: Ajustement pour mobile */
-        width: auto !important; /* Permet à la section de s'adapter automatiquement */
-        max-width: 100% !important; /* S'adapte aux écrans plus petits que 900px */
-        padding: 15px; /* Ou la valeur que vous voulez sur mobile */
-        margin: 0 auto !important; /* Toujours centré sur mobile */
+        width: auto !important;
+        max-width: 100% !important;
+        padding: 15px !important; /* Padding ajusté pour mobile */
+        margin: 0 auto !important;
         margin-bottom: 15px;
         text-align: left !important;
     }
         .form-container {
         padding: 15px; /* Ajuste le padding sur mobile */
+    }
+        .content-wrapper { /* Ajustement pour mobile si utilisé */
+        max-width: 100%;
+        padding: 0; /* Le padding est géré par la section */
     }
 }
 

@@ -36,9 +36,9 @@ body::before {
 
 .container {
     max-width: 960px; /* C'est la largeur maximale de votre contenu principal */
-    min-height: calc(100vh - 80px); /* NOUVEAU : Hauteur minimale de 100% de la fenêtre moins 80px */
+    min-height: calc(100vh - 80px);
     margin: 40px auto; /* Conserve la marge pour le centrer */
-    padding: 30px;
+    padding: 0; /* CHANGEMENT MAJEUR ICI : Supprimez le padding du container */
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);

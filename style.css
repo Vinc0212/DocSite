@@ -182,35 +182,35 @@ main section h2 {
 
 /* --- Styles spécifiques pour la page d'Accueil (Résumé.html) --- */
 .main-with-sidebar {
-    flex: 1;
-    display: flex; /* Active Flexbox pour les colonnes */
-    flex-wrap: wrap; /* Permet le retour à la ligne sur les petits écrans */
-    justify-content: space-between; /* Espace entre les deux colonnes */
-    gap: 30px; /* Espacement entre les colonnes */
-    width: 100%;
-    margin-bottom: 30px;
-    align-items: flex-start; /* Aligne les colonnes en haut */
+    flex: 1 !important; /* Ajouté !important pour forcer */
+    display: flex !important; /* Ajouté !important pour forcer */
+    flex-wrap: wrap !important; /* Ajouté !important pour forcer */
+    justify-content: space-between !important;
+    gap: 30px !important;
+    width: 100% !important;
+    margin-bottom: 30px !important;
+    align-items: flex-start !important;
 }
 
 .main-content-left {
-    flex: 2; /* Prend 2/3 de l'espace */
-    display: flex;
-    flex-direction: column; /* Empile les sections à l'intérieur verticalement */
-    gap: 30px; /* Espace entre les sections empilées */
-    min-width: 60%; /* Assure que la colonne gauche est assez large */
-    box-sizing: border-box;
+    flex: 2 !important; /* Ajouté !important pour forcer */
+    display: flex !important; /* Ajouté !important pour forcer */
+    flex-direction: column !important; /* Ajouté !important pour forcer */
+    gap: 30px !important;
+    min-width: 60% !important;
+    box-sizing: border-box !important;
 }
 
 .sidebar-right {
-    flex: 1; /* Prend 1/3 de l'espace */
-    min-width: 300px; /* Largeur minimale de la sidebar */
-    max-width: 35%; /* Largeur maximale de la sidebar */
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-left: auto; /* Pousse la sidebar à droite */
+    flex: 1 !important; /* Ajouté !important pour forcer */
+    min-width: 300px !important;
+    max-width: 35% !important;
+    background-color: #f9f9f9 !important;
+    border: 1px solid #eee !important;
+    border-radius: 5px !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    margin-left: auto !important;
 }
 
 /* Styles pour les sections internes dans main-content-left */
@@ -219,25 +219,22 @@ main section h2 {
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
-    padding: 20px; /* Padding interne pour le contenu */
+    padding: 20px;
+    width: auto; /* Laisser le parent Flexbox gérer la largeur */
+    display: block; /* S'assurer qu'ils se comportent comme des blocs */
     box-sizing: border-box;
-    /* Supprimez ou commentez les règles width: 100% ou display: flex/row-reverse ici */
-    /* Elles sont déjà gérées par le parent main-content-left */
-    width: auto; /* Laisse le flex parent gérer la largeur */
-    display: block; /* Réinitialise tout flex potentiel qui pourrait être hérité ou défini */
 }
 
 .accueil-texte {
-    /* Ces règles sont pour s'assurer que le texte remplit bien la section */
     width: 100%;
     padding: 0;
     margin: 0;
-    text-align: left; /* Alignement du texte à gauche */
+    text-align: left;
 }
 
 .accueil-texte h2 {
     text-align: left;
-    color: #007bff; /* Assure que le titre a la bonne couleur */
+    color: #007bff;
     margin-bottom: 15px;
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
@@ -251,21 +248,21 @@ main section h2 {
 
 /* --- Styles spécifiques pour la page de Renseignement (renseignement.html) --- */
 .main-full-width {
-    display: block; /* S'assure que le contenu prend toute la largeur disponible sans alignement flexible spécifique */
-    width: 100%;
-    padding: 0;
-    box-sizing: border-box;
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
 }
 
 .main-full-width .section {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    box-sizing: border-box;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 20px !important;
+    background-color: #f9f9f9 !important;
+    border: 1px solid #eee !important;
+    border-radius: 5px !important;
+    box-sizing: border-box !important;
 }
 
 .form-container {
@@ -337,16 +334,16 @@ footer {
 
     /* Ajustements pour le layout avec sidebar sur mobile */
     .main-with-sidebar {
-        flex-direction: column; /* Empile les colonnes verticalement */
-        gap: 20px;
+        flex-direction: column !important; /* Empile les colonnes verticalement */
+        gap: 20px !important;
     }
 
     .main-content-left,
     .sidebar-right {
-        flex: none; /* Désactive la flexibilité */
-        width: 100%; /* Prend toute la largeur */
-        min-width: unset;
-        max-width: unset;
+        flex: none !important; /* Désactive la flexibilité */
+        width: 100% !important; /* Prend toute la largeur */
+        min-width: unset !important;
+        max-width: unset !important;
     }
 
     /* Ajustement pour les sections générales sur mobile */

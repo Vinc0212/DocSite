@@ -250,21 +250,20 @@ main.main-full-width {
 /* Cible la classe .section utilisée dans ces pages, en annulant tout ce qui pourrait la rétrécir */
 /* C'est la cible principale pour la largeur et l'alignement */
 main.main-full-width section.section { /* Sélecteur plus spécifique */
-    width: 100% !important; /* La section doit prendre 100% de la largeur de son parent (main.main-full-width) */
-    max-width: 100% !important; /* S'assure qu'elle ne dépasse pas, mais aussi qu'elle ne se limite pas */
-    margin: 0 !important; /* Annule toute marge automatique qui pourrait la centrer ou la rétrécir */
-    padding: 50px 20px !important; /* <--- CHANGEMENT MAJEUR ICI : padding vertical plus grand */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 20px !important; /* Vous pouvez ajuster ce padding si le contenu semble toujours trop "condensé" */
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
     box-sizing: border-box;
-    margin-bottom: 20px; /* Espace entre les sections si plusieurs */
-    text-align: left !important; /* Assure que le contenu de la section est aligné à gauche */
-    display: block !important; /* S'assure qu'elle se comporte comme un bloc standard */
-    float: none !important; /* Au cas où un float serait appliqué ailleurs */
-    position: static !important; /* Au cas où un positionnement absolu/relative serait appliqué */
+    margin-bottom: 20px;
+    text-align: left !important;
+    display: block !important;
+    float: none !important;
+    position: static !important;
 }
-
 /* Style général pour les titres de sections (pour toutes les sections) */
 main section h2 {
     color: #007bff;

@@ -248,7 +248,7 @@ main.main-full-width section.section { /* Sélecteur plus spécifique */
     width: 100% !important; /* La section doit prendre 100% de la largeur de son parent (main.main-full-width) */
     max-width: 100% !important; /* S'assure qu'elle ne dépasse pas, mais aussi qu'elle ne se limite pas */
     margin: 0 !important; /* Annule toute marge automatique qui pourrait la centrer ou la rétrécir */
-    padding: 20px; /* Conserve le padding interne */
+    padding: 50px 20px !important; /* <--- CHANGEMENT MAJEUR ICI : padding vertical plus grand */
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;

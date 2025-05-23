@@ -1,5 +1,4 @@
-
-User-agent: *
-Allow: /
-
 Sitemap: https://Vinc0212.github.io/DocSite/sitemap.xml
+User-agent: *
+Disallow:
+

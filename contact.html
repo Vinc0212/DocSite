@@ -73,18 +73,19 @@
     <script>
         const button = document.querySelector('.menu-button');
         const menu = document.querySelector('.dropdown-menu');
-
+    
+        // Toggle menu on button click
         button.addEventListener('click', function(event) {
-            event.stopPropagation();
-            const expanded = button.getAttribute('aria-expanded') === 'true';
-            button.setAttribute('aria-expanded', !expanded);
-            menu.toggleAttribute('hidden');
+            event.stopPropagation(); // Empêche la fermeture immédiate
+            menu.classList.toggle('show');
         });
-
+    
+        // Fermer le menu si l'utilisateur clique en dehors
         window.addEventListener('click', function(event) {
             if (!event.target.closest('.menu-container')) {
-                button.setAttribute('aria-expanded', 'false');
-                menu.setAttribute('hidden', '');
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                }
             }
         });
     </script>

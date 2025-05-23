@@ -6,11 +6,14 @@
     <meta name="description" content="Contactez Vincent MARCILLAT, Expert Supply Chain & AMOA Aéronautique. Trouvez son email, LinkedIn et numéro de téléphone.">
     <meta name="robots" content="index, follow">
     <title>Contact - Vincent MARCILLAT | Expert Supply Chain & AMOA Aéronautique</title>
+
     <link rel="canonical" href="https://Vinc0212.github.io/DocSite/contact.html">
     <meta name="google-site-verification" content="XgQ7ZA4XaWcbzCFCmYAQS5fA28yMDs1W2HEixy9x91w" />
     <meta name="msvalidate.01" content="4CCC9B53B95500DABBC3018D0EBFFA8B" />
+
     <link rel="icon" href="https://Vinc0212.github.io/DocSite/logo.ico" type="image/x-icon">
     <link rel="shortcut icon" href="https://Vinc0212.github.io/DocSite/logo.ico" type="image/x-icon">
+
     <meta property="og:title" content="Contact - Vincent MARCILLAT | Expert Supply Chain & AMOA Aéronautique">
     <meta property="og:description" content="Contactez Vincent MARCILLAT pour l'optimisation Supply Chain, AMOA, KPI, et l'analyse de données dans l'aéronautique.">
     <meta property="og:type" content="website">
@@ -19,6 +22,7 @@
     <meta property="og:locale" content="fr_FR">
 
     <link rel="stylesheet" href="style.css">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5189M2T3N8"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -36,9 +40,9 @@
         </header>
 
         <div class="menu-container">
-             <img src="https://Vinc0212.github.io/DocSite/Globe.gif" alt="Globe terrestre animé" class="globe-image">
-            <button class="menu-button">Menu &#9776;</button>
-            <nav class="dropdown-menu">
+            <img src="https://Vinc0212.github.io/DocSite/Globe.gif" alt="Globe terrestre animé" class="globe-image">
+            <button class="menu-button" aria-expanded="false" aria-controls="dropdown-menu">Menu &#9776;</button>
+            <nav id="dropdown-menu" class="dropdown-menu" hidden>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="presentation.html">Présentation</a></li>
@@ -47,18 +51,19 @@
                 </ul>
             </nav>
         </div>
-    <main class="main-full-width">
-        <section class="section">
-            <h2>Contactez-moi</h2>
-             <p>N'hésitez pas à me contacter via les informations ci-dessous :</p>
-            <p>
-                <strong>Nom :</strong> Vincent MARCILLAT<br>
-                <strong>Email :</strong> <a href="mailto:marcillatvincent@gmail.com">marcillatvincent@gmail.com</a><br>
-                <strong>LinkedIn :</strong> <a href="https://linkedin.com/in/vincent-marcillat-a312a094" target="_blank" rel="noopener">Mon profil LinkedIn</a><br>
-                <strong>Téléphone :</strong> 06.63.77.78.81 (Séméac)
-            </p>
-             </section>
-    </main>
+
+        <main class="main-full-width">
+            <section class="section">
+                <h2>Contactez-moi</h2>
+                <p>N'hésitez pas à me contacter via les informations ci-dessous :</p>
+                <p>
+                    <strong>Nom :</strong> Vincent MARCILLAT<br>
+                    <strong>Email :</strong> <a href="mailto:marcillatvincent@gmail.com">marcillatvincent@gmail.com</a><br>
+                    <strong>LinkedIn :</strong> <a href="https://linkedin.com/in/vincent-marcillat-a312a094" target="_blank" rel="noopener">Mon profil LinkedIn</a><br>
+                    <strong>Téléphone :</strong> 06.63.77.78.81 (Séméac)
+                </p>
+            </section>
+        </main>
 
         <footer>
             <p>© 2025 Vincent MARCILLAT</p>
@@ -66,17 +71,20 @@
     </div>
 
     <script>
-        document.querySelector('.menu-button').addEventListener('click', function() {
-            document.querySelector('.dropdown-menu').classList.toggle('show');
+        const button = document.querySelector('.menu-button');
+        const menu = document.querySelector('.dropdown-menu');
+
+        button.addEventListener('click', function(event) {
+            event.stopPropagation();
+            const expanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', !expanded);
+            menu.toggleAttribute('hidden');
         });
+
         window.addEventListener('click', function(event) {
-            if (!event.target.matches('.menu-button')) {
-                var dropdowns = document.querySelectorAll('.dropdown-menu');
-                dropdowns.forEach(function(dropdown) {
-                    if (dropdown.classList.contains('show')) {
-                        dropdown.classList.remove('show');
-                    }
-                });
+            if (!event.target.closest('.menu-container')) {
+                button.setAttribute('aria-expanded', 'false');
+                menu.setAttribute('hidden', '');
             }
         });
     </script>

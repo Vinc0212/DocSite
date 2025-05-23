@@ -9,7 +9,7 @@
     <title>Vincent MARCILLAT, Supply Chain, AMOA, Industrie, KPI</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Styles spécifiques pour la grille portfolio (peuvent être déplacés vers style.css si souhaité) */
+        /* Portfolio Styles - déplacable dans style.css */
         .portfolio-section {
             padding: 30px 20px;
         }
@@ -80,9 +80,9 @@
         </header>
 
         <div class="menu-container">
-             <img src="https://Vinc0212.github.io/DocSite/Globe.gif" alt="Globe terrestre animé" class="globe-image">
-            <button class="menu-button">Menu &#9776;</button>
-            <nav class="dropdown-menu">
+            <img src="https://Vinc0212.github.io/DocSite/Globe.gif" alt="Globe terrestre animé" class="globe-image">
+            <button class="menu-button" aria-expanded="false" aria-controls="dropdown-menu">Menu &#9776;</button>
+            <nav id="dropdown-menu" class="dropdown-menu" hidden>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="presentation.html">Présentation</a></li>
@@ -91,7 +91,8 @@
                 </ul>
             </nav>
         </div>
-        <main>
+
+     <main>
             <section class="section">
                 <h2>Présentation</h2>
                 <p>Professionnel polyvalent avec plus de 10 ans d'expérience dans le secteur aéronautique, combinant une expertise pointue en Supply Chain et Gestion de Projet (AMOA) avec un parcours opérationnel solide. Spécialisé dans l'optimisation des flux, le pilotage de projets SAP et l'amélioration des processus métiers. Je mets à votre disposition mes compétences en automatisation de l'extraction et de la mise en forme des données, en développement d'outils d'analyse sur mesure, et en customisation de votre environnement SAP.</p>
@@ -155,19 +156,22 @@
         </footer>
     </div>
 
+    <!-- Menu burger JS corrigé -->
     <script>
-        document.querySelector('.menu-button').addEventListener('click', function() {
-            document.querySelector('.dropdown-menu').classList.toggle('show');
+        const button = document.querySelector('.menu-button');
+        const menu = document.querySelector('.dropdown-menu');
+
+        button.addEventListener('click', function(event) {
+            event.stopPropagation();
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', !isExpanded);
+            menu.toggleAttribute('hidden');
         });
-        // Fermer le menu si l'utilisateur clique en dehors
+
         window.addEventListener('click', function(event) {
-            if (!event.target.matches('.menu-button')) {
-                var dropdowns = document.querySelectorAll('.dropdown-menu');
-                dropdowns.forEach(function(dropdown) {
-                    if (dropdown.classList.contains('show')) {
-                        dropdown.classList.remove('show');
-                    }
-                });
+            if (!event.target.closest('.menu-container')) {
+                button.setAttribute('aria-expanded', 'false');
+                menu.setAttribute('hidden', '');
             }
         });
     </script>

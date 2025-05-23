@@ -1,12 +1,10 @@
-/* style.css */
-
 /* --- Réinitialisation et Styles Généraux --- */
 * {
-    box-sizing: border-box; /* S'assure que padding et border sont inclus dans la largeur/hauteur */
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -34,27 +32,28 @@ body::before {
     z-index: -1;
 }
 
-/* --- Styles du conteneur principal --- */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Container Principal --- */
 .container {
-    max-width: 960px; /* Largeur maximale de votre site */
-    min-height: calc(100vh - 80px); /* Hauteur minimale pour que la page "remplisse" l'écran */
-    margin: 40px auto; /* Centre le conteneur et ajoute des marges extérieures */
-    padding: 0; /* AUCUN PADDING sur le container lui-même pour laisser les enfants gérer leur espace */
+    max-width: 960px;
+    min-height: calc(100vh - 80px);
+    margin: 40px auto;
+    padding: 0;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    z-index: 1;
     position: relative;
+    z-index: 1;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* --- Section Hero (Haut de Page) --- */
+/* --- Hero (en-tête) --- */
 .hero {
     background-image: url('https://Vinc0212.github.io/DocSite/Fond Linkedin.png');
     background-size: cover;
@@ -81,9 +80,8 @@ img {
 
 .hero h1 {
     font-size: 3em;
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-    margin-top: 0;
 }
 
 .hero p {
@@ -91,15 +89,15 @@ img {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
-/* --- Styles pour le Menu Déroulant et le Globe --- */
+/* --- Menu + Bouton --- */
 .menu-container {
     position: relative;
     margin-bottom: 20px;
-    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 10px;
+    z-index: 10;
 }
 
 .globe-image {
@@ -122,30 +120,45 @@ img {
     background-color: #0056b3;
 }
 
+.menu-button:focus-visible,
+.dropdown-menu a:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
 .dropdown-menu {
-    display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     right: 0;
     border-radius: 5px;
     margin-top: 5px;
     top: calc(100% + 5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top;
+}
+
+.dropdown-menu[hidden] {
+    display: block;
+    opacity: 0;
+    transform: scaleY(0);
 }
 
 .dropdown-menu ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 .dropdown-menu ul li a {
-    color: #333;
+    display: block;
     padding: 12px 16px;
     text-decoration: none;
-    display: block;
+    color: #333;
     text-align: left;
     transition: background-color 0.3s ease;
 }
@@ -154,67 +167,52 @@ img {
     background-color: #ddd;
 }
 
-.show {
-    display: block;
-}
-
-/* --- Styles par défaut pour main (appliqué à toutes les balises <main> si aucune classe spécifique) --- */
+/* --- Layout principal --- */
 main {
     width: 100%;
     margin-bottom: 30px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    padding: 0 30px; /* Ajoute un padding pour les pages sans sidebar (ex: page d'accueil si pas de main-with-sidebar) */
-    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
+    padding: 0 30px;
+    box-sizing: border-box;
 }
 
-/* --- Styles spécifiques pour la page d'Accueil (Résumé.html) --- */
 main.main-with-sidebar {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 30px; /* Espace entre le contenu principal et la sidebar */
-    align-items: flex-start; /* Aligne les éléments en haut */
-    padding: 0 30px; /* Padding pour aligner avec les bords du container sans padding */
+    gap: 30px;
+    align-items: flex-start;
+    padding: 0 30px;
 }
 
 .main-content-left {
-    flex: 2; /* Prend 2 parts de l'espace disponible (ex: 66%) */
-    min-width: 60%; /* Largeur minimale avant que les colonnes ne s'empilent */
-    display: flex; /* Active Flexbox pour les sections internes */
-    flex-direction: column; /* Empile les sections internes verticalement */
-    gap: 30px; /* Espace entre les sections internes */
+    flex: 2;
+    min-width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .sidebar-right {
-    flex: 1; /* Prend 1 part de l'espace disponible (ex: 33%) */
-    min-width: 300px; /* Largeur minimale de la sidebar */
-    max-width: 35%; /* Largeur maximale de la sidebar */
+    flex: 1;
+    min-width: 300px;
+    max-width: 35%;
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 20px;
-    margin-left: auto; /* Pousse la sidebar à droite */
+    margin-left: auto;
 }
 
+/* --- Sections spécifiques --- */
 .accueil-style,
 .services-cles {
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 20px;
-    width: 100%;
-    margin: 0;
-    position: static;
-    display: block;
 }
 
 .accueil-texte {
-    width: 100%;
-    padding: 0;
-    margin: 0;
     text-align: left;
 }
 
@@ -223,75 +221,51 @@ main.main-with-sidebar {
     margin-bottom: 15px;
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
-    text-align: left;
 }
 
 .accueil-texte p {
     color: #333;
-    text-align: left;
 }
 
-/* --- Styles spécifiques pour les pages pleine largeur (Contact, Renseignement, Présentation) --- */
+/* --- Pleine largeur (Contact, Renseignement, etc.) --- */
 main.main-full-width {
     display: block !important;
-    width: 100% !important; /* Prend toute la largeur de son parent (le container qui n'a plus de padding) */
+    width: 100% !important;
     max-width: 100% !important;
-    flex: none !important;
-    margin-bottom: 30px;
-    margin-left: 0 !important; /* Pas de marge sur les côtés pour ces pages pour coller au bord du container */
-    margin-right: 0 !important; /* Pas de marge sur les côtés pour ces pages pour coller au bord du container */
-    padding: 0; /* Le padding sera géré par la section à l'intérieur */
-    box-sizing: border-box;
+    padding: 0;
 }
 
-/* Cible la classe .section utilisée à l'intérieur des pages pleine largeur */
 main.main-full-width section.section {
-    width: calc(100% - 60px) !important; /* 100% du main-full-width moins 2x30px de padding que l'on ajoute ici */
-    max-width: 900px !important; /* Limite la largeur à 900px (960px - 2x30px du container) */
-    margin: 0 auto !important; /* Centre la section sur la largeur disponible */
-    padding: 20px 30px !important; /* Padding interne pour le contenu de la section (20px haut/bas, 30px gauche/droite) */
+    width: calc(100% - 60px);
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+    padding: 20px 30px;
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
+    text-align: left;
     box-sizing: border-box;
-    margin-bottom: 20px;
-    text-align: left !important;
-    display: block !important;
-    float: none !important;
-    position: static !important;
 }
 
-/* Style général pour les titres de sections (pour toutes les sections) */
-main section h2 {
-    color: #007bff;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 5px;
-    text-align: left; /* Pour s'assurer que les titres sont alignés à gauche */
-}
-
-/* Styles spécifiques pour le formulaire de renseignement */
+/* --- Formulaire (iframe) --- */
 .form-container {
     text-align: left;
-    padding: 20px; /* Conserve le padding interne */
+    padding: 20px;
     background-color: #f9f9f9;
     border-radius: 5px;
     border: 1px solid #eee;
     overflow-x: auto;
-    width: 100% !important; /* Prend la largeur de la section parente */
-    max-width: 100% !important;
-    margin: 0 !important;
-    box-sizing: border-box; /* Assurez-vous que le padding est inclus dans la largeur */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form-container iframe {
-    width: 100% !important; /* L'iframe DOIT prendre 100% de la largeur de son conteneur */
-    min-width: 300px;
-    height: 1500px;
+    width: 100%;
+    min-height: 950px;
     display: block;
 }
 
-/* --- Footer --- */
+/* --- Pied de page --- */
 footer {
     text-align: center;
     padding: 20px 0;
@@ -300,37 +274,26 @@ footer {
     font-size: 0.9em;
     border-radius: 0 0 8px 8px;
     margin-top: auto;
-    z-index: 1;
-    position: relative;
 }
 
-/* --- Media Queries (Responsive Design) --- */
+/* --- Responsive --- */
 @media screen and (max-width: 768px) {
     .container {
-        padding: 0; /* Conserve le padding zéro */
-        margin: 20px auto; /* Ajuste les marges */
+        margin: 20px auto;
     }
 
     .hero {
-        padding: 60px 10px;
-        padding-top: 100px;
+        padding: 100px 10px 60px;
     }
 
     .hero img {
         top: 15px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
-        height: 80px;
     }
 
     .hero h1 {
         font-size: 2.5em;
-        margin-top: 20px;
-    }
-
-    .globe-image {
-        width: 25px;
     }
 
     .menu-container {
@@ -342,68 +305,36 @@ footer {
         transform: translateX(50%);
     }
 
-    /* Sur mobile, le main doit s'empiler en colonne (pour la page Résumé.html) */
     main.main-with-sidebar {
         flex-direction: column;
-        gap: 20px;
     }
 
     .main-content-left,
     .sidebar-right {
-        flex: none;
         width: 100%;
-        min-width: unset;
-        max-width: unset;
     }
 
-    /* Ajustement des sections internes sur mobile */
+    .accueil-texte,
     .accueil-style,
-    .services-cles,
-    .sidebar-right {
+    .services-cles {
+        text-align: center;
         padding: 15px;
-        margin-bottom: 0;
     }
 
-    .accueil-style {
-        text-align: center;
-    }
-    .accueil-texte {
-        text-align: center;
-    }
-    .accueil-texte h2,
-    .accueil-texte p {
-        text-align: center;
-    }
-
-    /* Pour les pages pleine largeur (Contact, Renseignement, Présentation) sur mobile */
-    main.main-full-width {
-        width: 100%;
-        padding: 0;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
     main.main-full-width section.section {
-        width: auto !important; /* Permet à la section de s'adapter automatiquement sur mobile */
-        max-width: 100% !important; /* S'adapte aux écrans plus petits que 900px */
-        padding: 15px !important; /* Padding ajusté pour mobile (15px de tous les côtés) */
-        margin: 0 auto !important;
-        margin-bottom: 15px;
-        text-align: left !important;
+        width: auto;
+        max-width: 100%;
+        padding: 15px;
     }
+
     .form-container {
-        padding: 15px; /* Ajuste le padding sur mobile */
+        padding: 15px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .hero {
-        padding: 40px 10px;
-        padding-top: 90px;
-    }
-
     .hero h1 {
         font-size: 2em;
-        margin-top: 15px;
     }
 
     .accueil-texte h2 {

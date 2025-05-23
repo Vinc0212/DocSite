@@ -8,7 +8,7 @@
 
     <meta name="robots" content="index, follow">
 
-    <link rel="canonical" href="https://Vinc0212.github.io/DocSite/Résumé.html">
+    <link rel="canonical" href="https://Vinc0212.github.io/DocSite/index.html">
 
     <meta name="google-site-verification" content="XgQ7ZA4XaWcbzCFCmYAQS5fA28yMDs1W2HEixy9x91w" />
 
@@ -20,7 +20,7 @@
     <meta property="og:title" content="Vincent MARCILLAT | Expert Supply Chain & AMOA Aéronautique">
     <meta property="og:description" content="Optimisation des performances Supply Chain, mise en place de KPI, analyse et exportation de données pour l'industrie aéronautique.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://Vinc0212.github.io/DocSite/Résumé.html">
+    <meta property="og:url" content="https://Vinc0212.github.io/DocSite/index.html">
     <meta property="og:image" content="https://Vinc0212.github.io/DocSite/Illustration_Supply-Chain-Management.jpg">
     <meta property="og:locale" content="fr_FR">
 
@@ -44,8 +44,8 @@
 
         <div class="menu-container">
             <img src="https://Vinc0212.github.io/DocSite/Globe.gif" alt="Globe terrestre animé" class="globe-image">
-            <button class="menu-button">Menu &#9776;</button>
-            <nav class="dropdown-menu">
+                <button class="menu-button" aria-expanded="false" aria-controls="menu">Menu &#9776;</button>
+                <nav id="menu" class="dropdown-menu" hidden>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="presentation.html">Présentation</a></li>
@@ -94,20 +94,24 @@
     </div>
 
     <script>
-        document.querySelector('.menu-button').addEventListener('click', function() {
-            document.querySelector('.dropdown-menu').classList.toggle('show');
+        const button = document.querySelector('.menu-button');
+        const menu = document.querySelector('.dropdown-menu');
+    
+        // Toggle menu on button click
+        button.addEventListener('click', function(event) {
+            event.stopPropagation(); // Empêche la fermeture immédiate
+            menu.classList.toggle('show');
         });
+    
         // Fermer le menu si l'utilisateur clique en dehors
         window.addEventListener('click', function(event) {
-            if (!event.target.matches('.menu-button')) {
-                var dropdowns = document.querySelectorAll('.dropdown-menu');
-                dropdowns.forEach(function(dropdown) {
-                    if (dropdown.classList.contains('show')) {
-                        dropdown.classList.remove('show');
-                    }
-                });
+            if (!event.target.closest('.menu-container')) {
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                }
             }
         });
     </script>
+
 </body>
 </html>

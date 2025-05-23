@@ -137,16 +137,21 @@ img {
     margin-top: 5px;
     top: calc(100% + 5px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 1;
-    transform: scaleY(1);
-    transform-origin: top;
-}
 
-.dropdown-menu[hidden] {
-    display: block;
+    /* Hidden by default */
     opacity: 0;
     transform: scaleY(0);
+    transform-origin: top;
+    pointer-events: none; /* Prevents interaction when hidden */
 }
+
+.dropdown-menu.show {
+    /* Shown when 'show' class is added by JavaScript */
+    opacity: 1;
+    transform: scaleY(1);
+    pointer-events: auto; /* Allows interaction when shown */
+}
+
 
 .dropdown-menu ul {
     list-style: none;

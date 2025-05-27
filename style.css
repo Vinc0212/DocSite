@@ -500,3 +500,41 @@ footer {
         font-size: 1.5em;
     }
 }
+/* Styles pour la section FAQ */
+.faq-section {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.faq-section h3 {
+    color: #007bff;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+}
+
+.faq-item h4 {
+    color: #0056b3;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.faq-item p {
+    font-size: 0.95em;
+    color: #444;
+    margin-left: 15px; /* Pour un léger décalage */
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #eee;
+}
+.faq-item:last-of-type p {
+     border-bottom: none; /* Pas de bordure pour le dernier élément */
+}

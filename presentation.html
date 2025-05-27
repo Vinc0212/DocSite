@@ -61,13 +61,21 @@
             font-size: 0.9em;
         }
         .tech-logos {
-            text-align: center;
+            text-align: center; /* Centrera le bloc flex lui-même horizontalement */
             margin-top: 30px;
+        
+            /* NOUVELLES PROPRIÉTÉS FLEXBOX */
+            display: flex; /* Active Flexbox pour le conteneur */
+            justify-content: center; /* Centre les éléments enfants (les logos) horizontalement */
+            align-items: center; /* Centre les éléments enfants verticalement (utile si les logos ont des hauteurs différentes) */
+            flex-wrap: wrap; /* Permet aux logos de passer à la ligne si l'espace est insuffisant sur les petits écrans */
+            gap: 20px; /* Ajoute un espacement entre les logos sans utiliser de marges individuelles */
         }
+        
         .tech-logos img {
             height: 40px;
-            margin: 0 10px;
-            vertical-align: middle;
+            /* margin: 0 10px; <--- Tu peux le supprimer avec 'gap' */
+            /* vertical-align: middle; <--- Non nécessaire avec 'align-items: center' */
         }
     </style>
 </head>

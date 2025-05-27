@@ -40,7 +40,8 @@ img {
 
 /* --- Container Principal --- */
 .container {
-    /*max-width: 960px;*/
+.container {
+    max-width: 960px; /* IMPORTANT: DÉCOMMENTE ou AJOUTE cette ligne pour un contrôle total */
     min-height: calc(100vh - 80px);
     margin: 40px auto;
     padding: 0;
@@ -234,23 +235,27 @@ main.main-with-sidebar {
 
 /* --- Pleine largeur (Contact, Renseignement, etc.) --- */
 main.main-full-width {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0;
+    display: block; /* !important n'est pas nécessaire ici, block est la valeur par défaut */
+    width: 100%;    /* !important n'est pas nécessaire ici, 100% est suffisant */
+    max-width: 100%; /* !important n'est pas nécessaire ici */
+    padding: 0;     /* Tu peux garder 0 ici */
 }
 
-/* Après - NOUVELLE VERSION */
 main.main-full-width section.section {
-    width: 90%; /* Prend 90% de la largeur du parent, pour un peu d'espace sur les côtés */
-    /*max-width: 900px; /* Limite la largeur sur les grands écrans */
-    margin: 0 auto 20px auto; /* Centre la section */
-    padding: 20px; /* Un padding uniforme, peut-être moins pour le contenu directement à l'intérieur */
+    /* ANCIENNES LIGNES À SUPPRIMER OU COMMENTER : */
+    /* width: calc(100% - 60px); */
+    /* padding: 20px 30px; */
+
+    /* NOUVELLES LIGNES : */
+    width: 100%; /* La section prend 100% de la largeur de son parent (main.main-full-width) */
+    max-width: 900px; /* Limite la largeur max à 900px pour les grands écrans */
+    margin: 0 auto 20px auto; /* Centre la section sur la page */
+    padding: 20px 30px; /* Garde ce padding pour le texte "Demande de renseignement" et le paragraphe */
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
     text-align: left;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Très important pour que padding/border soient inclus dans la width */
 }
 
 /* Ajuster le padding interne du form-container si nécessaire */
@@ -334,7 +339,7 @@ footer {
     }
 
     .form-container {
-        padding: 15px;
+        padding:0;
     }
 }
 

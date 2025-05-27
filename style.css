@@ -240,11 +240,12 @@ main.main-full-width {
     padding: 0;
 }
 
+/* Après - NOUVELLE VERSION */
 main.main-full-width section.section {
-    width: calc(100% - 60px);
-    max-width: 900px;
-    margin: 0 auto 20px auto;
-    padding: 20px 30px;
+    width: 90%; /* Prend 90% de la largeur du parent, pour un peu d'espace sur les côtés */
+    max-width: 900px; /* Limite la largeur sur les grands écrans */
+    margin: 0 auto 20px auto; /* Centre la section */
+    padding: 20px; /* Un padding uniforme, peut-être moins pour le contenu directement à l'intérieur */
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
@@ -252,14 +253,14 @@ main.main-full-width section.section {
     box-sizing: border-box;
 }
 
-/* --- Formulaire (iframe) --- */
+/* Ajuster le padding interne du form-container si nécessaire */
 .form-container {
     text-align: left;
-    padding: 20px;
-    background-color: #f9f9f9;
+    padding: 0; /* Supprime le padding ici pour que l'iframe prenne toute la place disponible dans la section */
+    background-color: #f9f9f9; /* Peut-être supprimer ceci si tu veux la couleur de la section */
     border-radius: 5px;
-    border: 1px solid #eee;
-    overflow-x: auto;
+    border: none; /* Supprime cette bordure si tu en as déjà une sur la section parente */
+    overflow-x: hidden; /* Utilise hidden pour éviter les barres de défilement superflues */
     width: 100%;
     box-sizing: border-box;
 }

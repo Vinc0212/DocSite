@@ -9,9 +9,11 @@
     <meta name="robots" content="index, follow">
 
     <link rel="canonical" href="https://Vinc0212.github.io/DocSite/index.html">
+    <link rel="alternate" href="https://Vinc0212.github.io/DocSite/index.html" hreflang="fr-FR" />
+    <link rel="alternate" href="https://Vinc0212.github.io/DocSite/en/index.html" hreflang="en-US" />
+    <link rel="alternate" href="https://Vinc0212.github.io/DocSite/index.html" hreflang="x-default" />
 
     <meta name="google-site-verification" content="XgQ7ZA4XaWcbzCFCmYAQS5fA28yMDs1W2HEixy9x91w" />
-
     <meta name="msvalidate.01" content="4CCC9B53B95500DABBC3018D0EBFFA8B" />
 
     <link rel="icon" href="https://Vinc0212.github.io/DocSite/favicon.ico" type="image/x-icon">
@@ -24,7 +26,7 @@
     <meta property="og:image" content="https://Vinc0212.github.io/DocSite/Illustration_Supply-Chain-Management.jpg">
     <meta property="og:locale" content="fr_FR">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5189M2T3N8"></script>
     <script>
@@ -44,8 +46,18 @@
 
         <div class="menu-container">
             <img src="https://Vinc0212.github.io/DocSite/Globe.gif" alt="Globe terrestre animé" class="globe-image">
-                <button class="menu-button" aria-expanded="false" aria-controls="menu">Menu &#9776;</button>
-                <nav id="menu" class="dropdown-menu">
+            
+            <div class="language-selector">
+                <a href="index.html" class="lang-fr active" data-lang="fr">
+                    <img src="flags/fr.png" alt="Français">
+                </a>
+                <a href="en/index.html" class="lang-en" data-lang="en">
+                    <img src="flags/en.png" alt="English">
+                </a>
+            </div>
+
+            <button class="menu-button" aria-expanded="false" aria-controls="menu">Menu &#9776;</button>
+            <nav id="menu" class="dropdown-menu">
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="presentation.html">Présentation</a></li>
@@ -129,6 +141,26 @@
             if (!event.target.closest('.menu-container')) {
                 if (menu.classList.contains('show')) {
                     menu.classList.remove('show');
+                }
+            }
+        });
+
+        // Script pour activer le bon drapeau (à la fin du body de préférence)
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSelector = document.querySelector('.language-selector');
+            if (languageSelector) {
+                // Supprime la classe 'active' de tous les liens de langue
+                languageSelector.querySelectorAll('a').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                // Détermine la langue active en fonction de l'URL
+                const currentPath = window.location.pathname;
+                if (currentPath.includes('/en/')) {
+                    document.querySelector('.lang-en').classList.add('active');
+                } else {
+                    // Par défaut, ou si l'URL ne contient pas '/en/', on considère que c'est la version française
+                    document.querySelector('.lang-fr').classList.add('active');
                 }
             }
         });

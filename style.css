@@ -10,13 +10,13 @@ body {
     background-color: #f4f4f4; /* Couleur de fond générale */
     color: #333; /* Couleur de texte par défaut */
     line-height: 1.6; /* Hauteur de ligne pour une meilleure lisibilité */
-    min-height: 100vh; /* S'assure que le body prend au moins toute la hauteur de la fenêtre */
-    position: relative; /* Permet le positionnement de l'élément pseudo `::before` */
-    background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg'); /* Image de fond */
-    background-size: cover; /* Couvre toute la zone */
-    background-repeat: no-repeat;
+   /*min-height: 100vh; /* S'assure que le body prend au moins toute la hauteur de la fenêtre */
+   /*position: relative; /* Permet le positionnement de l'élément pseudo `::before` */
+    /*background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg'); /* Image de fond */
+    /*background-size: cover; /* Couvre toute la zone */
+    /*background-repeat: no-repeat;
     background-attachment: fixed; /* Fixe l'image au défilement */
-    background-position: center center;
+    /*background-position: center center;*/
 }
 
 /* Superposition semi-transparente sur l'image de fond pour la lisibilité */

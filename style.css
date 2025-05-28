@@ -25,7 +25,7 @@ body::before {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Important: Assurez-vous que le width est à 100% */
+    width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.7); /* Blanc semi-transparent */
     z-index: -1; /* Place l'élément derrière le contenu du body */
@@ -108,7 +108,7 @@ img {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    display: block; /* Affiché par défaut pour mobile, caché pour desktop via JS/CSS */
+    /* display: block; -- Géré par le JS, mais on peut le cacher sur desktop si on a une vraie navigation */
 }
 
 .dropdown-menu {
@@ -147,23 +147,33 @@ img {
 
 /* --- Styles pour le Layout Principal (Contenu et Colonnes) --- */
 .main-content-layout {
-    display: flex; /* Utilise Flexbox pour aligner les colonnes */
-    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne sur petits écrans */
-    gap: 20px; /* Espacement entre les colonnes et les sections */
-    padding: 20px; /* Padding intérieur pour le layout principal */
-    flex-grow: 1; /* Permet au main de prendre l'espace restant */
+    display: flex; /* Active Flexbox pour les colonnes */
+    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne si l'espace est insuffisant */
+    gap: 20px; /* Espace entre les colonnes et les sections */
+    padding: 20px; /* Padding interne pour le layout principal */
+    flex-grow: 1; /* Permet au main de prendre l'espace restant dans le .container */
 }
 
-.main-content-left,
+.main-content-left {
+    flex: 2; /* Prend 2 parts de l'espace */
+    min-width: 300px; /* Largeur minimale pour cette colonne */
+}
+
 .main-content-right {
-    flex: 1; /* Chaque colonne prend une part égale de l'espace disponible */
-    min-width: 300px; /* Largeur minimale de chaque colonne avant de passer à la ligne */
+    flex: 1; /* Prend 1 part de l'espace (donc moitié moins large que la gauche) */
+    min-width: 300px; /* Largeur minimale pour cette colonne */
 }
 
-/* Ajustement pour les écrans plus petits : les colonnes s'empilent */
+/* Ajustement pour les écrans plus petits (mobile) */
 @media (max-width: 768px) {
     .main-content-layout {
         flex-direction: column; /* Les colonnes s'empilent sur mobile */
+    }
+
+    .main-content-left,
+    .main-content-right {
+        flex: none; /* Désactive le flex pour qu'ils prennent toute la largeur */
+        width: 100%; /* S'assure qu'ils prennent toute la largeur */
     }
 }
 
@@ -181,9 +191,8 @@ img {
 
 .main-content-left section:last-child,
 .main-content-right section:last-child {
-    margin-bottom: 0; /* Pas de marge en dessous de la dernière section */
+    margin-bottom: 0; /* Pas de marge en dessous de la dernière section d'une colonne */
 }
-
 
 /* Section "Optimisation de vos Performances Supply Chain" */
 .accueil-style h2 {

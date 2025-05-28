@@ -1,25 +1,25 @@
 /* --- Réinitialisation et Styles Généraux --- */
 * {
-    box-sizing: border-box; /* S'assure que padding et border sont inclus dans la largeur/hauteur */
+    box-sizing: border-box; /* S'assure que padding et border sont inclus dans la largeur/hauteur des éléments */
 }
 
 body {
     font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Couleur de fond générale */
-    color: #333; /* Couleur de texte par défaut */
+    background-color: #f4f4f4; /* Couleur de fond par défaut */
+    color: #333; /* Couleur de texte générale */
     line-height: 1.6; /* Hauteur de ligne pour une meilleure lisibilité */
-   /*min-height: 100vh; /* S'assure que le body prend au moins toute la hauteur de la fenêtre */
-   /*position: relative; /* Permet le positionnement de l'élément pseudo `::before` */
-    /*background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg'); /* Image de fond */
-    /*background-size: cover; /* Couvre toute la zone */
-    /*background-repeat: no-repeat;
-    background-attachment: fixed; /* Fixe l'image au défilement */
-    /*background-position: center center;*/
+    min-height: 100vh; /* S'assure que le body prend au moins toute la hauteur de la fenêtre */
+    position: relative; /* Permet le positionnement absolu de l'élément pseudo `::before` */
+    background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg'); /* Image de fond du body */
+    background-size: cover; /* L'image couvre toute la zone disponible */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* L'image de fond reste fixe au défilement */
+    background-position: center center;
 }
 
-/* Superposition semi-transparente sur l'image de fond pour la lisibilité */
+/* Superposition semi-transparente sur l'image de fond pour améliorer la lisibilité du texte */
 body::before {
     content: "";
     position: absolute;
@@ -28,36 +28,36 @@ body::before {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.7); /* Blanc semi-transparent */
-    z-index: -1; /* Place l'élément derrière le contenu du body */
+    z-index: -1; /* Place cet élément derrière le contenu du body */
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    display: block; /* Supprime l'espace sous les images */
+    max-width: 100%; /* S'assure que les images ne dépassent pas leur conteneur */
+    height: auto; /* Maintient le ratio d'aspect des images */
+    display: block; /* Supprime l'espace blanc indésirable sous les images */
 }
 
-/* Conteneur principal du site */
+/* Conteneur principal du site, centre le contenu et lui donne une apparence de "boîte" */
 .container {
-    max-width: 960px; /* Largeur maximale du contenu */
-    min-height: calc(100vh - 80px); /* Hauteur minimale moins un espace pour le haut/bas */
+    max-width: 960px; /* Largeur maximale du contenu principal */
+    min-height: calc(100vh - 80px); /* Hauteur minimale pour que le pied de page soit toujours en bas */
     margin: 40px auto; /* Centre le conteneur horizontalement et ajoute un espace vertical */
-    padding: 0; /* Pas de padding interne sur le conteneur global */
-    background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent */
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    padding: 0; /* Pas de rembourrage interne direct sur le conteneur global */
+    background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent pour le contenu */
+    border-radius: 8px; /* Coins légèrement arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet de profondeur */
     display: flex;
-    flex-direction: column; /* Organise les éléments enfants en colonne (header, main, footer) */
+    flex-direction: column; /* Organise les sections enfants (header, main, footer) en colonne */
     position: relative;
     z-index: 1; /* S'assure que le contenu est au-dessus de la superposition du body */
 }
 
-/* --- Hero (en-tête) --- */
+/* --- Hero (en-tête de la page) --- */
 .hero {
-    background-image: url('https://Vinc0212.github.io/DocSite/Fond Linkedin.png');
-    background-size: cover;
+    background-image: url('https://Vinc0212.github.io/DocSite/Fond Linkedin.png'); /* Image de fond de l'en-tête */
+    background-size: cover; /* L'image couvre toute la zone */
     background-position: center;
-    color: #fff;
+    color: #fff; /* Couleur du texte dans l'en-tête */
     text-align: center;
     padding: 80px 20px;
     border-radius: 8px 8px 0 0; /* Coins supérieurs arrondis */
@@ -66,7 +66,7 @@ img {
 .hero img {
     width: 120px; /* Taille de l'image de profil */
     height: 120px;
-    border-radius: 50%; /* Image ronde */
+    border-radius: 50%; /* Rend l'image de profil circulaire */
     border: 4px solid #fff; /* Bordure blanche autour de l'image */
     margin: 0 auto 15px; /* Centre l'image et ajoute un espace en dessous */
 }
@@ -74,13 +74,13 @@ img {
 .hero h1 {
     margin: 0;
     font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ombre pour le texte */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ombre pour le texte du titre */
 }
 
 .hero p {
     font-size: 1.2em;
     margin-top: 10px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Ombre pour le sous-titre */
 }
 
 /* --- Menu de Navigation --- */
@@ -89,9 +89,9 @@ img {
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Pour espacer le globe et le bouton/menu */
+    justify-content: space-between; /* Espace le globe et le bouton/menu */
     position: relative;
-    z-index: 10; /* S'assure que le menu est au-dessus des autres éléments */
+    z-index: 10; /* Assure que le menu est au-dessus des autres éléments */
 }
 
 .globe-image {
@@ -108,28 +108,27 @@ img {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    /* display: block; -- Géré par le JS, mais on peut le cacher sur desktop si on a une vraie navigation */
 }
 
 .dropdown-menu {
     display: none; /* Masqué par défaut */
     position: absolute;
-    top: 100%; /* Sous le bouton */
-    right: 20px; /* Alignée à droite */
+    top: 100%; /* Positionne le menu sous le bouton */
+    right: 20px; /* Aligné à droite */
     background-color: #444; /* Fond du menu déroulant */
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Ombre du menu */
+    z-index: 1; /* Assure que le menu est au-dessus du contenu */
     border-radius: 5px;
     overflow: hidden; /* Pour les coins arrondis */
 }
 
 .dropdown-menu.show {
-    display: block; /* Affiché quand la classe 'show' est présente */
+    display: block; /* Affiché lorsque la classe 'show' est active */
 }
 
 .dropdown-menu ul {
-    list-style-type: none;
+    list-style-type: none; /* Retire les puces de la liste */
     margin: 0;
     padding: 0;
 }
@@ -138,51 +137,58 @@ img {
     color: white;
     padding: 12px 16px;
     text-decoration: none;
-    display: block;
+    display: block; /* Chaque lien occupe toute la largeur */
 }
 
 .dropdown-menu ul li a:hover {
-    background-color: #555;
+    background-color: #555; /* Changement de couleur au survol */
 }
 
 /* --- Styles pour le Layout Principal (Contenu et Colonnes) --- */
-.main-content-layout {
+.main-content-layout { /* Utilisé sur index.html pour les colonnes gauche/droite */
     display: flex; /* Active Flexbox pour les colonnes */
-    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne si l'espace est insuffisant */
+    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne sur les petits écrans */
     gap: 20px; /* Espace entre les colonnes et les sections */
-    padding: 20px; /* Padding interne pour le layout principal */
+    padding: 20px; /* Rembourrage interne pour le contenu principal */
     flex-grow: 1; /* Permet au main de prendre l'espace restant dans le .container */
 }
 
 .main-content-left {
-    flex: 2; /* Prend 2 parts de l'espace */
-    min-width: 300px; /* Largeur minimale pour cette colonne */
+    flex: 2; /* Prend 2 parts de l'espace disponible (plus large) */
+    min-width: 300px; /* Largeur minimale de la colonne gauche */
 }
 
 .main-content-right {
-    flex: 1; /* Prend 1 part de l'espace (donc moitié moins large que la gauche) */
-    min-width: 300px; /* Largeur minimale pour cette colonne */
+    flex: 1; /* Prend 1 part de l'espace disponible (plus étroite) */
+    min-width: 300px; /* Largeur minimale de la colonne droite */
+}
+
+/* Conteneur principal sur les pages "full width" comme renseignement.html */
+.main-full-width {
+    padding: 20px; /* Rembourrage interne pour le contenu principal */
+    flex-grow: 1; /* Permet au main de prendre l'espace restant dans le .container */
 }
 
 /* Ajustement pour les écrans plus petits (mobile) */
 @media (max-width: 768px) {
-    .main-content-layout {
+    .main-content-layout { /* Pour index.html */
         flex-direction: column; /* Les colonnes s'empilent sur mobile */
     }
 
     .main-content-left,
-    .main-content-right {
+    .main-content-right { /* Pour index.html */
         flex: none; /* Désactive le flex pour qu'ils prennent toute la largeur */
-        width: 100%; /* S'assure qu'ils prennent toute la largeur */
+        width: 100%; /* S'assure qu'ils prennent toute la largeur sur mobile */
     }
 }
 
 /* --- Styles des Sections de Contenu --- */
 
-/* Style général pour toutes les sections principales */
+/* Style général pour toutes les sections principales à l'intérieur des colonnes */
 .main-content-left section,
-.main-content-right section {
-    margin-bottom: 20px; /* Espace entre les sections au sein d'une colonne */
+.main-content-right section,
+.main-full-width section { /* Ajout de .main-full-width section pour cibler les sections des pages "full width" */
+    margin-bottom: 20px; /* Espace entre les sections */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -190,9 +196,11 @@ img {
 }
 
 .main-content-left section:last-child,
-.main-content-right section:last-child {
-    margin-bottom: 0; /* Pas de marge en dessous de la dernière section d'une colonne */
+.main-content-right section:last-child,
+.main-full-width section:last-child { /* Pas de marge en dessous de la dernière section */
+    margin-bottom: 0;
 }
+
 
 /* Section "Optimisation de vos Performances Supply Chain" */
 .accueil-style h2 {
@@ -232,7 +240,7 @@ img {
     border-radius: 5px;
     font-size: 1.1em;
     transition: background-color 0.3s ease;
-    margin: 0 auto; /* Centre le bouton si il y a de l'espace */
+    margin: 0 auto; /* Centre le bouton */
     max-width: 250px; /* Limite la largeur du bouton */
 }
 
@@ -258,7 +266,7 @@ img {
 .video-container {
     position: relative;
     width: 100%;
-    max-width: 700px; /* Largeur max pour la vidéo pour éviter qu'elle soit trop grande */
+    max-width: 700px; /* Largeur max pour la vidéo */
     margin: 0 auto; /* Centre la vidéo */
 }
 
@@ -322,6 +330,44 @@ img {
     text-decoration: underline;
 }
 
+/* --- Styles pour les formulaires Google Forms sur la page de renseignement (renseignement.html) --- */
+
+/* Conteneur des formulaires Google, permet d'aligner les iframes et de gérer leur responsivité */
+.form-container {
+    display: flex; /* Active Flexbox pour les iframes enfants */
+    flex-wrap: wrap; /* Permet aux iframes de passer à la ligne sur les petits écrans */
+    gap: 30px; /* Espace entre les formulaires */
+    margin-top: 20px; /* Marge au-dessus du groupe de formulaires */
+    justify-content: center; /* Centre les formulaires si l'espace le permet */
+    align-items: flex-start; /* Alignement en haut (utile si les formulaires ont des hauteurs différentes) */
+    padding: 10px; /* Un peu de rembourrage à l'intérieur du conteneur si nécessaire */
+}
+
+/* Styles pour chaque iframe Google Form */
+.form-container iframe {
+    flex: 1 1 45%; /* Chaque iframe prend une base de 45% de la largeur du conteneur parent */
+    min-width: 300px; /* Largeur minimale de chaque iframe avant qu'il ne passe à la ligne */
+    height: 700px; /* Hauteur fixe pour les formulaires, ajustez si besoin pour voir tout le contenu */
+    border: none; /* Supprime la bordure par défaut des iframes */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Ombre pour distinguer chaque formulaire */
+    border-radius: 8px; /* Coins arrondis pour les iframes */
+    overflow: hidden; /* Cache tout contenu qui dépasserait les bords arrondis */
+}
+
+/* Media query pour les écrans mobiles spécifiques aux formulaires */
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column; /* Les formulaires s'empilent verticalement sur mobile */
+        gap: 20px; /* Réduit l'espacement vertical sur mobile */
+    }
+
+    .form-container iframe {
+        width: 100%; /* Chaque formulaire prend toute la largeur disponible sur mobile */
+        height: 600px; /* Hauteur ajustée pour mobile, peut être adaptée */
+    }
+}
+
+
 /* --- Footer (pied de page) --- */
 footer {
     background-color: #333;
@@ -329,5 +375,5 @@ footer {
     text-align: center;
     padding: 20px;
     border-radius: 0 0 8px 8px; /* Coins inférieurs arrondis */
-    margin-top: auto; /* Pousse le footer vers le bas si le contenu est court */
+    margin-top: auto; /* Pousse le footer vers le bas de la page si le contenu est court */
 }

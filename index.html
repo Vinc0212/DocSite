@@ -65,10 +65,23 @@
                         <p>Que vous ayez besoin d'améliorer votre gestion des stocks, de fluidifier vos flux logistiques ou d'optimiser votre planification, je suis là pour vous apporter des solutions concrètes et efficaces, y compris l'<strong>exportation de données</strong> pour un suivi précis.</p>
                     </div>
                 </section>
+
                 <section class="section-promotion-outils">
                     <h3>🚀 Boostez votre efficacité avec mes Outils Excel !</h3>
                     <p>Découvrez des maquettes Excel (VBA) prêtes à l'emploi pour l'optimisation de votre gestion de la donnée, (la gestion de vos stocks et le suivi de vos KPI en cours....).</p>
                     <a href="outils.html" class="cta-button">Voir tous les outils</a>
+                </section>
+
+                <section class="video-demonstration">
+                    <h3>🎬 Découvrez une de mes macros en action !</h3>
+                    <p>Cette courte vidéo vous montre comment une de mes macros Excel peut transformer vos données.</p>
+                    <div class="video-container">
+                        <video width="100%" controls preload="metadata">
+                            <source src="EXCEL_CfuTxBSPrw.mp4" type="video/mp4">
+                            Désolé, votre navigateur ne supporte pas la lecture de vidéos.
+                        </video>
+                    </div>
+                    <p>Pour plus de détails sur mes outils, visitez la page <a href="outils.html">Mes Outils Excel</a>.</p>
                 </section>
                 <section class="services-cles">
                     <h3>Mes Services Clés :</h3>
@@ -101,13 +114,13 @@
     <script>
         const button = document.querySelector('.menu-button');
         const menu = document.querySelector('.dropdown-menu');
-    
+
         // Toggle menu on button click
         button.addEventListener('click', function(event) {
             event.stopPropagation(); // Empêche la fermeture immédiate
             menu.classList.toggle('show');
         });
-    
+
         // Fermer le menu si l'utilisateur clique en dehors
         window.addEventListener('click', function(event) {
             if (!event.target.closest('.menu-container')) {

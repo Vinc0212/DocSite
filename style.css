@@ -1,57 +1,55 @@
 /* --- Réinitialisation et Styles Généraux --- */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* S'assure que padding et border sont inclus dans la largeur/hauteur */
 }
 
 body {
     font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-    /*display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    position: relative;
-    background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg');
-    background-size: cover;
+    background-color: #f4f4f4; /* Couleur de fond générale */
+    color: #333; /* Couleur de texte par défaut */
+    line-height: 1.6; /* Hauteur de ligne pour une meilleure lisibilité */
+    min-height: 100vh; /* S'assure que le body prend au moins toute la hauteur de la fenêtre */
+    position: relative; /* Permet le positionnement de l'élément pseudo `::before` */
+    background-image: url('https://Vinc0212.github.io/DocSite/OIP.jpg'); /* Image de fond */
+    background-size: cover; /* Couvre toute la zone */
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;*/
+    background-attachment: fixed; /* Fixe l'image au défilement */
+    background-position: center center;
 }
 
+/* Superposition semi-transparente sur l'image de fond pour la lisibilité */
 body::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    /*width: 100%;*/
+    width: 100%; /* Important: Assurez-vous que le width est à 100% */
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.7);
-    z-index: -1;
+    background-color: rgba(255, 255, 255, 0.7); /* Blanc semi-transparent */
+    z-index: -1; /* Place l'élément derrière le contenu du body */
 }
 
 img {
     max-width: 100%;
     height: auto;
-    display: block;
+    display: block; /* Supprime l'espace sous les images */
 }
 
-/* --- Container Principal --- */
+/* Conteneur principal du site */
 .container {
-.container {
-    max-width: 960px; /* IMPORTANT: DÉCOMMENTE ou AJOUTE cette ligne pour un contrôle total */
-    min-height: calc(100vh - 80px);
-    margin: 40px auto;
-    padding: 0;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 960px; /* Largeur maximale du contenu */
+    min-height: calc(100vh - 80px); /* Hauteur minimale moins un espace pour le haut/bas */
+    margin: 40px auto; /* Centre le conteneur horizontalement et ajoute un espace vertical */
+    padding: 0; /* Pas de padding interne sur le conteneur global */
+    background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Organise les éléments enfants en colonne (header, main, footer) */
     position: relative;
-    z-index: 1;
+    z-index: 1; /* S'assure que le contenu est au-dessus de la superposition du body */
 }
 
 /* --- Hero (en-tête) --- */
@@ -62,529 +60,265 @@ img {
     color: #fff;
     text-align: center;
     padding: 80px 20px;
-    border-radius: 8px 8px 0 0;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
+    border-radius: 8px 8px 0 0; /* Coins supérieurs arrondis */
 }
 
 .hero img {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 120px; /* Taille de l'image de profil */
+    height: 120px;
+    border-radius: 50%; /* Image ronde */
+    border: 4px solid #fff; /* Bordure blanche autour de l'image */
+    margin: 0 auto 15px; /* Centre l'image et ajoute un espace en dessous */
 }
 
 .hero h1 {
-    font-size: 3em;
-    margin: 0 0 5px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    margin: 0;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ombre pour le texte */
 }
 
 .hero p {
     font-size: 1.2em;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    margin-top: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-/* --- Menu + Bouton --- */
+/* --- Menu de Navigation --- */
 .menu-container {
-    position: relative;
-    margin-bottom: 20px;
+    background-color: #333; /* Fond sombre pour le menu */
+    padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-    z-index: 10;
+    justify-content: space-between; /* Pour espacer le globe et le bouton/menu */
+    position: relative;
+    z-index: 10; /* S'assure que le menu est au-dessus des autres éléments */
 }
 
 .globe-image {
-    width: 50px;
-    height: auto;
+    height: 40px; /* Taille du GIF du globe */
+    width: auto;
+    margin-right: 15px;
 }
 
 .menu-button {
-    background-color: #007bff;
+    background-color: #007bff; /* Couleur du bouton de menu */
     color: white;
     padding: 10px 15px;
     border: none;
-    cursor: pointer;
     border-radius: 5px;
+    cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.3s ease;
-}
-
-.menu-button:hover {
-    background-color: #0056b3;
-}
-
-.menu-button:focus-visible,
-.dropdown-menu a:focus-visible {
-    outline: 2px solid #007bff;
-    outline-offset: 2px;
+    display: block; /* Affiché par défaut pour mobile, caché pour desktop via JS/CSS */
 }
 
 .dropdown-menu {
+    display: none; /* Masqué par défaut */
     position: absolute;
-    background-color: #f9f9f9;
+    top: 100%; /* Sous le bouton */
+    right: 20px; /* Alignée à droite */
+    background-color: #444; /* Fond du menu déroulant */
     min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 0;
     border-radius: 5px;
-    margin-top: 5px;
-    top: calc(100% + 5px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-
-    /* Hidden by default */
-    opacity: 0;
-    transform: scaleY(0);
-    transform-origin: top;
-    pointer-events: none; /* Prevents interaction when hidden */
+    overflow: hidden; /* Pour les coins arrondis */
 }
 
 .dropdown-menu.show {
-    /* Shown when 'show' class is added by JavaScript */
-    opacity: 1;
-    transform: scaleY(1);
-    pointer-events: auto; /* Allows interaction when shown */
+    display: block; /* Affiché quand la classe 'show' est présente */
 }
 
-
 .dropdown-menu ul {
-    list-style: none;
+    list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
 .dropdown-menu ul li a {
-    display: block;
+    color: white;
     padding: 12px 16px;
     text-decoration: none;
-    color: #333;
-    text-align: left;
-    transition: background-color 0.3s ease;
+    display: block;
 }
 
 .dropdown-menu ul li a:hover {
-    background-color: #ddd;
+    background-color: #555;
 }
 
-/* --- Layout principal --- */
-main {
-   /* width: 100%;*/
-    margin-bottom: 30px;
-    padding: 0 30px;
-    box-sizing: border-box;
+/* --- Styles pour le Layout Principal (Contenu et Colonnes) --- */
+.main-content-layout {
+    display: flex; /* Utilise Flexbox pour aligner les colonnes */
+    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne sur petits écrans */
+    gap: 20px; /* Espacement entre les colonnes et les sections */
+    padding: 20px; /* Padding intérieur pour le layout principal */
+    flex-grow: 1; /* Permet au main de prendre l'espace restant */
 }
 
-main.main-with-sidebar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    align-items: flex-start;
-    padding: 0 30px;
+.main-content-left,
+.main-content-right {
+    flex: 1; /* Chaque colonne prend une part égale de l'espace disponible */
+    min-width: 300px; /* Largeur minimale de chaque colonne avant de passer à la ligne */
 }
 
-.main-content-left {
-    flex: 2;
-    min-width: 60%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+/* Ajustement pour les écrans plus petits : les colonnes s'empilent */
+@media (max-width: 768px) {
+    .main-content-layout {
+        flex-direction: column; /* Les colonnes s'empilent sur mobile */
+    }
 }
 
-.sidebar-right {
-    flex: 1;
-    min-width: 300px;
-    max-width: 35%;
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
+/* --- Styles des Sections de Contenu --- */
+
+/* Style général pour toutes les sections principales */
+.main-content-left section,
+.main-content-right section {
+    margin-bottom: 20px; /* Espace entre les sections au sein d'une colonne */
     padding: 20px;
-    margin-left: auto;
-}
-
-/* --- Sections spécifiques --- */
-.accueil-style,
-.services-cles {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 20px;
-}
-
-.accueil-texte {
-    text-align: left;
-}
-
-.accueil-texte h2 {
-    color: #007bff;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 5px;
-}
-
-.accueil-texte p {
-    color: #333;
-}
-
-/* --- Pleine largeur (Contact, Renseignement, etc.) --- */
-main.main-full-width {
-    display: block; /* !important n'est pas nécessaire ici, block est la valeur par défaut */
-    width: 100%;    /* !important n'est pas nécessaire ici, 100% est suffisant */
-    max-width: 100%; /* !important n'est pas nécessaire ici */
-    padding: 0;     /* Tu peux garder 0 ici */
-}
-
-main.main-full-width section.section {
-    /* ANCIENNES LIGNES À SUPPRIMER OU COMMENTER : */
-    /* width: calc(100% - 60px); */
-    /* padding: 20px 30px; */
-
-    /* NOUVELLES LIGNES : */
-    width: 100%; /* La section prend 100% de la largeur de son parent (main.main-full-width) */
-    max-width: 900px; /* Limite la largeur max à 900px pour les grands écrans */
-    margin: 0 auto 20px auto; /* Centre la section sur la page */
-    padding: 20px 30px; /* Garde ce padding pour le texte "Demande de renseignement" et le paragraphe */
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    text-align: left;
-    box-sizing: border-box; /* Très important pour que padding/border soient inclus dans la width */
-}
-
-/* Ajuster le padding interne du form-container si nécessaire */
-.form-container {
-    text-align: left;
-    padding: 0; /* Supprime le padding ici pour que l'iframe prenne toute la place disponible dans la section */
-    background-color: #f9f9f9; /* Peut-être supprimer ceci si tu veux la couleur de la section */
-    border-radius: 5px;
-    border: none; /* Supprime cette bordure si tu en as déjà une sur la section parente */
-    overflow-x: hidden; /* Utilise hidden pour éviter les barres de défilement superflues */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.form-container iframe {
-    width: 100%;
-    min-height: 950px;
-    display: block;
-}
-
-/* --- Pied de page --- */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #333;
-    color: #fff;
-    font-size: 0.9em;
-    border-radius: 0 0 8px 8px;
-    margin-top: auto;
-}
-
-/* --- Responsive --- */
-@media screen and (max-width: 768px) {
-    .container {
-        margin: 20px auto;
-    }
-
-    .hero {
-        padding: 100px 10px 60px;
-    }
-
-    .hero img {
-        top: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .hero h1 {
-        font-size: 2.5em;
-    }
-
-    .menu-container {
-        justify-content: center;
-    }
-
-    .dropdown-menu {
-        right: 50%;
-        transform: translateX(50%);
-    }
-
-    main.main-with-sidebar {
-        flex-direction: column;
-    }
-
-    .main-content-left,
-    .sidebar-right {
-        width: 100%;
-    }
-
-    .accueil-texte,
-    .accueil-style,
-    .services-cles {
-        text-align: center;
-        padding: 15px;
-    }
-
-    main.main-full-width section.section {
-        width: auto;
-        max-width: 100%;
-        padding: 15px;
-    }
-
-    .form-container {
-        padding:0;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .hero h1 {
-        font-size: 2em;
-    }
-
-    .accueil-texte h2 {
-        font-size: 1.8em;
-    }
-}
-/* --- Styles pour la page "Mes Outils Excel" (outils.html) --- */
-
-.section-outils {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 30px; /* Espace après la section si d'autres suivent */
-}
-
-.section-outils h2 {
-    color: #007bff;
-    margin-bottom: 20px;
-    text-align: center;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 10px;
-}
-
-.section-outils p {
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 1.1em;
-}
-
-.outil-item {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: #fff;
     border-radius: 8px;
-    padding: 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.outil-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.main-content-left section:last-child,
+.main-content-right section:last-child {
+    margin-bottom: 0; /* Pas de marge en dessous de la dernière section */
 }
 
-.outil-item h3 {
-    color: #0056b3; /* Une nuance de bleu plus foncée pour les titres d'outils */
-    margin-top: 0;
-    margin-bottom: 15px;
+
+/* Section "Optimisation de vos Performances Supply Chain" */
+.accueil-style h2 {
+    color: #007bff;
     font-size: 1.8em;
-    text-align: left;
+    margin-top: 0;
 }
 
-.outil-item p {
-    text-align: left;
-    margin-bottom: 15px;
-    color: #555;
-    font-size: 1em;
+.accueil-style p {
+    text-align: justify;
 }
 
-.cta-button {
-    display: inline-block; /* Pour que le padding et la marge fonctionnent */
-    background-color: #28a745; /* Un vert pour le bouton d'action */
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 10px;
+.accueil-style strong {
+    color: #0056b3;
 }
 
-.cta-button:hover {
-    background-color: #218838; /* Vert plus foncé au survol */
-    transform: translateY(-2px);
-}
-
-.cta-button:active {
-    transform: translateY(0);
-}
-
-/* Style pour la ligne de séparation entre les outils */
-.section-outils hr {
-    border: none;
-    border-top: 1px dashed #ccc;
-    margin: 40px 0;
-}
-
-/* --- Section de promotion sur la page d'accueil (si utilisée) --- */
-.section-promotion-outils {
-    background-color: #e9f7ff; /* Un arrière-plan légèrement bleuté pour attirer l'attention */
-    border: 1px solid #cceeff;
-    border-radius: 8px;
-    padding: 25px;
-    text-align: center;
-    margin-top: 30px; /* S'il est placé après d'autres sections */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
+/* Section "Boostez votre efficacité avec mes Outils Excel !" */
 .section-promotion-outils h3 {
-    color: #007bff;
-    font-size: 2em;
-    margin-bottom: 15px;
+    color: #28a745; /* Couleur verte pour le titre */
+    font-size: 1.6em;
+    margin-top: 0;
+    text-align: center;
 }
 
 .section-promotion-outils p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    display: block; /* Pour prendre toute la largeur disponible dans la section */
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
     font-size: 1.1em;
-    color: #333;
-    margin-bottom: 25px;
+    transition: background-color 0.3s ease;
+    margin: 0 auto; /* Centre le bouton si il y a de l'espace */
+    max-width: 250px; /* Limite la largeur du bouton */
 }
 
-.section-promotion-outils .cta-button {
-    background-color: #007bff; /* Bleu principal pour ce CTA */
-}
-
-.section-promotion-outils .cta-button:hover {
+.cta-button:hover {
     background-color: #0056b3;
 }
 
-/* --- Responsive pour les nouvelles sections --- */
-@media screen and (max-width: 768px) {
-    .section-outils,
-    .section-promotion-outils {
-        padding: 15px;
-    }
-
-    .section-outils h2 {
-        font-size: 2em;
-    }
-
-    .outil-item h3 {
-        font-size: 1.5em;
-    }
-
-    .cta-button {
-        padding: 10px 20px;
-        font-size: 1em;
-    }
-
-    .section-promotion-outils h3 {
-        font-size: 1.8em;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .section-outils h2 {
-        font-size: 1.6em;
-    }
-
-    .outil-item h3 {
-        font-size: 1.3em;
-    }
-
-    .section-promotion-outils h3 {
-        font-size: 1.5em;
-    }
-}
-/* Styles pour la section FAQ */
-.faq-section {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 20px;
-    margin-top: 30px;
-}
-
-.faq-section h3 {
-    color: #007bff;
-    margin-bottom: 20px;
+/* Section "Découvrez une de mes macros en action !" (Vidéo) */
+.video-demonstration {
     text-align: center;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 10px;
 }
 
-.faq-item {
+.video-demonstration h3 {
+    color: #6f42c1; /* Une couleur différente pour le titre de la vidéo */
+    font-size: 1.6em;
+    margin-top: 0;
+}
+
+.video-demonstration p {
     margin-bottom: 15px;
 }
 
-.faq-item h4 {
-    color: #0056b3;
-    margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 1.2em;
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px; /* Largeur max pour la vidéo pour éviter qu'elle soit trop grande */
+    margin: 0 auto; /* Centre la vidéo */
 }
 
-.faq-item p {
-    font-size: 0.95em;
-    color: #444;
-    margin-left: 15px; /* Pour un léger décalage */
-    padding-bottom: 5px;
-    border-bottom: 1px dashed #eee;
-}
-.faq-item:last-of-type p {
-     border-bottom: none; /* Pas de bordure pour le dernier élément */
-}
-/* --- Bouton d'action secondaire (par exemple pour "Poser une question") --- */
-.cta-button-secondary {
-    display: inline-block;
-    background-color: #007bff; /* Ton bleu principal */
-    color: white;
-    padding: 10px 20px;
-    border: 1px solid #007bff; /* Bordure assortie */
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
     border-radius: 5px;
-    font-size: 1em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombre pour la vidéo */
+}
+
+/* Section "Mes Services Clés" */
+.services-cles h3 {
+    color: #dc3545; /* Couleur rouge pour les services */
+    font-size: 1.6em;
+    margin-top: 0;
+}
+
+.services-cles ul {
+    list-style: none; /* Retire les puces par défaut */
+    padding: 0;
+}
+
+.services-cles ul li {
+    background-color: #e9ecef; /* Fond clair pour les éléments de liste */
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    border-left: 4px solid #dc3545; /* Ligne colorée sur le côté */
+    border-radius: 4px;
+    font-size: 1.05em;
+}
+
+.services-cles ul li strong {
+    color: #c82333;
+}
+
+/* Section "Ressources Utiles et Partenaires" */
+.resources-links h3 {
+    color: #6c757d; /* Couleur grise pour les ressources */
+    font-size: 1.6em;
+    margin-top: 0;
+}
+
+.resources-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resources-links ul li {
+    margin-bottom: 8px;
+}
+
+.resources-links ul li a {
+    color: #007bff;
     text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-    margin-top: 15px; /* Pour espacer du contenu précédent */
+    transition: color 0.3s ease;
 }
 
-.cta-button-secondary:hover {
-    background-color: #0056b3; /* Bleu plus foncé au survol */
-    border-color: #0056b3;
-    transform: translateY(-2px);
-}
-
-.cta-button-secondary:active {
-    transform: translateY(0);
-}
-
-/* --- Styles pour les liens de question sous les produits --- */
-.question-produit-lien {
-    text-align: right; /* Aligne le lien à droite */
-    margin-top: 10px;
-    font-size: 0.95em;
-    color: #666;
-}
-
-.question-produit-lien a {
-    color: #007bff; /* Met en évidence le lien de contact */
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.question-produit-lien a:hover {
-    text-decoration: underline;
+.resources-links ul li a:hover {
     color: #0056b3;
+    text-decoration: underline;
+}
+
+/* --- Footer (pied de page) --- */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 0 0 8px 8px; /* Coins inférieurs arrondis */
+    margin-top: auto; /* Pousse le footer vers le bas si le contenu est court */
 }

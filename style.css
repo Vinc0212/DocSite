@@ -7,15 +7,19 @@ body {
     font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Couleur de fond par défaut */
+    /* La couleur de fond du body est #f4f4f4 (gris clair).
+       La superposition body::before rend le tout semi-transparent blanc par défaut. */
+    background-color: #f4f4f4;
     color: #333; /* Couleur de texte générale */
     line-height: 1.6; /* Hauteur de ligne pour une meilleure lisibilité */
+    /* Retirez la position relative si elle était là, le body n'en a pas besoin pour body::before */
+    position: relative; /* Ajouté pour que body::before se positionne par rapport à lui */
 }
 
 /* Superposition semi-transparente sur l'image de fond pour améliorer la lisibilité du texte */
 body::before {
     content: "";
-    position: absolute;
+    position: fixed; /* Changement important: fixed pour couvrir tout le viewport */
     top: 0;
     left: 0;
     width: 100%;
@@ -33,7 +37,8 @@ img {
 /* Conteneur principal du site, centre le contenu et lui donne une apparence de "boîte" */
 .container {
     max-width: 960px; /* Largeur maximale du contenu principal */
-    min-height: calc(100vh - 80px); /* Hauteur minimale pour que le pied de page soit toujours en bas */
+    /* min-height: calc(100vh - 80px); - Cette ligne peut causer des problèmes avec les pieds de page flottants.
+       Supprimons-la pour l'instant et utilisons margin-top: auto sur le footer */
     margin: 40px auto; /* Centre le conteneur horizontalement et ajoute un espace vertical */
     padding: 0; /* Pas de rembourrage interne direct sur le conteneur global */
     background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent pour le contenu */
@@ -82,7 +87,8 @@ img {
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Espace le globe et le bouton/menu */
+    /* justify-content: space-between; était là, mais causait des soucis avec le sélecteur de langue.
+       Nous allons le gérer avec la propriété flex-grow sur le sélecteur de langue et le bouton. */
     position: relative;
     z-index: 10; /* Assure que le menu est au-dessus des autres éléments */
 }
@@ -90,8 +96,56 @@ img {
 .globe-image {
     height: 40px; /* Taille du GIF du globe */
     width: auto;
-    margin-right: 15px;
+    margin-right: 15px; /* Espace à droite du globe */
 }
+
+/* --- Styles pour le sélecteur de langue --- */
+.language-selector {
+    display: flex;
+    gap: 10px; /* Espace entre les drapeaux/textes */
+    align-items: center;
+    /* flex-grow: 1; pour que le sélecteur de langue prenne l'espace disponible
+       et pousse les autres éléments (bouton menu) vers la droite */
+    flex-grow: 1; /* Permet au sélecteur de langue de prendre tout l'espace restant */
+    justify-content: flex-start; /* Aligne les drapeaux à gauche de l'espace alloué */
+    /* margin-right: auto; - Supprimons cette marge qui entre en conflit avec flex-grow */
+}
+
+.language-selector a {
+    display: flex; /* Utilise flexbox pour aligner l'image et le texte côte à côte */
+    align-items: center; /* Centre verticalement l'image et le texte */
+    text-decoration: none;
+    padding: 5px 8px; /* Plus de padding pour un clic plus facile */
+    border: 1px solid transparent;
+    border-radius: 5px; /* Coins légèrement plus arrondis */
+    color: #fff; /* Couleur du texte: BLANC pour être visible sur fond noir */
+    background-color: rgba(255, 255, 255, 0.1); /* Fond légèrement transparent pour la visibilité */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.language-selector a:hover {
+    border-color: #888; /* Bordure au survol */
+    background-color: rgba(255, 255, 255, 0.2); /* Fond légèrement plus opaque au survol */
+}
+
+.language-selector a.active {
+    border-color: #007bff; /* Bordure pour la langue active */
+    background-color: #007bff; /* Fond bleu pour la langue active */
+    color: white; /* Texte blanc sur fond bleu actif */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Ombre douce pour la langue active */
+}
+
+.language-selector img {
+    width: 24px; /* Taille des drapeaux */
+    height: auto;
+    margin-right: 8px; /* Espace entre le drapeau et le texte */
+    vertical-align: middle; /* Aide à l'alignement */
+    /* Assurez-vous que cette règle est spécifique aux drapeaux et ne cible pas d'autres images */
+    /* La règle img { display: block; } en début de CSS peut affecter les petites images,
+       nous la surchargeons ici pour les drapeaux. */
+    display: inline-block; /* Les images de drapeaux doivent être inline-block ou inline-flex */
+}
+
 
 .menu-button {
     background-color: #007bff; /* Couleur du bouton de menu */
@@ -101,6 +155,7 @@ img {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
+    /* margin-left: auto; - Ceci poussait le bouton à droite avant, maintenant flex-grow sur language-selector gère ça */
 }
 
 .dropdown-menu {
@@ -164,8 +219,17 @@ img {
 
 /* Ajustement pour les écrans plus petits (mobile) */
 @media (max-width: 768px) {
+    .container {
+        margin: 20px auto; /* Moins de marge sur mobile */
+    }
+
+    .hero {
+        padding: 40px 20px; /* Moins de padding sur mobile */
+    }
+
     .main-content-layout { /* Pour index.html */
         flex-direction: column; /* Les colonnes s'empilent sur mobile */
+        padding: 15px; /* Moins de padding sur mobile */
     }
 
     .main-content-left,
@@ -173,7 +237,51 @@ img {
         flex: none; /* Désactive le flex pour qu'ils prennent toute la largeur */
         width: 100%; /* S'assure qu'ils prennent toute la largeur sur mobile */
     }
+
+    /* MEDIA QUERIES (pour les petits écrans) - Ajustements pour le menu */
+    .menu-container {
+        flex-direction: column; /* Les éléments s'empilent sur mobile */
+        align-items: flex-start; /* Aligne les éléments au début */
+        padding: 10px 15px; /* Ajuste le padding */
+    }
+
+    .globe-image {
+        margin-right: 0; /* Plus de marge à droite */
+        margin-bottom: 10px; /* Espace sous le globe */
+        align-self: center; /* Centre le globe si la flex-direction est column */
+    }
+
+    .language-selector {
+        width: 100%; /* Occupe toute la largeur sur mobile */
+        justify-content: center; /* Centre les drapeaux sur la ligne */
+        margin-bottom: 10px; /* Ajoute un peu d'espace sous les drapeaux */
+        flex-grow: unset; /* Désactive flex-grow sur mobile pour qu'il ne prenne pas tout l'espace */
+    }
+
+    .language-selector a {
+        padding: 8px 12px; /* Plus de padding sur mobile pour un meilleur toucher */
+        font-size: 0.9em;
+    }
+
+    .language-selector img {
+        width: 20px; /* Drapeaux un peu plus petits sur mobile */
+        margin-right: 5px;
+    }
+
+    .menu-button {
+        width: 100%; /* Prend toute la largeur disponible */
+        margin-top: 10px; /* Espace au-dessus du bouton */
+    }
+
+    .dropdown-menu {
+        right: auto; /* Supprime l'alignement à droite */
+        left: 50%; /* Centre le menu */
+        transform: translateX(-50%); /* Ajuste pour le centrage parfait */
+        width: calc(100% - 30px); /* Prend presque toute la largeur de l'écran */
+        max-width: 300px; /* Limite la largeur max même centré */
+    }
 }
+
 
 /* --- Styles des Sections de Contenu --- */
 

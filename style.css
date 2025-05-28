@@ -346,7 +346,34 @@ img {
     border-radius: 8px; /* Coins arrondis pour les iframes */
     overflow: hidden; /* Cache tout contenu qui dépasserait les bords arrondis */
 }
+/* --- Styles pour le bandeau "En cours de création" --- */
+.creation-banner {
+    background-color: #ffc107; /* Couleur de fond jaune-orange */
+    color: #333; /* Couleur du texte */
+    padding: 8px 0; /* Padding vertical, pas de padding horizontal pour permettre le défilement */
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden; /* Cache tout ce qui dépasse pour l'effet de défilement */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    position: relative; /* Nécessaire pour l'animation */
+    margin-bottom: 15px; /* Espace en dessous du bandeau */
+    border-radius: 5px; /* Coins légèrement arrondis */
+}
 
+.creation-banner span {
+    display: inline-block; /* Permet d'appliquer l'animation au texte */
+    padding-left: 100%; /* Le texte commence en dehors de la boîte à droite */
+    animation: scroll-text 15s linear infinite; /* Applique l'animation */
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(0%); /* Commence à la position initiale (texte invisible à droite) */
+    }
+    100% {
+        transform: translateX(-100%); /* Le texte se déplace complètement vers la gauche */
+    }
+}
 /* Media query pour les écrans mobiles spécifiques aux formulaires */
 @media (max-width: 768px) {
     .form-container {

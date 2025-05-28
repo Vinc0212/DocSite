@@ -1,100 +1,151 @@
-/* --- Réinitialisation et Styles Généraux --- */
+/* --- Global Styles & Reset --- */
 * {
-    box-sizing: border-box; /* S'assure que padding et border sont inclus dans la largeur/hauteur des éléments */
+    box-sizing: border-box; /* Ensures padding and border are included in element's total width/height */
+    margin: 0; /* Consistent margin reset for all elements */
+    padding: 0; /* Consistent padding reset for all elements */
 }
 
 body {
     font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4; /* Couleur de fond par défaut */
-    color: #333; /* Couleur de texte générale */
-    line-height: 1.6; /* Hauteur de ligne pour une meilleure lisibilité */
+    background-color: #f4f4f4; /* Default background color */
+    color: #333; /* General text color */
+    line-height: 1.6; /* Line height for better readability */
+    min-height: 100vh; /* Ensures body takes full viewport height */
+    display: flex; /* Use flexbox to enable proper footer pushing */
+    flex-direction: column; /* Stack children vertically */
 }
 
-/* Superposition semi-transparente sur l'image de fond pour améliorer la lisibilité du texte */
+/* Semi-transparent overlay on the background image for better text readability */
 body::before {
     content: "";
-    position: absolute;
+    position: fixed; /* Use fixed to cover entire viewport regardless of scroll */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.7); /* Blanc semi-transparent */
-    z-index: -1; /* Place cet élément derrière le contenu du body */
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+    z-index: -1; /* Places this element behind the body content */
+    /* If you have a background image on body, it should be defined here too */
+    /* background-image: url('path/to/your/background-image.jpg'); */
+    /* background-size: cover; */
+    /* background-position: center; */
 }
 
 img {
-    max-width: 100%; /* S'assure que les images ne dépassent pas leur conteneur */
-    height: auto; /* Maintient le ratio d'aspect des images */
-    display: block; /* Supprime l'espace blanc indésirable sous les images */
+    max-width: 100%; /* Ensures images don't overflow their containers */
+    height: auto; /* Maintains image aspect ratio */
+    display: block; /* Removes unwanted whitespace below images */
 }
 
-/* Conteneur principal du site, centre le contenu et lui donne une apparence de "boîte" */
+a {
+    color: #007bff; /* Default link color */
+    text-decoration: none; /* Remove underline by default */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+a:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline; /* Underline on hover for better UX */
+}
+
+/* Main site container, centers content and gives it a "boxed" appearance */
 .container {
-    max-width: 960px; /* Largeur maximale du contenu principal */
-    min-height: calc(100vh - 80px); /* Hauteur minimale pour que le pied de page soit toujours en bas */
-    margin: 40px auto; /* Centre le conteneur horizontalement et ajoute un espace vertical */
-    padding: 0; /* Pas de rembourrage interne direct sur le conteneur global */
-    background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent pour le contenu */
-    border-radius: 8px; /* Coins légèrement arrondis */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet de profondeur */
+    max-width: 960px; /* Maximum width of the main content */
+    margin: 40px auto; /* Centers the container horizontally and adds vertical space */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for content */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth effect */
     display: flex;
-    flex-direction: column; /* Organise les sections enfants (header, main, footer) en colonne */
+    flex-direction: column; /* Organizes child sections (header, main, footer) in a column */
     position: relative;
-    z-index: 1; /* S'assure que le contenu est au-dessus de la superposition du body */
+    z-index: 1; /* Ensures content is above the body overlay */
+    flex-grow: 1; /* Allows container to grow and fill available space */
 }
 
-/* --- Hero (en-tête de la page) --- */
+/* --- Hero Section (Header) --- */
 .hero {
-    background-image: url('https://Vinc0212.github.io/DocSite/Fond Linkedin.png'); /* Image de fond de l'en-tête */
-    background-size: cover; /* L'image couvre toute la zone */
+    background-image: url('https://Vinc0212.github.io/DocSite/Fond Linkedin.png'); /* Header background image */
+    background-size: cover; /* Image covers the entire area */
     background-position: center;
-    color: #fff; /* Couleur du texte dans l'en-tête */
+    color: #fff; /* Text color in the header */
     text-align: center;
     padding: 80px 20px;
-    border-radius: 8px 8px 0 0; /* Coins supérieurs arrondis */
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
 }
 
 .hero img {
-    width: 120px; /* Taille de l'image de profil */
+    width: 120px; /* Profile image size */
     height: 120px;
-    border-radius: 50%; /* Rend l'image de profil circulaire */
-    border: 4px solid #fff; /* Bordure blanche autour de l'image */
-    margin: 0 auto 15px; /* Centre l'image et ajoute un espace en dessous */
+    border-radius: 50%; /* Makes the profile image circular */
+    border: 4px solid #fff; /* White border around the image */
+    margin: 0 auto 15px; /* Centers the image and adds space below */
+    object-fit: cover; /* Ensures image covers the area without distortion */
 }
 
 .hero h1 {
     margin: 0;
     font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ombre pour le texte du titre */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow for the title text */
 }
 
 .hero p {
     font-size: 1.2em;
     margin-top: 10px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Ombre pour le sous-titre */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Shadow for the subtitle */
 }
 
-/* --- Menu de Navigation --- */
+/* --- Navigation Menu --- */
 .menu-container {
-    background-color: #333; /* Fond sombre pour le menu */
+    background-color: #333; /* Dark background for the menu */
     padding: 10px 20px;
     display: flex;
-    align-items: center;
-    justify-content: space-between; /* Espace le globe et le bouton/menu */
-    position: relative;
-    z-index: 10; /* Assure que le menu est au-dessus des autres éléments */
+    align-items: center; /* Vertically aligns items */
+    justify-content: space-between; /* Spaces the globe/flags and the menu button */
+    position: relative; /* For absolute positioning of dropdown */
+    z-index: 10; /* Ensures menu is above other elements */
 }
 
 .globe-image {
-    height: 40px; /* Taille du GIF du globe */
+    height: 40px; /* Size of the globe GIF */
     width: auto;
     margin-right: 15px;
 }
 
+/* Language Selector Styles */
+.language-selector {
+    display: flex;
+    gap: 5px; /* Space between flags */
+    align-items: center; /* Vertically aligns flags */
+    margin-right: auto; /* Pushes the menu button to the right */
+}
+
+.language-selector a {
+    display: block; /* Make images block-level for consistent padding/border */
+    text-decoration: none;
+    padding: 2px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    line-height: 0; /* Removes extra space below images */
+}
+
+.language-selector a:hover {
+    border-color: #ccc; /* Border on hover */
+}
+
+.language-selector a.active {
+    border-color: #007bff; /* Border for active language */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Shadow for active language */
+}
+
+.language-selector img {
+    width: 24px; /* Size of flags */
+    height: auto;
+    vertical-align: middle; /* Helps with alignment */
+}
+
+
 .menu-button {
-    background-color: #007bff; /* Couleur du bouton de menu */
+    background-color: #007bff; /* Menu button color */
     color: white;
     padding: 10px 15px;
     border: none;
@@ -104,24 +155,24 @@ img {
 }
 
 .dropdown-menu {
-    display: none; /* Masqué par défaut */
+    display: none; /* Hidden by default */
     position: absolute;
-    top: 100%; /* Positionne le menu sous le bouton */
-    right: 20px; /* Aligné à droite */
-    background-color: #444; /* Fond du menu déroulant */
+    top: 100%; /* Positions the menu below the button */
+    right: 20px; /* Aligned to the right */
+    background-color: #444; /* Dropdown menu background */
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Ombre du menu */
-    z-index: 1; /* Assure que le menu est au-dessus du contenu */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Menu shadow */
+    z-index: 1; /* Ensures menu is above content */
     border-radius: 5px;
-    overflow: hidden; /* Pour les coins arrondis */
+    overflow: hidden; /* For rounded corners */
 }
 
 .dropdown-menu.show {
-    display: block; /* Affiché lorsque la classe 'show' est active */
+    display: block; /* Shown when 'show' class is active */
 }
 
 .dropdown-menu ul {
-    list-style-type: none; /* Retire les puces de la liste */
+    list-style-type: none; /* Removes list bullets */
     margin: 0;
     padding: 0;
 }
@@ -130,58 +181,45 @@ img {
     color: white;
     padding: 12px 16px;
     text-decoration: none;
-    display: block; /* Chaque lien occupe toute la largeur */
+    display: block; /* Each link takes full width */
 }
 
 .dropdown-menu ul li a:hover {
-    background-color: #555; /* Changement de couleur au survol */
+    background-color: #555; /* Color change on hover */
 }
 
-/* --- Styles pour le Layout Principal (Contenu et Colonnes) --- */
-.main-content-layout { /* Utilisé sur index.html pour les colonnes gauche/droite */
-    display: flex; /* Active Flexbox pour les colonnes */
-    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne sur les petits écrans */
-    gap: 20px; /* Espace entre les colonnes et les sections */
-    padding: 20px; /* Rembourrage interne pour le contenu principal */
-    flex-grow: 1; /* Permet au main de prendre l'espace restant dans le .container */
+/* --- Main Layout Styles (Content and Columns) --- */
+.main-content-layout { /* Used on index.html for left/right columns */
+    display: flex; /* Activates Flexbox for columns */
+    flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+    gap: 20px; /* Space between columns and sections */
+    padding: 20px; /* Internal padding for main content */
+    flex-grow: 1; /* Allows main to take remaining space in .container */
 }
 
 .main-content-left {
-    flex: 2; /* Prend 2 parts de l'espace disponible (plus large) */
-    min-width: 300px; /* Largeur minimale de la colonne gauche */
+    flex: 2; /* Takes 2 parts of available space (wider) */
+    min-width: 300px; /* Minimum width for the left column */
 }
 
 .main-content-right {
-    flex: 1; /* Prend 1 part de l'espace disponible (plus étroite) */
-    min-width: 300px; /* Largeur minimale de la colonne droite */
+    flex: 1; /* Takes 1 part of available space (narrower) */
+    min-width: 300px; /* Minimum width for the right column */
 }
 
-/* Conteneur principal sur les pages "full width" comme renseignement.html */
+/* Main container on "full width" pages like presentation.html, contact.html, etc. */
 .main-full-width {
-    padding: 20px; /* Rembourrage interne pour le contenu principal */
-    flex-grow: 1; /* Permet au main de prendre l'espace restant dans le .container */
+    padding: 20px; /* Internal padding for main content */
+    flex-grow: 1; /* Allows main to take remaining space in .container */
 }
 
-/* Ajustement pour les écrans plus petits (mobile) */
-@media (max-width: 768px) {
-    .main-content-layout { /* Pour index.html */
-        flex-direction: column; /* Les colonnes s'empilent sur mobile */
-    }
+/* --- Section Styles --- */
 
-    .main-content-left,
-    .main-content-right { /* Pour index.html */
-        flex: none; /* Désactive le flex pour qu'ils prennent toute la largeur */
-        width: 100%; /* S'assure qu'ils prennent toute la largeur sur mobile */
-    }
-}
-
-/* --- Styles des Sections de Contenu --- */
-
-/* Style général pour toutes les sections principales à l'intérieur des colonnes */
+/* General style for all main sections within columns or full width */
 .main-content-left section,
 .main-content-right section,
-.main-full-width section { /* Ajout de .main-full-width section pour cibler les sections des pages "full width" */
-    margin-bottom: 20px; /* Espace entre les sections */
+.main-full-width section {
+    margin-bottom: 20px; /* Space between sections */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -190,12 +228,11 @@ img {
 
 .main-content-left section:last-child,
 .main-content-right section:last-child,
-.main-full-width section:last-child { /* Pas de marge en dessous de la dernière section */
-    margin-bottom: 0;
+.main-full-width section:last-child {
+    margin-bottom: 0; /* No bottom margin on the last section */
 }
 
-
-/* Section "Optimisation de vos Performances Supply Chain" */
+/* "Optimisation de vos Performances Supply Chain" Section */
 .accueil-style h2 {
     color: #007bff;
     font-size: 1.8em;
@@ -210,9 +247,9 @@ img {
     color: #0056b3;
 }
 
-/* Section "Boostez votre efficacité avec mes Outils Excel !" */
+/* "Boostez votre efficacité avec mes Outils Excel !" Section */
 .section-promotion-outils h3 {
-    color: #28a745; /* Couleur verte pour le titre */
+    color: #28a745; /* Green color for the title */
     font-size: 1.6em;
     margin-top: 0;
     text-align: center;
@@ -224,7 +261,7 @@ img {
 }
 
 .cta-button {
-    display: block; /* Pour prendre toute la largeur disponible dans la section */
+    display: block; /* To take full available width in the section */
     background-color: #007bff;
     color: white;
     padding: 12px 25px;
@@ -233,21 +270,21 @@ img {
     border-radius: 5px;
     font-size: 1.1em;
     transition: background-color 0.3s ease;
-    margin: 0 auto; /* Centre le bouton */
-    max-width: 250px; /* Limite la largeur du bouton */
+    margin: 0 auto; /* Centers the button */
+    max-width: 250px; /* Limits button width */
 }
 
 .cta-button:hover {
     background-color: #0056b3;
 }
 
-/* Section "Découvrez une de mes macros en action !" (Vidéo) */
+/* "Découvrez une de mes macros en action !" (Video) Section */
 .video-demonstration {
     text-align: center;
 }
 
 .video-demonstration h3 {
-    color: #6f42c1; /* Une couleur différente pour le titre de la vidéo */
+    color: #6f42c1; /* Different color for the video title */
     font-size: 1.6em;
     margin-top: 0;
 }
@@ -259,8 +296,8 @@ img {
 .video-container {
     position: relative;
     width: 100%;
-    max-width: 700px; /* Largeur max pour la vidéo */
-    margin: 0 auto; /* Centre la vidéo */
+    max-width: 700px; /* Max width for the video */
+    margin: 0 auto; /* Centers the video */
 }
 
 .video-container video {
@@ -268,26 +305,26 @@ img {
     height: auto;
     display: block;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombre pour la vidéo */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Shadow for the video */
 }
 
-/* Section "Mes Services Clés" */
+/* "Mes Services Clés" Section */
 .services-cles h3 {
-    color: #dc3545; /* Couleur rouge pour les services */
+    color: #dc3545; /* Red color for services */
     font-size: 1.6em;
     margin-top: 0;
 }
 
 .services-cles ul {
-    list-style: none; /* Retire les puces par défaut */
+    list-style: none; /* Removes default bullets */
     padding: 0;
 }
 
 .services-cles ul li {
-    background-color: #e9ecef; /* Fond clair pour les éléments de liste */
+    background-color: #e9ecef; /* Light background for list items */
     margin-bottom: 8px;
     padding: 10px 15px;
-    border-left: 4px solid #dc3545; /* Ligne colorée sur le côté */
+    border-left: 4px solid #dc3545; /* Colored line on the side */
     border-radius: 4px;
     font-size: 1.05em;
 }
@@ -296,9 +333,9 @@ img {
     color: #c82333;
 }
 
-/* Section "Ressources Utiles et Partenaires" */
+/* "Ressources Utiles et Partenaires" Section */
 .resources-links h3 {
-    color: #6c757d; /* Couleur grise pour les ressources */
+    color: #6c757d; /* Gray color for resources */
     font-size: 1.6em;
     margin-top: 0;
 }
@@ -312,88 +349,204 @@ img {
     margin-bottom: 8px;
 }
 
-.resources-links ul li a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.resources-links ul li a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-/* --- Styles pour les formulaires Google Forms sur la page de renseignement (renseignement.html) --- */
-
-/* Conteneur des formulaires Google, permet d'aligner les iframes et de gérer leur responsivité */
+/* --- Google Forms Section (renseignement.html) --- */
 .form-container {
-    display: flex; /* Active Flexbox pour les iframes enfants */
-    flex-wrap: wrap; /* Permet aux iframes de passer à la ligne sur les petits écrans */
-    gap: 30px; /* Espace entre les formulaires */
-    margin-top: 20px; /* Marge au-dessus du groupe de formulaires */
-    justify-content: center; /* Centre les formulaires si l'espace le permet */
-    align-items: flex-start; /* Alignement en haut (utile si les formulaires ont des hauteurs différentes) */
-    padding: 10px; /* Un peu de rembourrage à l'intérieur du conteneur si nécessaire */
+    display: flex; /* Activates Flexbox for child iframes */
+    flex-wrap: wrap; /* Allows iframes to wrap on smaller screens */
+    gap: 30px; /* Space between forms */
+    margin-top: 20px; /* Top margin for the form group */
+    justify-content: center; /* Centers forms if space allows */
+    align-items: flex-start; /* Aligns to the top (useful if forms have different heights) */
+    padding: 10px; /* Some internal padding if needed */
 }
 
-/* Styles pour chaque iframe Google Form */
+/* Styles for each Google Form iframe */
 .form-container iframe {
-    flex: 1 1 45%; /* Chaque iframe prend une base de 45% de la largeur du conteneur parent */
-    min-width: 300px; /* Largeur minimale de chaque iframe avant qu'il ne passe à la ligne */
-    height: 700px; /* Hauteur fixe pour les formulaires, ajustez si besoin pour voir tout le contenu */
-    border: none; /* Supprime la bordure par défaut des iframes */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Ombre pour distinguer chaque formulaire */
-    border-radius: 8px; /* Coins arrondis pour les iframes */
-    overflow: hidden; /* Cache tout contenu qui dépasserait les bords arrondis */
+    flex: 1 1 45%; /* Each iframe takes a base of 45% of parent container's width */
+    min-width: 300px; /* Minimum width of each iframe before wrapping */
+    height: 700px; /* Fixed height for forms, adjust if needed to see all content */
+    border: none; /* Removes default iframe border */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Shadow to distinguish each form */
+    border-radius: 8px; /* Rounded corners for iframes */
+    overflow: hidden; /* Hides any content exceeding rounded edges */
 }
-/* --- Styles pour le bandeau "En cours de création" --- */
+
+/* --- "Under Construction" Banner --- */
 .creation-banner {
-    background-color: #ffc107; /* Couleur de fond jaune-orange */
-    color: #333; /* Couleur du texte */
-    padding: 8px 0; /* Padding vertical, pas de padding horizontal pour permettre le défilement */
+    background-color: #ffc107; /* Yellow-orange background color */
+    color: #333; /* Text color */
+    padding: 8px 0; /* Vertical padding, no horizontal padding for scrolling effect */
     text-align: center;
     font-weight: bold;
-    overflow: hidden; /* Cache tout ce qui dépasse pour l'effet de défilement */
-    white-space: nowrap; /* Empêche le texte de passer à la ligne */
-    position: relative; /* Nécessaire pour l'animation */
-    margin-bottom: 15px; /* Espace en dessous du bandeau */
-    border-radius: 5px; /* Coins légèrement arrondis */
+    overflow: hidden; /* Hides anything overflowing for the scrolling effect */
+    white-space: nowrap; /* Prevents text from wrapping */
+    position: relative; /* Necessary for animation */
+    margin-bottom: 15px; /* Space below the banner */
+    border-radius: 5px; /* Slightly rounded corners */
 }
 
 .creation-banner span {
-    display: inline-block; /* Permet d'appliquer l'animation au texte */
-    padding-left: 100%; /* Le texte commence en dehors de la boîte à droite */
-    animation: scroll-text 15s linear infinite; /* Applique l'animation */
+    display: inline-block; /* Allows animation to be applied to the text */
+    padding-left: 100%; /* Text starts off-screen to the right */
+    animation: scroll-text 15s linear infinite; /* Applies the animation */
 }
 
 @keyframes scroll-text {
     0% {
-        transform: translateX(0%); /* Commence à la position initiale (texte invisible à droite) */
+        transform: translateX(0%); /* Starts at initial position (text invisible on right) */
     }
     100% {
-        transform: translateX(-100%); /* Le texte se déplace complètement vers la gauche */
-    }
-}
-/* Media query pour les écrans mobiles spécifiques aux formulaires */
-@media (max-width: 768px) {
-    .form-container {
-        flex-direction: column; /* Les formulaires s'empilent verticalement sur mobile */
-        gap: 20px; /* Réduit l'espacement vertical sur mobile */
-    }
-
-    .form-container iframe {
-        width: 100%; /* Chaque formulaire prend toute la largeur disponible sur mobile */
-        height: 600px; /* Hauteur ajustée pour mobile, peut être adaptée */
+        transform: translateX(-100%); /* Text moves completely to the left */
     }
 }
 
-
-/* --- Footer (pied de page) --- */
+/* --- Footer --- */
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 20px;
-    border-radius: 0 0 8px 8px; /* Coins inférieurs arrondis */
-    margin-top: auto; /* Pousse le footer vers le bas de la page si le contenu est court */
+    border-radius: 0 0 8px 8px; /* Rounded bottom corners */
+    margin-top: auto; /* Pushes the footer to the bottom of the page if content is short */
+}
+
+/* --- Portfolio Styles (From presentation.html) --- */
+/* Moved here from inline <style> block as discussed */
+.portfolio-section {
+    padding: 30px 20px;
+}
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.portfolio-item {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.portfolio-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+.portfolio-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 123, 255, 0.8);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    padding: 20px;
+}
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+.portfolio-item:hover .overlay {
+    opacity: 1;
+}
+.portfolio-item .overlay h3 {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+.portfolio-item .overlay p {
+    font-size: 0.9em;
+}
+.tech-logos {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.tech-logos img {
+    height: 40px;
+}
+
+/* --- Media Queries (Responsiveness) --- */
+
+/* Adjustments for smaller screens (mobile) */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px auto; /* Reduce top/bottom margin on smaller screens */
+        border-radius: 0; /* Remove rounded corners on full-width mobile layout */
+        box-shadow: none; /* Remove shadow on full-width mobile layout */
+    }
+
+    .hero {
+        padding: 50px 20px; /* Reduce padding in hero section */
+        border-radius: 0; /* Remove rounded corners on mobile */
+    }
+
+    .hero h1 {
+        font-size: 2em; /* Smaller title on mobile */
+    }
+
+    .hero p {
+        font-size: 1em; /* Smaller subtitle on mobile */
+    }
+
+    .menu-container {
+        flex-wrap: wrap; /* Allow items to wrap if needed */
+        justify-content: space-between; /* Maintain spacing */
+    }
+    
+    .language-selector {
+        order: -1; /* Puts flags first on small screens if desired */
+        margin-right: 15px; /* Small margin after flags */
+    }
+
+    .menu-button {
+        margin-left: auto; /* Push button to the right if flags are left */
+    }
+
+    .main-content-layout { /* For index.html */
+        flex-direction: column; /* Columns stack on mobile */
+        padding: 15px; /* Slightly less padding */
+    }
+
+    .main-content-left,
+    .main-content-right { /* For index.html */
+        flex: none; /* Deactivate flex so they take full width */
+        width: 100%; /* Ensure they take full width on mobile */
+    }
+
+    .main-full-width {
+        padding: 15px; /* Slightly less padding */
+    }
+
+    .main-content-left section,
+    .main-content-right section,
+    .main-full-width section {
+        padding: 15px; /* Reduce section padding */
+    }
+
+    /* Media query specific for Google Forms */
+    .form-container {
+        flex-direction: column; /* Forms stack vertically on mobile */
+        gap: 20px; /* Reduce vertical spacing on mobile */
+        padding: 0; /* Remove padding if container has it */
+    }
+
+    .form-container iframe {
+        width: 100%; /* Each form takes full width on mobile */
+        height: 600px; /* Adjusted height for mobile, can be adapted */
+    }
+
+    .creation-banner span {
+        animation-duration: 10s; /* Faster scroll on smaller screens */
+    }
 }

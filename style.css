@@ -315,12 +315,12 @@ img {
 }
 
 .accueil-style strong {
-    color: #0056b3;
+    color: 000000;
 }
 
 /* Section "Boostez votre efficacité avec mes Outils Excel !" */
 .section-promotion-outils h3 {
-    color: #28a745; /* Couleur verte pour le titre */
+    color:#007bff; /* Couleur verte pour le titre */
     font-size: 1.6em;
     margin-top: 0;
     text-align: center;
@@ -355,7 +355,7 @@ img {
 }
 
 .video-demonstration h3 {
-    color: #6f42c1; /* Une couleur différente pour le titre de la vidéo */
+    color: #007bff; /* Une couleur différente pour le titre de la vidéo */
     font-size: 1.6em;
     margin-top: 0;
 }
